@@ -109,7 +109,7 @@ export default function AddPost() {
           </div>
           <form className="w-11/12 mx-auto mt-2">
             <input onChange={loadImage} type="file" hidden ref={inputRef} />
-            <div className="w-full md:flex-row flex-col flex justify-between md:space-x-2">
+            <div className="w-full flex-col flex justify-between md:space-x-0">
               <Textbox
                 event={handleChange}
                 value={title as string}
@@ -126,8 +126,6 @@ export default function AddPost() {
                 type="text"
                 placeholder="Synthèse du post"
               />
-            </div>
-            <div className="w-full md:flex-row flex-col flex justify-between md:space-x-2">
               <Textbox
                 event={handleChange}
                 value={text as string}
@@ -149,7 +147,7 @@ export default function AddPost() {
               name="status"
               event={onClickCheckbox}
               value={status}
-              title="Cochez pour spécifier si la publication directe"
+              title="Cochez pour spécifier si la publication directe."
             />
             <div className="w-full flex justify-between md:space-x-1 md:flex-row flex-col">
               <div className="md:w-1/2 w-full">
