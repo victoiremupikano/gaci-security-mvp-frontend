@@ -28,7 +28,7 @@ const Post = {
     return api.get("/post-list-create/" + entreprize_id, "share_pub");
   },
   async get(id:string | number, entreprize_id:string): Promise<PostAPIResponse> {
-    return api.get("/post-detail/" + id + "/" + entreprize_id, "share_pub");
+    return api.get("/post-staff-detail/" + id + "/" + entreprize_id, "share_pub");
   },
 };
 

@@ -5,7 +5,7 @@ import Post from "../../../../api/post"
 import FormHeader from "../../../../components/FormHeader"
 import ReusableHeader from "../../../../components/ReusableHeader"
 import "moment/locale/fr"
-import PlotDetails from "../../../../components/PostDetails"
+import PostDetails from "../../../../components/PostDetails"
 import { PencilIcon, PrinterIcon, XMarkIcon } from "@heroicons/react/20/solid"
 import Toast from "../../../../components/Toast"
 
@@ -49,19 +49,18 @@ const UniquePostDetails : FunctionComponent = () => {
               >
               <span className="hidden md:flex"> Modifier</span>
               <PencilIcon className="md:hidden w-5 h-5" />
-          </Link>
+            </Link>
           </div>
           <div className="w-full text-sm md:text-base flex md:justify-between mx-auto h-auto">
-            <PlotDetails post={post} />
+            <PostDetails post={post} />
           </div>
           <div className="flex w-11/12 mx-auto  mb-3">
-            <span
-              // onClick={onclickDeletePlot}
+            <Link
+              href={"/staff/post-images/" + post?.pk}
               className="bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
               >
               Images
-              <XMarkIcon className="w-5 h-5 ml-2" />
-            </span>
+            </Link>
             <span
               // onClick={onclickDeletePlot}
               className="ml-2 bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"

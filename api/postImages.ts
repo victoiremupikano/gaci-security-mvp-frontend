@@ -27,6 +27,9 @@ const PostImages = {
   async getAll(entreprize_id:string): Promise<PostImagesAPIResponse> {
     return api.get("/post-images-list-create/" + entreprize_id, "share_pub");
   },
+  async getByPost(id:string | number, entreprize_id:string): Promise<PostImagesAPIResponse> {
+    return api.get("/post-images-post-detail/" + id + "/" + entreprize_id, "share_pub");
+  },
   async get(id:string | number, entreprize_id:string): Promise<PostImagesAPIResponse> {
     return api.get("/post-images-detail/" + id + "/" + entreprize_id, "share_pub");
   },
