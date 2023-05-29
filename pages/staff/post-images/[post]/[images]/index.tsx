@@ -23,7 +23,7 @@ const UniquePostImagesDetails : FunctionComponent = () => {
     useEffect(() => {
         if (router.isReady) {
           const entreprize = localStorage.getItem("entreprize")
-          getPostImages(router.query.post as string, entreprize as string)
+          getPostImages(router.query.images as string, entreprize as string)
         }
     }, [router, getPostImages])
   const onclickDeletePlot = async () => {
@@ -33,7 +33,7 @@ const UniquePostImagesDetails : FunctionComponent = () => {
       setToast("show");
       setMsg(result.data.detail);
     } else {
-      router.push("/staff/post-images" + router.query.post as string)
+      router.push("/staff/post-images/" + router.query.post as string)
     }
   }    
     return (
@@ -59,7 +59,7 @@ const UniquePostImagesDetails : FunctionComponent = () => {
               onClick={onclickDeletePlot}
               className="bg-red-600 flex items-center cursor-pointer hover:bg-red-700 py-1.5 text-white px-2  rounded"
             >
-              Supprimer ce post
+              Supprimer cette image
               <XMarkIcon className="w-5 h-5 ml-2" />
             </span>
           </div>
