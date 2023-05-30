@@ -27,6 +27,9 @@ const postVideos = {
   async getAll(entreprize_id:string): Promise<postVideosAPIResponse> {
     return api.get("/post-video-list-create/" + entreprize_id, "share_pub");
   },
+  async getByPost(id:string | number, entreprize_id:string): Promise<postVideosAPIResponse> {
+    return api.get("/post-video-post-detail/" + id + "/" + entreprize_id, "share_pub");
+  },
   async get(id:string | number, entreprize_id:string): Promise<postVideosAPIResponse> {
     return api.get("/post-video-detail/" + id + "/" + entreprize_id, "share_pub");
   },
