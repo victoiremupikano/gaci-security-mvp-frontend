@@ -26,7 +26,7 @@ const UniquePostDetails : FunctionComponent = () => {
           getPost(router.query.post as string, entreprize as string)
         }
     }, [router, getPost])
-  const onclickDeletePlot = async () => {
+  const onclickDelete = async () => {
     setToast("hide");
     const result = await Post.delete(post.pk)
     if (result.type === "error") {
@@ -60,32 +60,33 @@ const UniquePostDetails : FunctionComponent = () => {
               className="bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
               >
               Images
+              <XMarkIcon className="w-5 h-5 ml-2" />
             </Link>
-            <span
-              // onClick={onclickDeletePlot}
+            <Link
+              href={"/staff/post-docs/" + post?.pk}
               className="ml-2 bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
               >
               Fichiers
               <XMarkIcon className="w-5 h-5 ml-2" />
-            </span>
-            <span
-              // onClick={onclickDeletePlot}
+            </Link>
+            <Link
+              href={"/staff/post-vid/" + post?.pk}
               className="ml-2 bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
               >
               Vidéos
               <XMarkIcon className="w-5 h-5 ml-2" />
-            </span>
+            </Link>
           </div>
           <div className="flex w-11/12 mx-auto  mb-3">
             <span
-              // onClick={onclickDeletePlot}
+              // onClick={onclickDelete}
               className="bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
               >
               Commentaires
               <XMarkIcon className="w-5 h-5 ml-2" />
             </span>
             <span
-              // onClick={onclickDeletePlot}
+              // onClick={onclickDelete}
               className="ml-2 bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
               >
               Favoris
@@ -94,7 +95,7 @@ const UniquePostDetails : FunctionComponent = () => {
           </div>
           <div className="flex w-11/12 mx-auto  mb-3">
             <span
-              onClick={onclickDeletePlot}
+              onClick={onclickDelete}
               className="bg-red-600 flex items-center cursor-pointer hover:bg-red-700 py-1.5 text-white px-2  rounded"
             >
               Supprimer ce post

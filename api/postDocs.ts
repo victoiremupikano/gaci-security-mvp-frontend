@@ -27,6 +27,9 @@ const PostDocs = {
   async getAll(entreprize_id:string): Promise<PostDocsAPIResponse> {
     return api.get("/post-docs-list-create/" + entreprize_id, "share_pub");
   },
+  async getByPost(id:string | number, entreprize_id:string): Promise<PostDocsAPIResponse> {
+    return api.get("/post-docs-post-detail/" + id + "/" + entreprize_id, "share_pub");
+  },
   async get(id:string | number, entreprize_id:string): Promise<PostDocsAPIResponse> {
     return api.get("/post-docs-detail/" + id + "/" + entreprize_id, "share_pub");
   },

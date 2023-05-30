@@ -4,7 +4,7 @@ import "moment/locale/fr";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import PostImages from "../../../../api/postImages";
+import PostDocs from "../../../../api/postDocs";
 import ClickableSpan from "../../../../components/ClickableSpan";
 import GoBack from "../../../../components/GoBack";
 import ReusableHeader from "../../../../components/ReusableHeader";
@@ -13,17 +13,17 @@ import useVerify from "../../../../hooks/useVerify";
 
 
 export default function Index() {
-  const [postsImages, setPostImages] = useState<Array<any>>();
+  const [postDocs, setPostDocs] = useState<Array<any>>();
   const [next, setNext] = useState('');
   const [previous, setPrevious] = useState('');
   const [count, setCount] = useState()
   const [loading, setLoading] = useState(false)
   useVerify();
-  const getPostImages = async (postId: string, entreprizeId: string) => {
+  const getPostDocs = async (postId: string, entreprizeId: string) => {
     setLoading(true)
-      const result = await PostImages.getByPost(postId, entreprizeId);
+      const result = await PostDocs.getByPost(postId, entreprizeId);
       if (result.results) {
-        setPostImages(result.results);
+        setPostDocs(result.results);
         setNext(result?.next?.split("/share_pub")[1] as string);
         setPrevious(result?.previous?.split("/share_pub")[1] as string);
         setCount(result.count);
@@ -34,7 +34,7 @@ export default function Index() {
      setLoading(true)
      const result = await fetch(next, 'share_pub');
      if (result.results) {
-       setPostImages(result.results);
+       setPostDocs(result.results);
        setNext(result?.next?.split("/share_pub")[1]);
        setPrevious(result?.previous?.split("/share_pub")[1]);
        setCount(result.count);
@@ -45,7 +45,7 @@ export default function Index() {
      setLoading(true)
      const result = await fetch(previous, "share_pub");
      if (result.results) {
-       setPostImages(result.results);
+       setPostDocs(result.results);
        setNext(result?.next?.split("/share_pub")[1]);
        setPrevious(result?.previous?.split("/share_pub")[1]);
        setCount(result.count);
@@ -57,22 +57,22 @@ export default function Index() {
  
   useEffect(() => {
     const entreprize = localStorage.getItem("entreprize")
-    getPostImages(post as string, entreprize as string);
+    getPostDocs(post as string, entreprize as string);
   }, []);
   return (
     <>
-      <ReusableHeader text="Toutes les images" />
+      <ReusableHeader text="Toutes les documents" />
       <div className="w-11/12 mx-auto h-full">
         <div className="w-full mb-3 mt-4 flex justify-between">
           <div className="flex items-center">
             <GoBack />{" "}
-            <span className="font-semibold text-xl">Toutes les images</span>
+            <span className="font-semibold text-xl">Toutes les documents</span>
           </div>
           <div className="flex justify-around">
             <span className="flex p-1 rounded font-semibold mr-1 text-gray-800 bg-gray-100">Total : {count}</span>
           <Link
             className="bg-blue-600 text-white rounded p-1"
-            href={"/staff/post-images/" + post as string + "/add"}
+            href={"/staff/post-docs/" + post as string + "/add"}
           >
             Ajouter
           </Link>
@@ -90,8 +90,8 @@ export default function Index() {
           <span className="w-1/12">--</span>
         </div>
         {!loading ? (
-          Array.isArray(postsImages) && postsImages.length > 0 ? (
-            postsImages.map((a, index) => {
+          Array.isArray(postDocs) && postDocs.length > 0 ? (
+            postDocs.map((a, index) => {
               return (
                 <div
                   key={a.pk}
@@ -113,13 +113,13 @@ export default function Index() {
                   </span>
                   <span className="md:w-1/12 w-2/12 flex justify-around">
                     <Link
-                      href={"/staff/post-images/" + post as string + "/" + a.pk + "/update"}
+                      href={"/staff/post-docs/" + post as string + "/" + a.pk + "/update"}
                       className="grid h-7 w-7 place-items-center text-white rounded bg-gray-700"
                     >
                       <PencilIcon className="w-5 h-5" />
                     </Link>
                     <Link
-                      href={"/staff/post-images/" + post as string + "/" + a.pk}
+                      href={"/staff/post-docs/" + post as string + "/" + a.pk}
                       className="grid h-7 w-7 place-items-center text-white rounded bg-gray-700"
                     >
                       <AdjustmentsHorizontalIcon className="w-5 h-5" />

@@ -10,7 +10,7 @@ import Pricing from "../../../../api/pricing";
 import { XMarkIcon, CheckCircleIcon, XCircleIcon } from "@heroicons/react/20/solid";
 import Toast from "../../../../components/Toast";
 
-export default function UniqueRate() {
+export default function UniquePricing() {
   const [fnObject, setFnObject] = useState<any>({});
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
@@ -26,7 +26,7 @@ export default function UniqueRate() {
       getFnx(router.query.pricing as string);
     }
   }, [router.query.pricing]);
-   const onclickDeleteRate = async () => {
+   const onclickDelete = async () => {
      setToast("hide");
      const result = await Pricing.delete(fnObject.pk);
      if (result.type === "error") {
@@ -118,7 +118,7 @@ export default function UniqueRate() {
             </div>
             <div className="flex  mb-3">
               <span
-                onClick={onclickDeleteRate}
+                onClick={onclickDelete}
                 className="bg-red-600 flex items-center cursor-pointer hover:bg-red-700 py-1.5 text-white px-2  rounded"
               >
                 Supprimer la tarification{" "}
