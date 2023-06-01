@@ -23,7 +23,7 @@ const UniquePostComentDetails : FunctionComponent = () => {
     useEffect(() => {
         if (router.isReady) {
           const entreprize = localStorage.getItem("entreprize")
-          getPostComent(router.query.Coment as string, entreprize as string)
+          getPostComent(router.query.coment as string, entreprize as string)
         }
     }, [router, getPostComent])
   const onclickDelete = async () => {
@@ -33,7 +33,7 @@ const UniquePostComentDetails : FunctionComponent = () => {
       setToast("show");
       setMsg(result.data.detail);
     } else {
-      router.push("/staff/Coment/" + router.query.post as string)
+      router.push("/staff/coment/" + router.query.post as string)
     }
   }    
     return (

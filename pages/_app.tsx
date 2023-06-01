@@ -11,6 +11,7 @@ import NoStaffNavigation from "../components/NoStaffNavigation";
 import AdminNavigation from "../components/AdminNavigation";
 import AdminSideNavigation from "../components/AdminSideNavigation";
 import NoStaffSideNavigation from "../components/NoStaffSideNavigation";
+import BackupSideMenu from "../components/BackupSideMenu";
 
 export default function App({ Component, pageProps }: AppProps) {
   const mainRoutes = ["/auth/login", "/auth/reset-pwd"];
@@ -26,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
     AOS.init();
   }, [router.pathname]);
 
-  if (router.pathname.includes('/staff') && !router.pathname.includes("/staff/reports")) {
+  if (router.pathname.includes('/staff') && !router.pathname.includes("/staff/backup")) {
     return (
       <main className="h-full overflow-hidden w-full">
         <AdminNavigation />
@@ -47,6 +48,21 @@ export default function App({ Component, pageProps }: AppProps) {
           <NoStaffSideNavigation/>
           <div className="lg:w-[85%] md:w-[80%]  h-[calc(100%-56px)] overflow-auto w-full">
           <Component {...pageProps} />
+          </div>
+        </section>
+        <ReusableFooter />
+      </main>
+    );
+  }
+  else if (router.pathname.includes('/staff/backup')) {
+    return (
+      <main className="h-full overflow-hidden w-full">
+        <AdminNavigation />
+        <section className=" w-full border-t overflow-hidden h-full flex">
+          <AdminSideNavigation />
+          <BackupSideMenu />
+          <div className="lg:w-[65%]  h-[calc(100%-56px)] overflow-auto w-full">
+            <Component {...pageProps} />
           </div>
         </section>
         <ReusableFooter />
