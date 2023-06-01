@@ -12,10 +12,10 @@ declare type BackupAPIResponse = Record<string, any> & {
   previous?:''
 };
 
-const Cohorte = {
+const Exercise = {
   async get(): Promise<BackupAPIResponse> {
-    return api.get("/cohorte-list/", "mscm/backup");
+    return api.get("/exercise-list/", "mscm/backup");
   },
 };
 
-export default Cohorte;
+export default Exercise;
