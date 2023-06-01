@@ -12,10 +12,10 @@ declare type BackupAPIResponse = Record<string, any> & {
   previous?:''
 };
 
-const Firm = {
+const Tracked = {
   async get(): Promise<BackupAPIResponse> {
-    return api.get("/firm-list/", "mscm/backup");
+    return api.get("/tracked-list/", "mscm/backup");
   },
 };
 
-export default Firm;
+export default Tracked;
