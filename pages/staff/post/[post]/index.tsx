@@ -78,20 +78,20 @@ const UniquePostDetails : FunctionComponent = () => {
             </Link>
           </div>
           <div className="flex w-11/12 mx-auto  mb-3">
-            <span
-              // onClick={onclickDelete}
-              className="bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
+            <Link
+              href={"/staff/coment/" + post?.pk}
+              className="ml-2 bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
               >
               Commentaires
               <XMarkIcon className="w-5 h-5 ml-2" />
-            </span>
-            <span
-              // onClick={onclickDelete}
+            </Link>
+            <Link
+              href={"/staff/favorite/" + post?.pk}
               className="ml-2 bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
               >
               Favoris
               <XMarkIcon className="w-5 h-5 ml-2" />
-            </span>
+            </Link>
           </div>
           <div className="flex w-11/12 mx-auto  mb-3">
             <span

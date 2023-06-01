@@ -38,12 +38,10 @@ const PostFavoriteDetails: FunctionComponent<Props> = ({index, postFavorite}) =>
             <span>{postFavorite?.post?.synthesis}</span>
           </div>            
         </div>
-        <div className="w-full h-full flex md:space-y-0 mb-2 space-y-2  md:space-x-4 flex-col md:flex-row md:justify-between">
-          <div className="flex mb-2 justify-between">
-            <span className="font-semibold">Classer au favoris ?</span>
-            <span>{postFavorite?.status == true ? "Oui" : "Non"}</span>
-          </div>         
-        </div>
+        <div className="flex mb-2 justify-between">
+          <span className="font-semibold">Classer au favoris </span>
+          <span>{postFavorite?.status == true ? "Oui" : "Non"}</span>
+        </div>    
         <div className="flex mb-2 justify-between">
           <span className="font-semibold">Date d&apos;ajout</span>
           <span>{moment(postFavorite?.date_add).format("ll")}</span>
