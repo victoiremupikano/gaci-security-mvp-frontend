@@ -18,7 +18,7 @@ const BackupExercise: FunctionComponent = () => {
     localStorage.setItem("filename", 'all_exercise_backup')
   },[])
     return (
-      <div id="all-Exercises" className="w-11/12 h-full mx-auto">
+      <div id="all-exercise" className="w-11/12 h-full mx-auto">
         <div className="flex my-4 justify-center">
           <h1 className="w-80 font-semibold">
             LISTE DE TOUS LES EXERCICES

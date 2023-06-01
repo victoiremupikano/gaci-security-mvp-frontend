@@ -18,7 +18,7 @@ const BackupFirm: FunctionComponent = () => {
     localStorage.setItem("filename", 'all_firm_backup')
   },[])
     return (
-      <div id="all-Firms" className="w-11/12 h-full mx-auto">
+      <div id="all-firm" className="w-11/12 h-full mx-auto">
         <div className="flex my-4 justify-center">
           <h1 className="w-80 font-semibold">
             LISTE DE TOUS LES CICURSALLES
