@@ -9,7 +9,7 @@ const BackupSideMenu: FunctionComponent = () => {
             Visualisation
           </div>
           <BackupMenuItem 
-            path="/plots/by-buy-mode"
+            path="/firm"
             text="Cicursale"
           />
           <BackupMenuItem  

@@ -15,7 +15,7 @@ const BackupMobileMenu: FunctionComponent<Props> = ({onClick}) => {
             Visualisation
           </div>
           <BackupMenuItem event={onClick}
-            path="/plots/by-buy-mode"
+            path="/firm"
             text="Cicursale"
           />
           <BackupMenuItem event={onClick} 
