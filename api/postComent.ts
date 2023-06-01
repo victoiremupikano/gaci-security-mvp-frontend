@@ -1,6 +1,6 @@
 import api from "./index";
 
-declare type PostCommentAPIResponse = Record<string, any> & {
+declare type PostComentAPIResponse = Record<string, any> & {
   type?: "success" | "error" | "auth";
   data?: any;
   status?: number;
@@ -12,27 +12,27 @@ declare type PostCommentAPIResponse = Record<string, any> & {
   previous?:''
 };
 
-const PostComment = {
-  async add(data: Record<string, any>, entreprize_id:string): Promise<PostCommentAPIResponse> {
+const PostComent = {
+  async add(data: Record<string, any>, entreprize_id:string): Promise<PostComentAPIResponse> {
     return api.post(
-      "/comment-list-create/" + entreprize_id + "/", data, "share_pub"
+      "/Coment-list-create/" + entreprize_id + "/", data, "share_pub"
     );
   },
-  async update(data: Record<string, any>, id: string): Promise<PostCommentAPIResponse> {
-    return api.put("/comment-update/" + id + "/", data, "share_pub");
+  async update(data: Record<string, any>, id: string): Promise<PostComentAPIResponse> {
+    return api.put("/Coment-update/" + id + "/", data, "share_pub");
   },
-  async delete(id: string): Promise<PostCommentAPIResponse> {
-    return api.delete("/comment-delete/" + id + "/", "share_pub");
+  async delete(id: string): Promise<PostComentAPIResponse> {
+    return api.delete("/Coment-delete/" + id + "/", "share_pub");
   },
-  async getAll(entreprize_id:string): Promise<PostCommentAPIResponse> {
-    return api.get("/comment-list-create/" + entreprize_id, "share_pub");
+  async getAll(entreprize_id:string): Promise<PostComentAPIResponse> {
+    return api.get("/Coment-list-create/" + entreprize_id, "share_pub");
   },
-  async getByPost(id:string | number, entreprize_id:string): Promise<PostCommentAPIResponse> {
-    return api.get("/comment-post-detail/" + id + "/" + entreprize_id, "share_pub");
+  async getByPost(id:string | number, entreprize_id:string): Promise<PostComentAPIResponse> {
+    return api.get("/Coment-post-detail/" + id + "/" + entreprize_id, "share_pub");
   },
-  async get(id:string | number, entreprize_id:string): Promise<PostCommentAPIResponse> {
-    return api.get("/comment-detail/" + id + "/" + entreprize_id, "share_pub");
+  async get(id:string | number, entreprize_id:string): Promise<PostComentAPIResponse> {
+    return api.get("/Coment-detail/" + id + "/" + entreprize_id, "share_pub");
   },
 };
 
-export default PostComment;
+export default PostComent;

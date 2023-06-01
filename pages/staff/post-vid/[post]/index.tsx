@@ -23,7 +23,6 @@ export default function Index() {
     setLoading(true)
       const result = await PostVid.getByPost(postId, entreprizeId);
       if (result.results) {
-        console.log(result.results)
         setPostVid(result.results);
         setNext(result?.next?.split("/share_pub")[1] as string);
         setPrevious(result?.previous?.split("/share_pub")[1] as string);
@@ -59,7 +58,6 @@ export default function Index() {
   useEffect(() => {
     const entreprize = localStorage.getItem("entreprize")
     getPostVid(post as string, entreprize as string);
-    console.log(postVid)
   }, []);
   return (
     <>
