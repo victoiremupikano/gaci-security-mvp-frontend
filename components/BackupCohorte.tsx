@@ -30,10 +30,10 @@ const BackupCohorte: FunctionComponent = () => {
           <span className="w-[20%]">Libélé</span>
           <span className="w-[10%]">Début</span>
           <span className="w-[10%]">Limite</span>
-          <span className="w-[5%]">Nbr Hosp.</span>
-          <span className="w-[5%]">Nbr Amb.</span>
-          <span className="w-[5%]">% Hosp.</span>
-          <span className="w-[5%]">% Amb.</span>
+          <span className="w-[5%]">Nbr H.</span>
+          <span className="w-[5%]">Nbr A.</span>
+          <span className="w-[5%]">% H.</span>
+          <span className="w-[5%]">% A.</span>
           <span className="w-[5%] flex">Status</span>
           <span className="w-[10%] flex justify-center">Créé</span>
           <span className="w-[10%]">Modif.</span>

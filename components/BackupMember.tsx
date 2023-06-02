@@ -31,7 +31,7 @@ const BackupMember: FunctionComponent = () => {
           <span className="w-[10%]">Genre</span>
           <span className="w-[10%]">Né lé</span>
           <span className="w-[5%]">Né au(à)</span>
-          <span className="w-[5%]">Function</span>
+          <span className="w-[5%]">F°</span>
           <span className="w-[5%]">Ville</span>
           <span className="w-[5%]">Qr</span>
           <span className="w-[5%] flex">Tel.</span>

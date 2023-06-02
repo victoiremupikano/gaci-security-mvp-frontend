@@ -19,28 +19,28 @@ const BackupMobileMenu: FunctionComponent<Props> = ({onClick}) => {
             text="Cicursale"
           />
           <BackupMenuItem event={onClick} 
-            path="/plots/by-usage" 
+            path="/exercise" 
             text="Exercice" 
           />
           <BackupMenuItem event={onClick} 
                     
-            path="/plots/by-status"
+            path="/cohorte"
             text="Cohorte"
           />
           <BackupMenuItem event={onClick}
-            path="/plots/by-possessing"
+            path="/member"
             text="Membre"
           />
           <BackupMenuItem event={onClick} 
-            path="/plots/by-occupation" 
+            path="/enrolement" 
             text="Adhésion" 
           />
           <BackupMenuItem event={onClick}
-            path="/plots/by-agent-occupier"
+            path="/payment"
             text="Facture"
           />
           <BackupMenuItem event={onClick}
-            path="/plots/by-agent-possessing"
+            path="/tracked"
             text="Bon et suivi"
           />
         </div>

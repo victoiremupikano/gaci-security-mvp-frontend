@@ -13,28 +13,28 @@ const BackupSideMenu: FunctionComponent = () => {
             text="Cicursale"
           />
           <BackupMenuItem  
-            path="/plots/by-usage" 
+            path="/exercise" 
             text="Exercice" 
           />
           <BackupMenuItem  
                     
-            path="/plots/by-status"
+            path="/cohorte"
             text="Cohorte"
           />
           <BackupMenuItem 
-            path="/plots/by-possessing"
+            path="/member"
             text="Membre"
           />
           <BackupMenuItem  
-            path="/plots/by-occupation" 
+            path="/enrolment" 
             text="Adhésion" 
           />
           <BackupMenuItem 
-            path="/plots/by-agent-occupier"
+            path="/payment"
             text="Facture"
           />
           <BackupMenuItem 
-            path="/plots/by-agent-possessing"
+            path="/tracked"
             text="Bon et suivi"
           />
         </div>
