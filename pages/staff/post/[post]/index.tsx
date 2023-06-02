@@ -80,7 +80,7 @@ const UniquePostDetails : FunctionComponent = () => {
           <div className="flex w-11/12 mx-auto  mb-3">
             <Link
               href={"/staff/coment/" + post?.pk}
-              className="ml-2 bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
+              className="bg-blue-600 flex items-center cursor-pointer hover:bg-blue-700 py-1.5 text-white px-2  rounded"
               >
               Commentaires
               <XMarkIcon className="w-5 h-5 ml-2" />

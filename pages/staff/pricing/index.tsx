@@ -56,12 +56,15 @@ export default function Index() {
               <GoBack />{" "}
               <span className="text-xl font-semibold">Liste des tarifications</span>
             </div>
-            <Link
-              className="p-1 text-white bg-blue-600 rounded"
-              href={"/staff/pricing/add"}
-            >
-              Ajouter
-            </Link>
+            <div className="flex justify-around">
+              <span className="flex p-1 rounded font-semibold mr-1 text-gray-800 bg-gray-100">Total : {count}</span>
+              <Link
+                className="bg-blue-600 text-white rounded p-1"
+                href={"/staff/pricing/add"}
+              >
+                Ajouter
+              </Link>
+            </div>
           </div>
           <div className="flex justify-between p-1 font-semibold border-b">
             <span className="w-1/12">#</span>
