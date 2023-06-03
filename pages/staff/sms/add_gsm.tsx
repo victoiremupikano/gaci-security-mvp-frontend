@@ -12,6 +12,7 @@ import UserSuccessBox from "../../../components/UserSuccessBox";
 import fileToBase64 from "../../../helpers/fileToBase64";
 import Image from "next/image";
 import { randomUUID } from "crypto";
+import { useRouter } from "next/router"
 import Toast from "../../../components/Toast";
 
 declare type ErrorType = {
@@ -31,6 +32,7 @@ export default function AddSms() {
   const [entreprize, setEntreprize] = useState("")
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
+  const router = useRouter()
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
     const result = await Sms.add({
       entreprize_id:entreprize,
@@ -56,7 +58,14 @@ export default function AddSms() {
     const entreprize = localStorage.getItem("entreprize")
     setEntreprize(entreprize as string)
   },[])
-
+  const onClickGsmVerify = async () => {
+    if (ip == ""){
+      router.push("/staff/sms/add_gsm")
+    }
+    else{
+      router.push("/staff/sms/" + ip as string + "/gsm_verify")
+    }
+  }   
   if (showSuccessBox)
     return (
       <UserSuccessBox
@@ -96,7 +105,7 @@ export default function AddSms() {
                 error={error && error.ip}
                 name="ip"
                 type="text"
-                placeholder="Message à envoyé"
+                placeholder="Adresse IP"
               />
             </div>
             <Button
@@ -105,6 +114,17 @@ export default function AddSms() {
               content={
                 <div className="flex justify-around">
                   Enregister <CheckCircleIcon className="h-6 w-6 ml-3" />
+                </div>
+              }
+              design="primary"
+              type="button"
+            />
+            <Button
+              event={onClickGsmVerify}
+              size="fit"
+              content={
+                <div className="flex justify-around">
+                  CLiquer pour tester l'IP <CheckCircleIcon className="h-6 w-6 ml-3" />
                 </div>
               }
               design="primary"

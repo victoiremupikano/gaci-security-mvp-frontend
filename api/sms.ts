@@ -24,6 +24,9 @@ const SMS = {
   async get(id:string | number, entreprize_id:string): Promise<FnAPIResponse> {
     return api.get("/sms-message-detail/" + id + "/" + entreprize_id, 'share_param');
   },
+  async getGsmVerify(ip: string): Promise<FnAPIResponse> {
+    return api.post("/gsm-verify/",  { ip }, 'share_param');
+  },
 };
 
 export default SMS;

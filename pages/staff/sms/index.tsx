@@ -65,12 +65,18 @@ export default function Index() {
           </div>
           <div className="flex justify-around">
             <span className="flex p-1 rounded font-semibold mr-1 text-gray-800 bg-gray-100">Total : {count}</span>
-          <Link
-            className="bg-blue-600 text-white rounded p-1"
-            href={"/staff/sms/add"}
-          >
-            Ajouter
-          </Link>
+            <Link
+              className="bg-blue-600 text-white rounded p-1"
+              href={"/staff/sms/add_api"}
+            >
+              API
+            </Link>
+            <Link
+              className="bg-blue-600 text-white rounded p-1"
+              href={"/staff/sms/add_gsm"}
+            >
+              GSM
+            </Link>
           </div>
         </div>
         <div className="flex justify-between border-b text-sm p-1 font-semibold">
@@ -101,14 +107,6 @@ export default function Index() {
                   </span>
                   <span className="w-2/12  md:flex hidden text-sm">
                     {moment(a.date_add).format("ll")}
-                  </span>
-                  <span className="md:w-1/12 w-2/12 flex justify-around">
-                    <Link
-                      href={"/staff/sms/" + a.pk}
-                      className="grid h-7 w-7 place-items-center text-white rounded bg-gray-700"
-                    >
-                      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-                    </Link>
                   </span>
                 </div>
               );

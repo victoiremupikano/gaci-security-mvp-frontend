@@ -17,6 +17,7 @@ import {
   UserPlusIcon,
   UsersIcon,
   ShareIcon,
+  DocumentChartBarIcon
 } from "@heroicons/react/20/solid";
 import MobileMenuItem from "./MobileMenuItem";
 import Auth from "../api/auth"
@@ -75,6 +76,12 @@ export default function AdminMobileDropDownMenu({ onClick }: Props) {
         name="News-letter"
         path="/staff/news-letter"
         Icon={<ShareIcon className="h-7 w-7 " />}
+      />
+      <MobileMenuItem
+        onClick={onClick}
+        name="SMS"
+        path="/staff/sms"
+        Icon={<DocumentChartBarIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={logout}

@@ -14,6 +14,7 @@ import {
   UserGroupIcon,
   UserIcon,
   ShareIcon,
+  DocumentChartBarIcon
 } from "@heroicons/react/20/solid";
 import AdminSideNavigationItem from "./AdminSideNavigationItem";
 
@@ -49,6 +50,11 @@ export default function AdminSideNavigation() {
         icon={<ShareIcon className="w-6 h-6" />}
         text="News-letter"
         path="/staff/news-letter"
+      />
+      <AdminSideNavigationItem
+        icon={<DocumentChartBarIcon className="w-6 h-6" />}
+        text="SMS"
+        path="/staff/sms"
       />
     </div>
   );
