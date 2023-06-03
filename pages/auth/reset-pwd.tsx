@@ -11,7 +11,6 @@ export default function ResetPassword() {
   const [showSendMailStatus, setShowSendMailStatus] = useState(false)
   const onClickLogin: MouseEventHandler<HTMLButtonElement> = async(e) => {
     const result = await user.resetPassword(email.toString())
-    console.log(result)
   };
 
   return (

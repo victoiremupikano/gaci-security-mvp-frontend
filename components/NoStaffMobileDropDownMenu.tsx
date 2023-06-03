@@ -15,7 +15,7 @@ declare type Props = {
   onClick : () => void
 }
 
-export default function SimpleMobileDropDownMenu({onClick}: Props) {
+export default function NoStaffMobileDropDownMenu({onClick}: Props) {
   const router = useRouter()
   const logout = () => {
     Auth.logout().then(() => {
@@ -32,13 +32,13 @@ export default function SimpleMobileDropDownMenu({onClick}: Props) {
       <MobileMenuItem
         onClick={onClick}
         name="Dashboard"
-        path="/simple/dashboard"
+        path="/nostaff/dashboard"
         Icon={<HomeIcon className="w-6 h-6" />}
       />
       <MobileMenuItem
         onClick={logout}
         name="Déconnexion"
-        path="/simple/logout"
+        path="/nostaff/logout"
         Icon={<ArrowLeftOnRectangleIcon className="h-7 w-7 " />}
       />
     </div>

@@ -76,7 +76,7 @@ export default function AddProfile() {
       <UserSuccessBox
         text="Voir plus"
         title="Inscription effectuée"
-        path="/staff/profiles/"
+        path="/nostaff/profiles/"
         message="Votre profile de compte a été créé avec succès, vous pouvez maintenant le consulter."
       />
     );

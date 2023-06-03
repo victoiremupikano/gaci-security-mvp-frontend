@@ -40,7 +40,7 @@ export default function IndexProfile() {
       setToast("show");
       setMsg(result.data.detail);
     } else {
-      router.push("/staff/profile")
+      router.push("/nostaff/profile")
     }
   }
     
@@ -58,14 +58,14 @@ export default function IndexProfile() {
           {profile
             ? (
               <Link
-                href={"/staff/profiles/" + profile.pk + "/update"}
+                href={"/nostaff/profiles/" + profile.pk + "/update"}
                 className="bg-blue-600 rounded p-1 text-white font-semibold"
               >
                 Modifier
               </Link>
             ): 
               <Link
-                href={"/staff/profiles/add"}
+                href={"/nostaff/profiles/add"}
                 className="bg-blue-600 rounded p-1 text-white font-semibold"
               >
                 Ajouter

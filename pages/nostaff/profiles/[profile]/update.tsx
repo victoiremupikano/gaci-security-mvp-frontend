@@ -88,7 +88,7 @@ export default function UpdateProfile() {
       <UserSuccessBox
         text="Voir plus"
         title="Modification effectuée"
-        path="/staff/profiles/"
+        path="/nostaff/profiles/"
         message="Votre profile de compte a été modifié avec succès, vous pouvez maintenant le consulter."
       />
     );

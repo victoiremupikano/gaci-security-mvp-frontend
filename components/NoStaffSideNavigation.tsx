@@ -6,7 +6,7 @@ export default function NoStaffSideNavigation() {
       <AdminSideNavigationItem
         icon={<HomeIcon className="w-6 h-6" />}
         text="Dashboard"
-        path="/staff/dashboard"
+        path="/nostaff/dashboard"
       />
     </div>
    );

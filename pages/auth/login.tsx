@@ -70,7 +70,7 @@ export default function Login() {
               const s = JSON.parse(localStorage.getItem("staff") as string);
               s == true
                 ? router.push("/staff/dashboard")
-                : router.push("/simple/dashboard");
+                : router.push("/nostaff/dashboard");
             }
           }
           else{

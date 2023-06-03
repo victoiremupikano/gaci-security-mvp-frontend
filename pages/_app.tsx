@@ -40,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <ReusableFooter />
       </main>
     );
-  } else if (router.pathname.includes('/simple')) {
+  } else if (router.pathname.includes('/nostaff')) {
     return (
       <main className="h-full overflow-hidden w-full">
         <NoStaffNavigation />
