@@ -1,7 +1,7 @@
-import Dashboard from "../../components/DashbordC";
+import Dashboard from "../../components/DashbordUC";
 import ReusableHeader from "../../components/ReusableHeader";
 
-export default function NoStaffDashboard() {
+export default function UnconectedDashboard() {
     return (
         <>
             <ReusableHeader text="Dashboard"/>

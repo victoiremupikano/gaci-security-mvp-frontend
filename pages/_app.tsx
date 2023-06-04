@@ -7,11 +7,14 @@ import ReusableFooter from "../components/ReusableFooter";
 import AOS from "aos";
 import { useEffect } from "react";
 import { instance } from "../api";
-import NoStaffNavigation from "../components/NoStaffNavigation";
+import BackupSideMenu from "../components/BackupSideMenu";
 import AdminNavigation from "../components/AdminNavigation";
 import AdminSideNavigation from "../components/AdminSideNavigation";
+import NoStaffNavigation from "../components/NoStaffNavigation";
 import NoStaffSideNavigation from "../components/NoStaffSideNavigation";
-import BackupSideMenu from "../components/BackupSideMenu";
+import UCNavigation from "../components/UCNavigation";
+import UCSideNavigation from "../components/UCSideNavigation";
+
 
 export default function App({ Component, pageProps }: AppProps) {
   const mainRoutes = ["/auth/login", "/auth/reset-pwd"];
@@ -33,6 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <AdminNavigation />
         <section className=" w-full overflow-hidden h-full flex">
           <AdminSideNavigation/>
+          <BackupSideMenu />
           <div className="md:w-[85%] h-[calc(100%-56px)] p-2 overflow-auto w-full">
           <Component {...pageProps} />
           </div>
@@ -71,9 +75,13 @@ export default function App({ Component, pageProps }: AppProps) {
   }
   else {
     return (
-      <main className="h-full w-full">
-        <section className=" w-11/12 h-full flex items-center mx-auto">
+      <main className="h-full overflow-hidden w-full">
+        <UCNavigation />
+        <section className=" w-full border-t overflow-hidden h-full flex">
+          <UCSideNavigation/>
+          <div className="lg:w-[85%] md:w-[80%]  h-[calc(100%-56px)] overflow-auto w-full">
           <Component {...pageProps} />
+          </div>
         </section>
         <ReusableFooter />
       </main>

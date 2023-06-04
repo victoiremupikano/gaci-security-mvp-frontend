@@ -16,8 +16,8 @@ export default function ResetPassword() {
   return (
     <>
       <ReusableHeader text="Réinitiailiser mot de passe" />
-      <div className="h-[500px]  w-full flex items-center justify-center">
-        <div className="border h-[250px] flex flex-col justify-around rounded w-full">
+      <div className="h-full w-full md:w-8/12 relative lg:w-5/12 md:mx-auto flex justify-center">
+        <div className="border h-[360px] mt-32 flex flex-col justify-around rounded w-full">
           <div className="flex flex-col items-center">
             <span className="text-blue-600 mt-4 font-semibold text-lg text-center">
               Réinitialisation du mot de passe
