@@ -24,6 +24,9 @@ const Pricing = {
   async getAll(): Promise<FnAPIResponse> {
     return api.get("/pricing-list-create/", 'mscm/settings');
   },
+  async getActive(): Promise<FnAPIResponse> {
+    return api.get("/pricing-list-active/", 'mscm/settings');
+  },
   async get(id:string | number): Promise<FnAPIResponse> {
     return api.get("/pricing-detail/" + id, 'mscm/settings');
   },

@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react"
-import FormHeader from "../../../components/FormHeader"
 import ReusableHeader from "../../../components/ReusableHeader"
 import "moment/locale/fr"
 import Image from "next/image";
