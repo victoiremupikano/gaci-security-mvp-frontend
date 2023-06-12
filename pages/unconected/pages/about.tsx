@@ -1,6 +1,4 @@
-import Link from "next/link"
-import { useRouter } from "next/router"
-import { FunctionComponent, useCallback, useEffect, useState } from "react"
+import { FunctionComponent } from "react"
 import FormHeader from "../../../components/FormHeader"
 import ReusableHeader from "../../../components/ReusableHeader"
 import "moment/locale/fr"
@@ -12,9 +10,6 @@ const About : FunctionComponent = () => {
       <>
         <ReusableHeader text="Apropos de la MUSACOM" />
         <section className='container mx-auto md:px-2 py-16 w-1/2'>
-            <div className='flex justify-center'>
-                {/* { author ? <Author {...author}></Author> : <></>} */}
-            </div>
             <div className="post py-10">
                 <h1 className='font-bold text-4xl text-center pb-5'>Musacom, prenez soins de votre santé</h1>
 
@@ -23,13 +18,13 @@ const About : FunctionComponent = () => {
                 </p>
 
                 <div className="py-10">
-                <Image
-                    sizes="100vw"
-                    src={'/mscm_logo.png'}
-                    alt="logo musacom"
-                    height="600"
-                    width="900"
-                />
+                    <Image
+                        sizes="100vw"
+                        src={'/mscm_logo.png'}
+                        alt="logo musacom"
+                        height="600"
+                        width="900"
+                    />
                 </div>
                 <div className="content text-gray-600 text-lg flex flex-col gap-4">
                     <strong>CONTEXT</strong>
