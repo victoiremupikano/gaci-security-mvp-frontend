@@ -27,11 +27,11 @@ const BackupSideMenu: FunctionComponent = () => {
           />
           <BackupMenuItem  
             path="/enrolment" 
-            text="Adhésion" 
+            text="Enrolement" 
           />
           <BackupMenuItem 
             path="/payment"
-            text="Facture"
+            text="Paiement"
           />
           <BackupMenuItem 
             path="/tracked"

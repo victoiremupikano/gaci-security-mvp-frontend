@@ -1,14 +1,12 @@
-import Link from "next/link";
 import { MouseEventHandler, useState } from "react";
-import Button from "../../../components/Button";
-import FormHeader from "../../../components/FormHeader";
-import ReusableHeader from "../../../components/ReusableHeader";
-import Textbox from "../../../components/Textbox";
+import Button from "../../components/Button";
+import FormHeader from "../../components/FormHeader";
+import ReusableHeader from "../../components/ReusableHeader";
+import Textbox from "../../components/Textbox";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
-import Checkbox from "../../../components/Checkbox";
-import useForm from "../../../hooks/useForm";
-import user from "../../../api/user";
-import UserSuccessBox from "../../../components/UserSuccessBox";
+import useForm from "../../hooks/useForm";
+import user from "../../api/user";
+import UserSuccessBox from "../../components/UserSuccessBox";
 
 declare type ErrorType = {
   names: any
@@ -29,13 +27,11 @@ export default function AddUser() {
       password2:'',
       password: "",
     });
-  const [staff, setStaff] = useState(false)
   const [error, setError] = useState<ErrorType>()
   const [showSuccessBox, setShowSuccessBox] = useState(false)
-  const onClickCheckbox = (e:any) => setStaff(e.target.checked)
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-  const result = await user.addStaffUser({
-    staff,
+  const result = await user.addNoStaffUser({
+    staff: "false",
     password,
     names,
     email,
@@ -60,7 +56,10 @@ export default function AddUser() {
 
     
 if (showSuccessBox)
-  return <UserSuccessBox text="continer" title="Inscription effectuée" path="/staff/users" message="Votre compte a été créé avec succès, vous pouvez maintenant vous connecter sur le système."/>
+  return <
+    UserSuccessBox text="continer" 
+    title="Inscription effectuée" 
+    path="/auth/login" message="Votre compte a été créé avec succès, vous pouvez maintenant vous connecter sur le système."/>
   return (
     <>
       <ReusableHeader text="Nouvel utilisateur" />
@@ -71,7 +70,7 @@ if (showSuccessBox)
              <FormHeader title="Nouvel utilisateur" />
             </div>
             <small className="text-xs md:text-base  md:w-11/12 w-10/12 mx-auto text-gray-500 md:text-left text-center my-3">
-              Remplissez le formulaire ci-bas pour enregistrer un nouvel
+              Remplissez le formulaire ci-bas pour céer un compte
               utilisateur.
             </small>
           </div>
@@ -116,13 +115,6 @@ if (showSuccessBox)
               type="password"
               placeholder="Confirmer mot de passe"
             />
-            <Checkbox
-              name="staff"
-              event={onClickCheckbox}
-              value={staff}
-              title="Considérer comme staff ?"
-            />
-
             <Button
               event={onClickRegister}
               size="fit"

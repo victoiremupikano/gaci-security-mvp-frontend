@@ -17,8 +17,11 @@ const User = {
   async resetPassword(email: string) {
     return await api.post("/send-reset-password-email/", { email });
   },
-  async addBasicUser(data: Record<string, any>): Promise<UserAPIResponse> {
-    return await api.post("/staff-register/", data);
+  async addStaffUser(data: Record<string, any>): Promise<UserAPIResponse> {
+    return await api.post("/staff-register-mscm/", data);
+  },
+  async addNoStaffUser(data: Record<string, any>): Promise<UserAPIResponse> {
+    return await api.post("/no-staff-register-mscm/", data);
   },
   async updateUserDetails(data: Record<string, any>): Promise<UserAPIResponse> {
     return await api.post("/profile-list-create/", data);

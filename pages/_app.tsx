@@ -36,7 +36,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <AdminNavigation />
         <section className=" w-full overflow-hidden h-full flex">
           <AdminSideNavigation/>
-          <BackupSideMenu />
           <div className="md:w-[85%] h-[calc(100%-56px)] p-2 overflow-auto w-full">
           <Component {...pageProps} />
           </div>

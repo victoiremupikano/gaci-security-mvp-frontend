@@ -33,11 +33,11 @@ const BackupMobileMenu: FunctionComponent<Props> = ({onClick}) => {
           />
           <BackupMenuItem event={onClick} 
             path="/enrolement" 
-            text="Adhésion" 
+            text="Enrolement" 
           />
           <BackupMenuItem event={onClick}
             path="/payment"
-            text="Facture"
+            text="Paiement"
           />
           <BackupMenuItem event={onClick}
             path="/tracked"

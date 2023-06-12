@@ -115,6 +115,15 @@ export default function Login() {
               placeholder="Votre mot de passe"
             />
             <div className="mb-2 text-sm text-gray-500">
+              Avez-vous pas un compte ?{" "}
+              <Link
+                href="/auth/add"
+                className="text-blue-600 font-semibold"
+              >
+                Créér un compte
+              </Link>
+            </div>
+            <div className="mb-2 text-sm text-gray-500">
               Mot de passe oublier ?{" "}
               <Link
                 href="/auth/reset-pwd"
