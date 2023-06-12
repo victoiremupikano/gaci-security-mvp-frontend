@@ -23,6 +23,9 @@ const Profile = {
   async get(id: string) {
     return api.get("/profile-detail/" + id);
   },
+  async getUser_id(user_id: string) {
+    return api.get("/profile-user-id-detail/" + user_id);
+  },
   async getUserLogged() {
     return api.get("/profile-user-logged/");
   },
