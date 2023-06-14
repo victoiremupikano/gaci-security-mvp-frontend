@@ -44,7 +44,7 @@ export default function UCSideNavigation() {
       <UCSideNavigationItem
         icon={<CurrencyDollarIcon className="w-6 h-6" />}
         text="Tarification"
-        path="/unconected/pages/pricing"
+        path="/unconected/pricing/"
       />
       <UCSideNavigationItem
         icon={<HeartIcon className="w-6 h-6" />}

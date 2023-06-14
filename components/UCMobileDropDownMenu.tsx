@@ -63,7 +63,7 @@ export default function UCMobileDropDownMenu({onClick}: Props) {
       <MobileMenuItem
         onClick={onClick}
         name="Tarification"
-        path="/unconected/pages/pricing"
+        path="/unconected/pricing/"
         Icon={<CurrencyDollarIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
