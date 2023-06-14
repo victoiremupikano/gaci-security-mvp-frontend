@@ -8,7 +8,6 @@ import moment from "moment";
 import Link from "next/link";
 import "moment/locale/fr";
 import Pricing from "../../../api/pricing";
-import Profile from "../../../api/profile";
 import {
   XMarkIcon,
   CheckCircleIcon,
@@ -19,7 +18,6 @@ import Image from "next/image";
 
 export default function ActivePricing() {
   const [pricing, setPricing] = useState<any>({});
-  const [profile, setProfile] = useState<any>({});
   const [userId, setUserId] = useState<any>();
 
   const getPricing = async () => {
@@ -29,17 +27,9 @@ export default function ActivePricing() {
       setUserId(result.results[0].user.pk);
     }
   };
-  const getProfile = async (user_id: string) => {
-    const result = await Profile.getUser_id(user_id);
-    if (result.pk) {
-      setProfile(result);
-    }
-  };
+  
   useEffect(() => {
     getPricing();
-    if (userId) {
-      getProfile(userId);
-    }
   }, [userId]);
 
   return (
@@ -47,7 +37,7 @@ export default function ActivePricing() {
       <ReusableHeader text="L'adhésion à la mutuelle" />
       <section className="container mx-auto md:px-2 py-16 w-1/2">
         <div className="flex justify-center">
-          <Author user={profile} />
+          <Author user={userId} />
         </div>
         <div className="post py-10">
           <h1 className="font-bold text-4xl text-center pb-5">
