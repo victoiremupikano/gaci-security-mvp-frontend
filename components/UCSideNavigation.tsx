@@ -33,7 +33,7 @@ export default function UCSideNavigation() {
       />
       <UCSideNavigationItem
         icon={<DocumentIcon className="w-6 h-6" />}
-        text="Actualitées"
+        text="Actualités"
         path="/unconected/pub/"
       />
       <UCSideNavigationItem
@@ -48,7 +48,7 @@ export default function UCSideNavigation() {
       />
       <UCSideNavigationItem
         icon={<ArchiveBoxIcon className="w-6 h-6" />}
-        text="Apropos de nous"
+        text="Apropos"
         path="/unconected/pages/about"
       />
     </div>

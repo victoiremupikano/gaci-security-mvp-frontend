@@ -21,21 +21,21 @@ import {
   UsersIcon,
   ShareIcon,
   DocumentChartBarIcon,
-  PowerIcon
+  PowerIcon,
 } from "@heroicons/react/20/solid";
 import MobileMenuItem from "./MobileMenuItem";
 import { useRouter } from "next/router";
 
 declare type Props = {
-  onClick : () => void
-}
+  onClick: () => void;
+};
 
-export default function UCMobileDropDownMenu({onClick}: Props) {
-  const router = useRouter()
+export default function UCMobileDropDownMenu({ onClick }: Props) {
+  const router = useRouter();
   const login = () => {
-    localStorage.clear()
-    router.push("/auth/login")
-  }
+    localStorage.clear();
+    router.push("/auth/login");
+  };
   return (
     <div
       data-aos="slide-left"
@@ -50,7 +50,7 @@ export default function UCMobileDropDownMenu({onClick}: Props) {
       />
       <MobileMenuItem
         onClick={onClick}
-        name="Actualitées"
+        name="Actualités"
         path="/unconected/pub/"
         Icon={<DocumentIcon className="h-7 w-7 " />}
       />
@@ -68,13 +68,13 @@ export default function UCMobileDropDownMenu({onClick}: Props) {
       />
       <MobileMenuItem
         onClick={onClick}
-        name="Apropos de nous"
+        name="Apropos"
         path="/unconected/pages/about"
         Icon={<ArchiveBoxIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={login}
-        name="Connexion"
+        name="Quitter"
         Icon={<PowerIcon className="h-7 w-7 " />}
       />
     </div>

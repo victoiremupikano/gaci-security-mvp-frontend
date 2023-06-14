@@ -30,6 +30,23 @@ const Post = {
   async get(id:string | number, entreprize_id:string): Promise<PostAPIResponse> {
     return api.get("/post-staff-detail/" + id + "/" + entreprize_id, "share_pub");
   },
+
+  // les fx pour l'user unconnected
+  async getPostAllPublished(entreprize_id:string): Promise<PostAPIResponse> {
+    return api.get("/post-published-list/" + entreprize_id, "share_pub");
+  },
+  // les fx pour l'user unconnected
+  async getPostAllPublishedAndPopular(entreprize_id:string): Promise<PostAPIResponse> {
+    return api.get("/post-published-popular-list/" + entreprize_id, "share_pub");
+  },
+  // les fx pour l'user unconnected
+  async getPostAllPublishedAndRepost(entreprize_id:string): Promise<PostAPIResponse> {
+    return api.get("/post-published-repost-list/" + entreprize_id, "share_pub");
+  },
+  // les fx pour l'user unconnected
+  async getPostAllPublishedAndFavorisByUserLogged(entreprize_id:string): Promise<PostAPIResponse> {
+    return api.get("/post-published-favoris-user-list/" + entreprize_id, "share_pub");
+  },
 };
 
 export default Post;

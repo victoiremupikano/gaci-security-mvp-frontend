@@ -103,14 +103,14 @@ export default function ActivePricing() {
             pour toute une année.
             <p>Cette cotisation est individuelle, non remboursable.</p>
             <p>
-              Les familles qui affilient leur membre (ou enfants) sont éligibles
-              aux soins après avoir payé le nombre de tranche :{" "}
-              {pricing?.trh_family + " "} pour la cotisation.
-            </p>
-            <p>
               Les institutions qui affilient leur personnel sont éligibles aux
               soins après avoir payé seulement {pricing?.adh_org + " "} pour la
               cotisation. Le nombre de tranche est de : {pricing?.trh_org}
+            </p>
+            <p>
+              Les familles qui affilient leur membre (ou enfants) sont éligibles
+              aux soins après avoir payé le nombre de tranche :{" "}
+              {pricing?.trh_family + " "} pour la cotisation.
             </p>
             <p>NB: L’adhésion est familiale ou organisationnel.</p>
           </div>

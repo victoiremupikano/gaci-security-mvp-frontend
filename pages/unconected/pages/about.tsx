@@ -54,7 +54,7 @@ const About : FunctionComponent = () => {
                     qui prive beaucoup de gens de leur droit de soins médicaux.
                     <strong>SON BUT</strong>
                     Contribuer à la réduction de la morbidité et de la mortalité des po-
-                    pulations en facilitant l’accessibilité fi- nancière aux soins
+                    pulations en facilitant l’accessibilité financière aux soins
                 </div>
             </div>  
         </section>

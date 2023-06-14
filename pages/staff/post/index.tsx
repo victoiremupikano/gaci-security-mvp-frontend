@@ -1,4 +1,10 @@
-import { AdjustmentsHorizontalIcon, ArrowLeftIcon, ArrowRightIcon, EyeIcon, PencilIcon } from "@heroicons/react/20/solid";
+import {
+  AdjustmentsHorizontalIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  EyeIcon,
+  PencilIcon,
+} from "@heroicons/react/20/solid";
 import moment from "moment";
 import "moment/locale/fr";
 import Link from "next/link";
@@ -12,46 +18,46 @@ import useVerify from "../../../hooks/useVerify";
 
 export default function Index() {
   const [posts, setPosts] = useState<Array<any>>();
-  const [next, setNext] = useState('');
-  const [previous, setPrevious] = useState('');
-  const [count, setCount] = useState()
-  const [loading, setLoading] = useState(false)
+  const [next, setNext] = useState("");
+  const [previous, setPrevious] = useState("");
+  const [count, setCount] = useState();
+  const [loading, setLoading] = useState(false);
   useVerify();
   const getPosts = async (entreprizeId: string) => {
-    setLoading(true)
-      const result = await Post.getAll(entreprizeId);
-      if (result.results) {
-        setPosts(result.results);
-        setNext(result?.next?.split("/share_pub")[1] as string);
-        setPrevious(result?.previous?.split("/share_pub")[1] as string);
-        setCount(result.count);
+    setLoading(true);
+    const result = await Post.getAll(entreprizeId);
+    if (result.results) {
+      setPosts(result.results);
+      setNext(result?.next?.split("/share_pub")[1] as string);
+      setPrevious(result?.previous?.split("/share_pub")[1] as string);
+      setCount(result.count);
     }
-    setLoading(false)
-    }
+    setLoading(false);
+  };
   const onClickNext = async () => {
-     setLoading(true)
-     const result = await fetch(next, 'share_pub');
-     if (result.results) {
-       setPosts(result.results);
-       setNext(result?.next?.split("/share_pub")[1]);
-       setPrevious(result?.previous?.split("/share_pub")[1]);
-       setCount(result.count);
+    setLoading(true);
+    const result = await fetch(next, "share_pub");
+    if (result.results) {
+      setPosts(result.results);
+      setNext(result?.next?.split("/share_pub")[1]);
+      setPrevious(result?.previous?.split("/share_pub")[1]);
+      setCount(result.count);
     }
-    setLoading(false)
-   };
+    setLoading(false);
+  };
   const onClickPrev = async () => {
-     setLoading(true)
-     const result = await fetch(previous, "share_pub");
-     if (result.results) {
-       setPosts(result.results);
-       setNext(result?.next?.split("/share_pub")[1]);
-       setPrevious(result?.previous?.split("/share_pub")[1]);
-       setCount(result.count);
+    setLoading(true);
+    const result = await fetch(previous, "share_pub");
+    if (result.results) {
+      setPosts(result.results);
+      setNext(result?.next?.split("/share_pub")[1]);
+      setPrevious(result?.previous?.split("/share_pub")[1]);
+      setCount(result.count);
     }
-    setLoading(false)
-   };
+    setLoading(false);
+  };
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize")
+    const entreprize = localStorage.getItem("entreprize");
     getPosts(entreprize as string);
   }, []);
   return (
@@ -64,13 +70,15 @@ export default function Index() {
             <span className="font-semibold text-xl">Toutes les posts</span>
           </div>
           <div className="flex justify-around">
-            <span className="flex p-1 rounded font-semibold mr-1 text-gray-800 bg-gray-100">Total : {count}</span>
-          <Link
-            className="bg-blue-600 text-white rounded p-1"
-            href={"/staff/post/add"}
-          >
-            Ajouter
-          </Link>
+            <span className="flex p-1 rounded font-semibold mr-1 text-gray-800 bg-gray-100">
+              Total : {count}
+            </span>
+            <Link
+              className="bg-blue-600 text-white rounded p-1"
+              href={"/staff/post/add"}
+            >
+              Ajouter
+            </Link>
           </div>
         </div>
         <div className="flex justify-between border-b text-sm p-1 font-semibold">
@@ -95,7 +103,9 @@ export default function Index() {
                   } p-1 w-full text-gray-600  items-center`}
                 >
                   <span className="w-fit">{index + 1}</span>
-                  <span className="md:w-2/12 text-center">{a.title.substr(0,16)}...</span>
+                  <span className="md:w-2/12 text-center">
+                    {a.title.substr(0, 16)}...
+                  </span>
                   <span className="w-2/12 text-center">{a.user.names}</span>
                   <span className="w-2/12  md:flex hidden text-sm">
                     {moment(a.date_update).fromNow()}
