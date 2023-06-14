@@ -39,11 +39,6 @@ export default function UCSideNavigation() {
       <UCSideNavigationItem
         icon={<UserGroupIcon className="w-6 h-6" />}
         text="Adhésion"
-        path="/unconected/pages/subscriber"
-      />
-      <UCSideNavigationItem
-        icon={<CurrencyDollarIcon className="w-6 h-6" />}
-        text="Tarification"
         path="/unconected/pricing/"
       />
       <UCSideNavigationItem

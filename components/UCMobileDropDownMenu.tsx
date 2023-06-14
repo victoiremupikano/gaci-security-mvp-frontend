@@ -57,14 +57,8 @@ export default function UCMobileDropDownMenu({onClick}: Props) {
       <MobileMenuItem
         onClick={onClick}
         name="Adhésion"
-        path="/unconected/pages/subscriber"
-        Icon={<UserGroupIcon className="h-7 w-7 " />}
-      />
-      <MobileMenuItem
-        onClick={onClick}
-        name="Tarification"
         path="/unconected/pricing/"
-        Icon={<CurrencyDollarIcon className="h-7 w-7 " />}
+        Icon={<UserGroupIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={onClick}
