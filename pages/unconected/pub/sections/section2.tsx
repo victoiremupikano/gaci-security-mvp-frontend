@@ -77,7 +77,7 @@ export default function section2() {
               return (
                 <div key = {index} className="item">
                   <div className="images">
-                    <Link href={`/posts/${a.pk}`}>
+                  <Link href={"/unconected/pub/" + a.pk}>
                       <Image
                         src={a.image || "/placeholder.jpg"}
                         alt="img author"
@@ -88,19 +88,19 @@ export default function section2() {
                   </div>
                   <div className="info flex justify-center flex-col py-4">
                     <div className="cat">
-                      <Link href={`/posts/${a.pk}`}>
+                      <Link href={"/unconected/pub/" + a.pk}>
                         <p className="text-orange-600 hover:text-orange-800">
                           {"Catégorie unique"}
                         </p>
                       </Link>
-                      <Link href={`/posts/${a.pk}`}>
+                      <Link href={"/unconected/pub/" + a.pk}>
                         <p className="text-gray-800 hover:text-gray-600">
                           - {moment(a.date_add).format("ll") || "Unknown"}
                         </p>
                       </Link>
                     </div>
                     <div className="title">
-                      <Link href={`/posts/${a.pk}`}>
+                      <Link href={"/unconected/pub/" + a.pk}>
                         <p className="text-xl font-bold text-gray-800 hover:text-gray-600">
                           {a.title || "Title"}
                         </p>
