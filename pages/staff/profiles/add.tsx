@@ -17,6 +17,7 @@ import useVerify from "../../../hooks/useVerify";
 import fileToBase64 from "../../../helpers/fileToBase64";
 import Profile from "../../../api/profile";
 import { useRouter } from "next/router";
+import ReusableFooter from "../../../components/ReusableFooter";
 
 declare type ErrorType = {
   adress: any;
@@ -171,6 +172,7 @@ export default function AddProfile() {
           </form>
         </div>
       </div>
+      <ReusableFooter />
     </>
   );
 }

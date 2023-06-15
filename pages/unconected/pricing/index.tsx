@@ -15,6 +15,7 @@ import {
 } from "@heroicons/react/20/solid";
 import Toast from "../../../components/Toast";
 import Image from "next/image";
+import ReusableFooter from "../../../components/ReusableFooter";
 
 export default function ActivePricing() {
   const [pricing, setPricing] = useState<any>({});
@@ -35,7 +36,7 @@ export default function ActivePricing() {
   return (
     <>
       <ReusableHeader text="L'adhésion à la mutuelle" />
-      <section className="container mx-auto md:px-2 py-16 w-1/2">
+      <section className="container mx-auto md:px-2 py-16 md:w-1/2 p-5">
         <div className="flex justify-center">
           <Author user={userId} />
         </div>
@@ -106,6 +107,7 @@ export default function ActivePricing() {
           </div>
         </div>
       </section>
+      <ReusableFooter />
     </>
   );
 }

@@ -9,6 +9,8 @@ import uppercaseFirst from "../../helpers/uppercaseFirst";
 import Link from "next/link";
 import useVerify from "../../hooks/useVerify";
 import ReusableHeader from "../../components/ReusableHeader";
+import ReusableFooter from "../../components/ReusableFooter";
+
 export default function ProfileIndex() {
   moment.locale("fr");
 
@@ -106,6 +108,7 @@ export default function ProfileIndex() {
         </div>
         </div>
       </div>
+      <ReusableFooter />
     </>
   );
 }

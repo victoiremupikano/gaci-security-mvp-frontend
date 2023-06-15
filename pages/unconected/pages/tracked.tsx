@@ -2,13 +2,13 @@ import { FunctionComponent } from "react"
 import ReusableHeader from "../../../components/ReusableHeader"
 import "moment/locale/fr"
 import Image from "next/image";
-
+import ReusableFooter from "../../../components/ReusableFooter";
 
 const Tracked : FunctionComponent = () => {      
     return (
       <>
         <ReusableHeader text="Intervation, prise en charge et suivis" />
-        <section className='container mx-auto md:px-2 py-16 w-1/2'>
+        <section className='container mx-auto md:px-2 py-16 md:w-1/2 p-5'>
             <div className="post py-10">
                 <h1 className='font-bold text-4xl text-center pb-5'>Intervation, prise en charge et suivis</h1>
 
@@ -58,6 +58,7 @@ const Tracked : FunctionComponent = () => {
                 </div>
             </div>  
         </section>
+        <ReusableFooter />
       </>
     );
 }

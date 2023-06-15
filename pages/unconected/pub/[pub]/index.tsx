@@ -9,6 +9,7 @@ import { PencilIcon, PrinterIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import Toast from "../../../../components/Toast";
 import PostPubUniqueModel from "../../../../components/PostPubUniqueModel ";
 import Section3 from "../sections/section3";
+import ReusableFooter from "../../../../components/ReusableFooter";
 
 const UniquePostDetails: FunctionComponent = () => {
   const router = useRouter();
@@ -27,10 +28,11 @@ const UniquePostDetails: FunctionComponent = () => {
   }, [router, getPost]);
 
   return (
-    <div>
+    <>
         <PostPubUniqueModel post={post}></PostPubUniqueModel>
         <Section3></Section3>
-    </div>
+        <ReusableFooter />
+    </>
   );
 };
 

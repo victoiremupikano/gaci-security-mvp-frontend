@@ -7,6 +7,7 @@ import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import useForm from "../../hooks/useForm";
 import user from "../../api/user";
 import UserSuccessBox from "../../components/UserSuccessBox";
+import ReusableFooter from "../../components/ReusableFooter";
 
 declare type ErrorType = {
   names: any
@@ -129,6 +130,7 @@ if (showSuccessBox)
           </form>
         </div>
       </div>
+      <ReusableFooter />
     </>
   );
 }

@@ -86,7 +86,6 @@ export default function AdminMobileDropDownMenu({ onClick }: Props) {
       <MobileMenuItem
         onClick={logout}
         name="Déconnexion"
-        path="/nostaff/logout"
         Icon={<ArrowLeftOnRectangleIcon className="h-7 w-7 " />}
       />
     </div>

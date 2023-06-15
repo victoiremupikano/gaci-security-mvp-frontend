@@ -3,7 +3,6 @@ import "aos/dist/aos.css";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import Navigation from "../components/Navigation";
-import ReusableFooter from "../components/ReusableFooter";
 import AOS from "aos";
 import { useEffect } from "react";
 import { instance } from "../api";
@@ -40,7 +39,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
           </div>
         </section>
-        <ReusableFooter />
       </main>
     );
   } else if (router.pathname.includes('/nostaff')) {
@@ -53,7 +51,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
           </div>
         </section>
-        <ReusableFooter />
       </main>
     );
   }
@@ -68,7 +65,6 @@ export default function App({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </div>
         </section>
-        <ReusableFooter />
       </main>
     );
   }
@@ -82,7 +78,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
           </div>
         </section>
-        <ReusableFooter />
       </main>
     );
   }

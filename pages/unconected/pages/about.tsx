@@ -3,13 +3,13 @@ import FormHeader from "../../../components/FormHeader"
 import ReusableHeader from "../../../components/ReusableHeader"
 import "moment/locale/fr"
 import Image from "next/image";
-
+import ReusableFooter from "../../../components/ReusableFooter";
 
 const About : FunctionComponent = () => {      
     return (
       <>
         <ReusableHeader text="Apropos de la MUSACOM" />
-        <section className='container mx-auto md:px-2 py-16 w-1/2'>
+        <section className='container mx-auto md:px-2 py-16 md:w-1/2 p-5'>
             <div className="post py-10">
                 <h1 className='font-bold text-4xl text-center pb-5'>Musacom, prenez soins de votre santé</h1>
 
@@ -58,6 +58,7 @@ const About : FunctionComponent = () => {
                 </div>
             </div>  
         </section>
+        <ReusableFooter />
       </>
     );
 }

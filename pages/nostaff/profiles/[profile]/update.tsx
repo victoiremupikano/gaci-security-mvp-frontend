@@ -16,6 +16,7 @@ import fileToBase64 from "../../../../helpers/fileToBase64";
 import Profile from "../../../../api/profile";
 import { useRouter } from "next/router";
 import downloadImage from "../../../../helpers/downloadImage";
+import ReusableFooter from "../../../../components/ReusableFooter";
 
 declare type ErrorType = {
   adress: any;
@@ -183,6 +184,7 @@ export default function UpdateProfile() {
           </form>
         </div>
       </div>
+      <ReusableFooter />
     </>
   );
 }

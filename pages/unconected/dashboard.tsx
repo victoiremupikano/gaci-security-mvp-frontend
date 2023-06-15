@@ -1,17 +1,13 @@
 import Dashboard from "../../components/DashbordUC";
 import ReusableHeader from "../../components/ReusableHeader";
-import { useEffect } from "react"
+import ReusableFooter from "../../components/ReusableFooter";
 
 export default function UnconectedDashboard() {
-    useEffect(() => {
-        // on stocke l'id de l'entreprise en cours
-        localStorage.setItem("entreprize", "1");
-    },[])
-
     return (
         <>
             <ReusableHeader text="Dashboard"/>
-        <Dashboard/>
+            <Dashboard/>
+            <ReusableFooter />
       </>
     );
 }

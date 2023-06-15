@@ -13,6 +13,8 @@ import useVerify from "../../../hooks/useVerify";
 import Profile from "../../../api/profile";
 import Toast from "../../../components/Toast";
 import ReusableHeader from "../../../components/ReusableHeader";
+import ReusableFooter from "../../../components/ReusableFooter";
+
 moment.locale("fr");
 
 export default function IndexProfile() {
@@ -75,7 +77,7 @@ export default function IndexProfile() {
         {profile
             ? (
               <div>
-                <div className="h-56 rounded-lg mb-3 overflow-hidden mx-auto  w-56">
+                <div className="h-100 rounded-lg mb-3 overflow-hidden mx-auto  w-56">
                   <Image
                     priority
                     className="w-full h-full object-cover"
@@ -154,6 +156,7 @@ export default function IndexProfile() {
               "No data"
           }   
       </div>
+      <ReusableFooter />
     </>
   );
 }

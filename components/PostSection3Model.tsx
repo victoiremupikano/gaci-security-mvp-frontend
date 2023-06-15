@@ -7,7 +7,7 @@ type Props = {
   index?: number;
   post: any;
 };
-const PostSection4Model: FunctionComponent<Props> = ({ index, post }) => {
+const PostSection3Model: FunctionComponent<Props> = ({ index, post }) => {
   return (
     <div className="flex gap-5">
       <div className="image flex flex-col justify-start">
@@ -47,4 +47,4 @@ const PostSection4Model: FunctionComponent<Props> = ({ index, post }) => {
   );
 };
 
-export default PostSection4Model;
+export default PostSection3Model;

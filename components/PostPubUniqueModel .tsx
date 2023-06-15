@@ -14,7 +14,7 @@ type Props = {
 };
 const PostPubUniqueModel: FunctionComponent<Props> = ({ index, post }) => {
   return (
-    <section className="container mx-auto md:px-2 p-10">
+    <section className="container mx-auto md:px-2 md:w-1/2 p-5">
       <div className="flex justify-center">
         <Author user={post?.user?.pk} />
       </div>
@@ -46,6 +46,7 @@ const PostPubUniqueModel: FunctionComponent<Props> = ({ index, post }) => {
         <PostPubUniqueDocsModel post={post?.pk} />
         {/* les videos supplementaires du post */}
         <PostPubUniqueVidModel post={post?.pk} />
+
         <div className="content text-gray-600 py-10 text-lg flex flex-col gap-4">
           {post?.conclusion || "No Conclusion"}
         </div>
