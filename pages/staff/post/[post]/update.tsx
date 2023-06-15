@@ -50,7 +50,9 @@ export default function UpdatePost() {
       text,
       conclusion,
       image64,
-      status
+      status,
+      popular,
+      repost
     }, id);
     if (result.type === "error") {
       const errors = result.data.errors;
@@ -95,6 +97,8 @@ export default function UpdatePost() {
         setConclusion(result.conclusion)
         setImageURL(result.image);
         setStatus(result.status)
+        setPopular(result.popular)
+        setRepost(result.repost)
           const r = await downloadImage(result.image)
           const b64 = await fileToBase64(r);
           setImage64(b64 as string)
