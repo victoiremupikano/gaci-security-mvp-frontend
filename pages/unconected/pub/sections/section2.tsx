@@ -122,6 +122,18 @@ export default function section2() {
             Loading...
           </div>
         )}
+        <div className="md:w-4/12 w-11/12 mx-auto flex justify-around mt-4">
+          {previous && (
+            <ClickableSpan onClick={onClickPrev}>
+              <ArrowLeftIcon className="h-5 w-5 mr-1" /> Precedent
+            </ClickableSpan>
+          )}
+          {next && (
+            <ClickableSpan onClick={onClickNext}>
+              Suivant <ArrowRightIcon className="h-5 w-5 ml-1" />
+            </ClickableSpan>
+          )}
+        </div>
       </div>
     </section>
   );

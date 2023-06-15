@@ -36,9 +36,9 @@ const PostSection4Model: FunctionComponent<Props> = ({ index, post }) => {
         </div>
         <div className="title">
           <Link href={`/posts/${post?.pk}`}>
-            <a className="text-xl font-bold text-gray-800 hover:text-gray-600">
+            <p className="text-xl font-bold text-gray-800 hover:text-gray-600">
               {post?.title || "No Title"}
-            </a>
+            </p>
           </Link>
         </div>
         <Author user={post?.user?.pk} />
