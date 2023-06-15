@@ -75,7 +75,7 @@ export default function section2() {
           Array.isArray(posts) && posts.length > 0 ? (
             posts.map((a, index) => {
               return (
-                <div className="item">
+                <div key = {index} className="item">
                   <div className="images">
                     <Link href={`/posts/${a.pk}`}>
                       <Image

@@ -60,10 +60,6 @@ const PostDetails: FunctionComponent<Props> = ({index, post}) => {
           <span>{post?.status == true ? "Oui" : "Non"}</span>
         </div>
         <div className="flex mb-2 justify-between">
-          <span className="font-semibold">Publication populaire</span>
-          <span>{post?.popular == true ? "Oui" : "Non"}</span>
-        </div>
-        <div className="flex mb-2 justify-between">
           <span className="font-semibold">Publication républier</span>
           <span>{post?.repost == true ? "Oui" : "Non"}</span>
         </div>

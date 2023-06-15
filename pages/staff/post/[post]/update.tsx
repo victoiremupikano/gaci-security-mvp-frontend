@@ -34,7 +34,6 @@ export default function UpdatePost() {
   const [image64, setImage64] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [status, setStatus] = useState<any>(false);
-  const [popular, setPopular] = useState(false)
   const [repost, setRepost] = useState(false)
   const [_post, setPost] = useState<any>({});
   const [entreprize, setEntreprize] = useState("");
@@ -51,7 +50,6 @@ export default function UpdatePost() {
       conclusion,
       image64,
       status,
-      popular,
       repost
     }, id);
     if (result.type === "error") {
@@ -73,7 +71,6 @@ export default function UpdatePost() {
     }
   };
   const onClickCheckboxStatus = (e: any) => setStatus(e.target.checked);
-  const onClickCheckboxPopular = (e: any) => setPopular(e.target.checked);
   const onClickCheckboxRepost = (e: any) => setRepost(e.target.checked);
   const loadImage = async (e: any) => {
     const url = URL.createObjectURL(e.target.files[0]);
@@ -97,7 +94,6 @@ export default function UpdatePost() {
         setConclusion(result.conclusion)
         setImageURL(result.image);
         setStatus(result.status)
-        setPopular(result.popular)
         setRepost(result.repost)
           const r = await downloadImage(result.image)
           const b64 = await fileToBase64(r);
@@ -177,12 +173,6 @@ export default function UpdatePost() {
               event={onClickCheckboxStatus}
               value={status}
               title="Cochez pour spécifier si la publication directe."
-            />
-            <Checkbox
-              name="popular"
-              event={onClickCheckboxPopular}
-              value={popular}
-              title="Publcation populaire."
             />
             <Checkbox
               name="repost"
