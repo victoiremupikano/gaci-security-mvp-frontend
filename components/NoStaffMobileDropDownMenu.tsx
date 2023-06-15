@@ -17,12 +17,12 @@ declare type Props = {
 
 export default function NoStaffMobileDropDownMenu({onClick}: Props) {
   const router = useRouter()
-  const logout = () => {
+  const logout = async () => {
     Auth.logout().then(() => {
       localStorage.clear()
       router.push("/auth/login")
     })
-  }
+  };
   return (
     <div
       data-aos="slide-left"

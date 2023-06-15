@@ -29,7 +29,7 @@ declare type Props = {
 
 export default function AdminMobileDropDownMenu({ onClick }: Props) {
   const router = useRouter()
-  const logout = () => {
+  const logout = async () => {
     Auth.logout().then(() => {
       localStorage.clear()
       router.push("/auth/login")

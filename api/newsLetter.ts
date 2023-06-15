@@ -15,6 +15,9 @@ const NewsLetter = {
   async add(data: Record<string, any>, entreprize_id:string): Promise<FnAPIResponse> {
     return api.post("/subsriber-news-letters-list-create/" + entreprize_id + "/", data, 'share_param');
   },
+  async addNoStaff(data: Record<string, any>, entreprize_id:string): Promise<FnAPIResponse> {
+    return api.post("/subsriber-news-letters-create/" + entreprize_id + "/", data, 'share_param');
+  },
   async update(data: Record<string, any>, id: string): Promise<FnAPIResponse> {
     return api.put("/subsriber-news-letters-update/" + id + "/", data, 'share_param');
   },

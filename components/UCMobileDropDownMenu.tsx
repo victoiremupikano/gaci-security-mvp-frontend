@@ -32,7 +32,7 @@ declare type Props = {
 
 export default function UCMobileDropDownMenu({ onClick }: Props) {
   const router = useRouter();
-  const login = () => {
+  const login = async () => {
     localStorage.clear();
     router.push("/auth/login");
   };
@@ -74,7 +74,7 @@ export default function UCMobileDropDownMenu({ onClick }: Props) {
       />
       <MobileMenuItem
         onClick={login}
-        name="Quitter"
+        name="Connexion"
         Icon={<PowerIcon className="h-7 w-7 " />}
       />
     </div>
