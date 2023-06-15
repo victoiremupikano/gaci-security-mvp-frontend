@@ -79,7 +79,7 @@ export default function section2() {
                   <div className="images">
                     <Link href={`/posts/${a.pk}`}>
                       <Image
-                        src={a.image || "/logo.png"}
+                        src={a.image || "/placeholder.jpg"}
                         alt="img author"
                         height={350}
                         width={500}
@@ -107,7 +107,7 @@ export default function section2() {
                       </Link>
                     </div>
                     <p className="text-gray-500 py-3">
-                        {a.synthesis || "Synthesis"}
+                        {a.synthesis || "No Synthesis"}
                     </p>
                     <Author user={a?.user?.pk} />
                   </div>

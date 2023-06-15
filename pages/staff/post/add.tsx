@@ -35,6 +35,8 @@ export default function AddPost() {
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
   const [status, setStatus] = useState(false)
+  const [popular, setPopular] = useState(false)
+  const [repost, setRepost] = useState(false)
   const [image64, setImage64] = useState("")
   const [imageURL, setImageURL] = useState("")
   const [entreprize, setEntreprize] = useState("")
@@ -48,7 +50,9 @@ export default function AddPost() {
       text,
       conclusion,
       image64,
-      status
+      status,
+      popular,
+      repost
     }, entreprize);
     if (result.type === "error") {
       const errors = result.data.errors;
@@ -148,6 +152,18 @@ export default function AddPost() {
               event={onClickCheckbox}
               value={status}
               title="Cochez pour spécifier si la publication directe."
+            />
+            <Checkbox
+              name="popular"
+              event={onClickCheckbox}
+              value={popular}
+              title="Publcation populaire."
+            />
+            <Checkbox
+              name="repost"
+              event={onClickCheckbox}
+              value={repost}
+              title="Reposter l'article à chaque fois."
             />
             <div className="w-full flex justify-between md:space-x-1 md:flex-row flex-col">
               <div className="md:w-1/2 w-full">

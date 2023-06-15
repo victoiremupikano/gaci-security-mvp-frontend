@@ -1,24 +1,75 @@
-import Author from "./_child/author"
-import Link from "next/link"
-import Image from "next/image"
-
-import fetcher from '../lib/fetcher'
-import Spinner from "./_child/spinner"
-import Error from "./_child/error"
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
+import Author from "../../../../components/Author";
+import {
+  AdjustmentsHorizontalIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  EyeIcon,
+  PencilIcon,
+} from "@heroicons/react/20/solid";
+import moment from "moment";
+import "moment/locale/fr";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import Post from "../../../../api/post";
+import ClickableSpan from "../../../../components/ClickableSpan";
+import GoBack from "../../../../components/GoBack";
+import ReusableHeader from "../../../../components/ReusableHeader";
+import fetch from "../../../../helpers/fetch";
+import PostModel from "../../../../components/PostSection3Model";
 
 export default function section4() {
+  const [postsRepost, setPostsRepost] = useState<Array<any>>();
+  const [postsFavorite, setPostsFavorite] = useState<Array<any>>();
+  const [next, setNext] = useState("");
+  const [previous, setPrevious] = useState("");
+  const [count, setCount] = useState();
+  const [loadingRepost, setLoadingRepost] = useState(false);
 
-    const { data, isLoading, isError } = fetcher('api/popular')
-    
-    if(isLoading) return <Spinner></Spinner>;
-    if(isError) return <Error></Error>
+  const getPostsRepost = async (entreprizeId: string) => {
+    setLoadingRepost(true);
+    const result = await Post.getPostAllPublished(entreprizeId);
+    if (result.results) {
+      setPosts(result.results);
+      setNext(result?.next?.split("/share_pub")[1] as string);
+      setPrevious(result?.previous?.split("/share_pub")[1] as string);
+      setCount(result.count);
+    }
+    setLoading(false);
+  };
+  const onClickNext = async () => {
+    setLoading(true);
+    const result = await fetch(next, "share_pub");
+    if (result.results) {
+      setPosts(result.results);
+      setNext(result?.next?.split("/share_pub")[1]);
+      setPrevious(result?.previous?.split("/share_pub")[1]);
+      setCount(result.count);
+    }
+    setLoading(false);
+  };
+  const onClickPrev = async () => {
+    setLoading(true);
+    const result = await fetch(previous, "share_pub");
+    if (result.results) {
+      setPosts(result.results);
+      setNext(result?.next?.split("/share_pub")[1]);
+      setPrevious(result?.previous?.split("/share_pub")[1]);
+      setCount(result.count);
+    }
+    setLoading(false);
+  };
+  useEffect(() => {
+    const entreprize = localStorage.getItem("entreprize");
+    getPosts(entreprize as string);
+  }, []);
 
   return (
     <section className="container mx-auto md:px-20 py-16">
         <div className="grid lg:grid-cols-2">
             <div className="item">
-                <h1 className="font-bold text-4xl py-12">Business</h1>
+                <h1 className="font-bold text-4xl py-12">Reposter</h1>
                 <div className="flex flex-col gap-6">
                     {/* posts */}
                     { data[1] ? <Post data={data[1]}></Post> : <></>}
@@ -37,27 +88,4 @@ export default function section4() {
         </div>
     </section>
   )
-}
-
-function Post({ data }){
-
-    const { id, title, category, img, published, author } = data;
-
-    return (
-        <div className="flex gap-5">
-            <div className="image flex flex-col justify-start">
-                <Link href={`/posts/${id}`}><a><Image src={img || ""}  className="rounded" width={300} height={250} /></a></Link>
-            </div>
-            <div className="info flex justify-center flex-col">
-                <div className="cat">
-                    <Link href={`/posts/${id}`}><a className="text-orange-600 hover:text-orange-800">{category || "No Category"}</a></Link>
-                    <Link href={`/posts/${id}`}><a className="text-gray-800 hover:text-gray-600">- {published || ""}</a></Link>
-                </div>
-                <div className="title">
-                    <Link href={`/posts/${id}`}><a className="text-xl font-bold text-gray-800 hover:text-gray-600">{title || "No Title"}</a></Link>
-                </div>
-                { author ? <Author {...author}></Author> : <></>}
-            </div>
-        </div>
-    )
 }

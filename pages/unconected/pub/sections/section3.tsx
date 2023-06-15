@@ -1,65 +1,72 @@
-import { Swiper, SwiperSlide } from "swiper/react"
-import Link from "next/link"
-import Image from "next/image"
-import Author from "./_child/author"
-import fetcher from '../lib/fetcher'
-import Spinner from "./_child/spinner"
-import Error from "./_child/error"
+import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
+import Author from "../../../../components/Author";
+import {
+  AdjustmentsHorizontalIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  EyeIcon,
+  PencilIcon,
+} from "@heroicons/react/20/solid";
+import moment from "moment";
+import "moment/locale/fr";
+import Link from "next/link";
+import Profile from "../../../../api/profile";
+import { useEffect, useState } from "react";
+import Post from "../../../../api/post";
+import ClickableSpan from "../../../../components/ClickableSpan";
+import GoBack from "../../../../components/GoBack";
+import ReusableHeader from "../../../../components/ReusableHeader";
+import fetch from "../../../../helpers/fetch";
+import PostSection3Model from "../../../../components/PostSection3Model";
 
 export default function section3() {
+  const [posts, setPosts] = useState<Array<any>>();
+  const [loading, setLoading] = useState(false);
 
-    const { data, isLoading, isError } = fetcher('api/popular')
-    
-    if(isLoading) return <Spinner></Spinner>;
-    if(isError) return <Error></Error>
+  const getPosts = async (entreprizeId: string) => {
+    setLoading(true);
+    const result = await Post.getPostAllPublishedAndPopular(entreprizeId);
+    if (result.results) {
+      setPosts(result.results);
+    }
+    setLoading(false);
+  };
+  useEffect(() => {
+    const entreprize = localStorage.getItem("entreprize");
+    getPosts(entreprize as string);
+  }, []);
 
   return (
     <section className="container mx-auto md:px-20 py-16">
-        <h1 className="font-bold text-4xl py-12 text-center">Most Popular</h1>
+      <h1 className="font-bold text-4xl py-12 text-center">Postes populaire</h1>
 
-        {/* swiper */}
-        <Swiper
-            breakpoints={{
-                640 : {
-                    slidesPerView: 2,
-                    spaceBetween: 30
-                }
-            }}
-        >
-            {
-                    data.map((value, index) => (
-                        <SwiperSlide key={index}><Post data={value}></Post></SwiperSlide>
-                    ))
-            }
-        </Swiper>
-
+      {/* swiper */}
+      <Swiper
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+        }}
+      >
+        {!loading ? (
+          Array.isArray(posts) && posts.length > 0 ? (
+            posts.map((a, index) => (
+              <SwiperSlide key={index}>
+                <PostSection3Model post={a}/>
+              </SwiperSlide>
+            ))
+          ) : (
+            "No data"
+          )
+        ) : (
+          <div className="flex h-40 w-full font-semibold  items-center justify-center">
+            Loading...
+          </div>
+        )}
+      </Swiper>
     </section>
-  )
+  );
 }
 
-
-function Post({ data }){
-
-    const { id, title, category, img, description, published, author } = data;
-
-    return (
-        <div className="grid">
-            <div className="images">
-                <Link href={`/posts/${id}`}><a><Image src={img || ""} width={600} height={400} /></a></Link>
-            </div>
-            <div className="info flex justify-center flex-col py-4">
-                <div className="cat">
-                    <Link href={`/posts/${id}`}><a className="text-orange-600 hover:text-orange-800">{category || "No Category"}</a></Link>
-                    <Link href={`/posts/${id}`}><a className="text-gray-800 hover:text-gray-600">- {published || ""}</a></Link>
-                </div>
-                <div className="title">
-                    <Link href={`/posts/${id}`}><a className="text-3xl md:text-4xl font-bold text-gray-800 hover:text-gray-600">{title || "No Title"}</a></Link>
-                </div>
-                <p className="text-gray-500 py-3">
-                {description || "No Description"}
-                </p>
-                { author ? <Author {...author}></Author> : <></>}
-            </div>
-        </div>
-    )
-}
