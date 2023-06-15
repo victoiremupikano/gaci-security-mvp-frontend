@@ -15,7 +15,7 @@ const UniquePostDetails : FunctionComponent = () => {
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const getPost = useCallback(async (id:string,entreprizeId:string) =>{
-    const result = await Post.get(id, entreprizeId)
+    const result = await Post.getStaff(id, entreprizeId)
       if (result.statusCode == 200) {
         setPost(result)
       }

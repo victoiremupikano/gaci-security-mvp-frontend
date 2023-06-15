@@ -77,7 +77,7 @@ export default function section2() {
               return (
                 <div key = {index} className="item">
                   <div className="images">
-                  <Link href={"/unconected/pub/" + a.pk}>
+                    <Link href={"/unconected/pub/" + a.pk}>
                       <Image
                         src={a.image || "/placeholder.jpg"}
                         alt="img author"
@@ -122,7 +122,9 @@ export default function section2() {
             Loading...
           </div>
         )}
-        <div className="md:w-4/12 w-11/12 mx-auto flex justify-around mt-4">
+        
+      </div>
+      <div className="md:w-4/12 w-11/12 mx-auto flex justify-around mt-4">
           {previous && (
             <ClickableSpan onClick={onClickPrev}>
               <ArrowLeftIcon className="h-5 w-5 mr-1" /> Precedent
@@ -134,7 +136,6 @@ export default function section2() {
             </ClickableSpan>
           )}
         </div>
-      </div>
     </section>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export default function Home() {
   const router = useRouter()
   useEffect(() => {
-    router.push("/unconected/dashboard")
+    router.push("/unconected/pub/")
   },[router])
   return <div>
     MUSACOM

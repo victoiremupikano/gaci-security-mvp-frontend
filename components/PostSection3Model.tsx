@@ -11,7 +11,7 @@ const PostSection4Model: FunctionComponent<Props> = ({ index, post }) => {
   return (
     <div className="flex gap-5">
       <div className="image flex flex-col justify-start">
-        <Link href={`/posts/${post?.pk}`}>
+        <Link href={"/unconected/pub/" + post?.pk}>
           <Image
           className="rounded"
             src={post?.image || "/placeholder.jpg"}
@@ -23,19 +23,19 @@ const PostSection4Model: FunctionComponent<Props> = ({ index, post }) => {
       </div>
       <div className="info flex justify-center flex-col">
         <div className="cat">
-          <Link href={`/posts/${post?.pk}`}>
+        <Link href={"/unconected/pub/" + post?.pk}>
             <p className="text-orange-600 hover:text-orange-800">
               {"Catégorie unique"}
             </p>
           </Link>
-          <Link href={`/posts/${post?.pk}`}>
+          <Link href={"/unconected/pub/" + post?.pk}>
             <p className="text-gray-800 hover:text-gray-600">
               - {moment(post?.date_add).format("ll") || "Unknown"}
             </p>
           </Link>
         </div>
         <div className="title">
-          <Link href={`/posts/${post?.pk}`}>
+        <Link href={"/unconected/pub/" + post?.pk}>
             <p className="text-xl font-bold text-gray-800 hover:text-gray-600">
               {post?.title || "No Title"}
             </p>

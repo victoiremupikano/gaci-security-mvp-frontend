@@ -58,7 +58,7 @@ export default function section3() {
             {/* posts */}
             {!loadingRepost ? (
               Array.isArray(postsRepost) && postsRepost.length > 0 ? (
-                postsRepost.map((a, index) => <PostSection3Model post={a} />)
+                postsRepost.map((a, index) => <PostSection3Model key={index} post={a} />)
               ) : (
                 "No data"
               )

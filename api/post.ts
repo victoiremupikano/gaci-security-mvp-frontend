@@ -27,10 +27,12 @@ const Post = {
   async getAll(entreprize_id:string): Promise<PostAPIResponse> {
     return api.get("/post-list-create/" + entreprize_id, "share_pub");
   },
-  async get(id:string | number, entreprize_id:string): Promise<PostAPIResponse> {
+  async getStaff(id:string | number, entreprize_id:string): Promise<PostAPIResponse> {
     return api.get("/post-staff-detail/" + id + "/" + entreprize_id, "share_pub");
   },
-
+  async getNoStaff(id:string | number, entreprize_id:string): Promise<PostAPIResponse> {
+    return api.get("/post-no-staff-detail/" + id + "/" + entreprize_id, "share_pub");
+  },
   // les fx pour l'user unconnected
   async getPostAllPublished(entreprize_id:string): Promise<PostAPIResponse> {
     return api.get("/post-published-list/" + entreprize_id, "share_pub");

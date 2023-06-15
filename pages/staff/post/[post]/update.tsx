@@ -84,7 +84,7 @@ export default function UpdatePost() {
     }
   };
   const getPost = async (id:string, entreprize_id: string) => {
-    const result = await Post.get(id, entreprize_id)
+    const result = await Post.getStaff(id, entreprize_id)
       if (result.pk) {
         setPost(result)
         setId(result.pk)
