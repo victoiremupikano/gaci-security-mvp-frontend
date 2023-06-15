@@ -71,7 +71,9 @@ export default function AddPost() {
       setShowSuccessBox(true);
     }
   };
-  const onClickCheckbox = (e: any) => setStatus(e.target.checked);
+  const onClickCheckboxStatus = (e: any) => setStatus(e.target.checked);
+  const onClickCheckboxPopular = (e: any) => setPopular(e.target.checked);
+  const onClickCheckboxRepost = (e: any) => setRepost(e.target.checked);
   const loadImage = async (e: any) => {
     const url = URL.createObjectURL(e.target.files[0]);
     setImageURL(url);
@@ -149,19 +151,19 @@ export default function AddPost() {
             </div>
             <Checkbox
               name="status"
-              event={onClickCheckbox}
+              event={onClickCheckboxStatus}
               value={status}
               title="Cochez pour spécifier si la publication directe."
             />
             <Checkbox
               name="popular"
-              event={onClickCheckbox}
+              event={onClickCheckboxPopular}
               value={popular}
               title="Publcation populaire."
             />
             <Checkbox
               name="repost"
-              event={onClickCheckbox}
+              event={onClickCheckboxRepost}
               value={repost}
               title="Reposter l'article à chaque fois."
             />

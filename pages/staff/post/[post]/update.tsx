@@ -34,6 +34,8 @@ export default function UpdatePost() {
   const [image64, setImage64] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [status, setStatus] = useState<any>(false);
+  const [popular, setPopular] = useState(false)
+  const [repost, setRepost] = useState(false)
   const [_post, setPost] = useState<any>({});
   const [entreprize, setEntreprize] = useState("");
   const [id, setId] = useState("");
@@ -68,7 +70,9 @@ export default function UpdatePost() {
       setShowSuccessBox(true);
     }
   };
-  const onClickCheckbox = (e: any) => setStatus(e.target.checked);
+  const onClickCheckboxStatus = (e: any) => setStatus(e.target.checked);
+  const onClickCheckboxPopular = (e: any) => setPopular(e.target.checked);
+  const onClickCheckboxRepost = (e: any) => setRepost(e.target.checked);
   const loadImage = async (e: any) => {
     const url = URL.createObjectURL(e.target.files[0]);
     setImageURL(url);
@@ -166,9 +170,21 @@ export default function UpdatePost() {
             </div>
             <Checkbox
               name="status"
-              event={onClickCheckbox}
+              event={onClickCheckboxStatus}
               value={status}
               title="Cochez pour spécifier si la publication directe."
+            />
+            <Checkbox
+              name="popular"
+              event={onClickCheckboxPopular}
+              value={popular}
+              title="Publcation populaire."
+            />
+            <Checkbox
+              name="repost"
+              event={onClickCheckboxRepost}
+              value={repost}
+              title="Reposter l'article à chaque fois."
             />
             <div className="w-full flex justify-between md:space-x-1 md:flex-row flex-col">
               <div className="md:w-1/2 w-full">
