@@ -8,18 +8,18 @@ import moment from "moment";
 import "moment/locale/fr";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Pricing from "../../../api/pricing";
 import ClickableSpan from "../../../components/ClickableSpan";
 import GoBack from "../../../components/GoBack";
 import ReusableHeader from "../../../components/ReusableHeader";
 import fetch from "../../../helpers/fetch";
 import useVerify from "../../../hooks/useVerify";
-import Pricing from "../../../api/pricing";
 
 export default function Index() {
   const [pricing, setPricing] = useState<Array<any>>();
   const [next, setNext] = useState("");
   const [previous, setPrevious] = useState("");
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState();
   const [loading, setLoading] = useState(false);
   useVerify();
   const getPricing = async () => {
@@ -27,28 +27,33 @@ export default function Index() {
     const result = await Pricing.getAll();
     if (result.results) {
       setPricing(result.results);
-      setNext(result?.next?.split("/mscm/settings")[1]);
-      setPrevious(result?.previous?.split("/mscm/settings")[1]);
+      setNext(result?.next?.split("/mscm/settings")[1] as string);
+      setPrevious(result?.previous?.split("/mscm/settings")[1] as string);
       setCount(result.count);
     }
+    setLoading(false);
   };
   const onClickNext = async () => {
-    const result = await fetch(next);
+    setLoading(true);
+    const result = await fetch(next, "share_pub");
     if (result.results) {
       setPricing(result.results);
       setNext(result?.next?.split("/mscm/settings")[1]);
       setPrevious(result?.previous?.split("/mscm/settings")[1]);
       setCount(result.count);
     }
+    setLoading(false);
   };
   const onClickPrev = async () => {
-    const result = await fetch(previous);
+    setLoading(true);
+    const result = await fetch(previous, "share_pub");
     if (result.results) {
       setPricing(result.results);
       setNext(result?.next?.split("/mscm/settings")[1]);
       setPrevious(result?.previous?.split("/mscm/settings")[1]);
       setCount(result.count);
     }
+    setLoading(false);
   };
   useEffect(() => {
     getPricing();
