@@ -1,13 +1,13 @@
-import { ChangeEventHandler,MutableRefObject, useRef, useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 
 export default function useForm(
   initialValues: Record<string, string | number | boolean>
 ): [
   Record<string, string | number | boolean>,
-    ChangeEventHandler<HTMLInputElement>,
-  ] {
-  const [values, setValues] = useState<
-    Record<string, string | number | boolean>>( initialValues);
+  ChangeEventHandler<HTMLInputElement>
+] {
+  const [values, setValues] =
+    useState<Record<string, string | number | boolean>>(initialValues);
   return [
     values,
     (event: any): void => {
@@ -15,6 +15,6 @@ export default function useForm(
         ...values,
         [event.target.name]: event.target.value,
       });
-    }
+    },
   ];
 }

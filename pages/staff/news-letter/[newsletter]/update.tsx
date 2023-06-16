@@ -1,18 +1,13 @@
-import Link from "next/link";
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import Button from "../../../../components/Button";
 import FormHeader from "../../../../components/FormHeader";
 import ReusableHeader from "../../../../components/ReusableHeader";
 import Textbox from "../../../../components/Textbox";
-import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import Checkbox from "../../../../components/Checkbox";
-import useForm from "../../../../hooks/useForm";
 import NewsLetter from "../../../../api/newsLetter";
 import UserSuccessBox from "../../../../components/UserSuccessBox";
-import fileToBase64 from "../../../../helpers/fileToBase64";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import downloadImage from "../../../../helpers/downloadImage";
 import Toast from "../../../../components/Toast";
 
 declare type ErrorType = {
@@ -30,43 +25,45 @@ export default function UpdateNewsLetter() {
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    setToast('hide')
-    const result = await NewsLetter.update({
-      entreprize_id:entreprize,
-      email,
-      status
-    }, id);
+    setToast("hide");
+    const result = await NewsLetter.update(
+      {
+        entreprize_id: entreprize,
+        email,
+        status,
+      },
+      id
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
-        email: errors.email && errors.email[0]
+        email: errors.email && errors.email[0],
       });
       if (result.data.errors.non_field_errors) {
         setToast("show");
         setMsg(result.data.errors.non_field_errors);
       }
-      
     } else if (result.pk) {
       setShowSuccessBox(true);
     }
   };
   const onClickCheckbox = (e: any) => setStatus(e.target.checked);
-  const getNewsLetter = async (id:string, entreprize_id: string) => {
-    const result = await NewsLetter.get(id, entreprize_id)
-      if (result.pk) {
-        setNewsLetter(result)
-        setId(result.pk)
-        setEmail(result.email)
-        setStatus(result.status)
-        }
+  const getNewsLetter = async (id: string, entreprize_id: string) => {
+    const result = await NewsLetter.get(id, entreprize_id);
+    if (result.pk) {
+      setNewsLetter(result);
+      setId(result.pk);
+      setEmail(result.email);
+      setStatus(result.status);
     }
-  const router = useRouter()
-  const { newsletter } = router.query
+  };
+  const router = useRouter();
+  const { newsletter } = router.query;
 
   useEffect(() => {
     const entreprize = localStorage.getItem("entreprize");
     setEntreprize(entreprize as string);
-    getNewsLetter(newsletter as string, entreprize as string)
+    getNewsLetter(newsletter as string, entreprize as string);
   }, [newsletter]);
 
   if (showSuccessBox)

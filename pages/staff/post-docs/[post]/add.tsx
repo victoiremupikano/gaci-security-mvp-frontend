@@ -4,15 +4,12 @@ import Button from "../../../../components/Button";
 import FormHeader from "../../../../components/FormHeader";
 import ReusableHeader from "../../../../components/ReusableHeader";
 import Textbox from "../../../../components/Textbox";
-import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
-import Checkbox from "../../../../components/Checkbox";
+import { CheckCircleIcon, PhotoIcon } from "@heroicons/react/20/solid";
 import useForm from "../../../../hooks/useForm";
-import PostDocs from "../../../../api/postDocs"
+import PostDocs from "../../../../api/postDocs";
 import { useRouter } from "next/router";
 import UserSuccessBox from "../../../../components/UserSuccessBox";
 import fileToBase64 from "../../../../helpers/fileToBase64";
-import Image from "next/image";
-import { randomUUID } from "crypto";
 import Toast from "../../../../components/Toast";
 
 declare type ErrorType = {
@@ -22,10 +19,9 @@ declare type ErrorType = {
 
 export default function AddPostDocs() {
   const inputRef = useRef<any>();
-  const [{wording},handleChange,
-  ] = useForm({
+  const [{ wording }, handleChange] = useForm({
     wording: "",
-    docs64: ""
+    docs64: "",
   });
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
@@ -33,16 +29,19 @@ export default function AddPostDocs() {
   const [url, setUrl] = useState("");
   const [docs64, setDocs64] = useState("");
   const [docsURL, setDocsURL] = useState("");
-  const [entreprize, setEntreprize] = useState("")
+  const [entreprize, setEntreprize] = useState("");
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    const result = await PostDocs.add({
-      entreprize_id: entreprize,
-      post_id: post,
-      wording,
-      docs64
-    }, entreprize);
+    const result = await PostDocs.add(
+      {
+        entreprize_id: entreprize,
+        post_id: post,
+        wording,
+        docs64,
+      },
+      entreprize
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -68,13 +67,13 @@ export default function AddPostDocs() {
       inputRef.current.click();
     }
   };
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize")
-    setEntreprize(entreprize as string)
-    setPostId(router.query.post as string)
-    setUrl("/staff/post-docs/" + router.query.post as string)
-  },[])
+    const entreprize = localStorage.getItem("entreprize");
+    setEntreprize(entreprize as string);
+    setPostId(router.query.post as string);
+    setUrl(("/staff/post-docs/" + router.query.post) as string);
+  }, []);
 
   if (showSuccessBox)
     return (
@@ -96,7 +95,8 @@ export default function AddPostDocs() {
               <FormHeader title="Nouveau document" />
             </div>
             <small className="text-xs md:text-base  md:w-11/12 w-10/12 mx-auto text-gray-500 md:text-left text-center my-3">
-              Remplissez le formulaire ci-bas pour enregistrer un document au post
+              Remplissez le formulaire ci-bas pour enregistrer un document au
+              post
             </small>
           </div>
           <form className="w-11/12 mx-auto mt-2">
@@ -126,12 +126,7 @@ export default function AddPostDocs() {
                       Ajouter le document d'ajout au post
                     </div>
                   )}
-                  <input
-                    onChange={loadDoc}
-                    type="file"
-                    hidden
-                    ref={inputRef}
-                  />
+                  <input onChange={loadDoc} type="file" hidden ref={inputRef} />
                   <span
                     onClick={pickDoc}
                     className="absolute bottom-2 right-4 h-7 w-7 bg-blue-600 text-white rounded-full cursor-pointer grid place-items-center"

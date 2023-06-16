@@ -1,17 +1,13 @@
-import Link from "next/link";
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import Button from "../../../components/Button";
 import FormHeader from "../../../components/FormHeader";
 import ReusableHeader from "../../../components/ReusableHeader";
 import Textbox from "../../../components/Textbox";
-import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import Checkbox from "../../../components/Checkbox";
 import useForm from "../../../hooks/useForm";
-import NewsLetter from "../../../api/newsLetter"
+import NewsLetter from "../../../api/newsLetter";
 import UserSuccessBox from "../../../components/UserSuccessBox";
-import fileToBase64 from "../../../helpers/fileToBase64";
-import Image from "next/image";
-import { randomUUID } from "crypto";
 import Toast from "../../../components/Toast";
 
 declare type ErrorType = {
@@ -19,26 +15,28 @@ declare type ErrorType = {
 };
 
 export default function AddNewsLetter() {
-  const [{email},handleChange,
-  ] = useForm({
+  const [{ email }, handleChange] = useForm({
     email: "",
   });
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
-  const [status, setStatus] = useState(false)
-  const [entreprize, setEntreprize] = useState("")
+  const [status, setStatus] = useState(false);
+  const [entreprize, setEntreprize] = useState("");
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    const result = await NewsLetter.add({
-      entreprize_id:entreprize,
-      email: email,
-      status
-    }, entreprize);
+    const result = await NewsLetter.add(
+      {
+        entreprize_id: entreprize,
+        email: email,
+        status,
+      },
+      entreprize
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
-        email: errors.email && errors.email[0]
+        email: errors.email && errors.email[0],
       });
       if (result.data.errors.non_field_errors) {
         setToast("show");
@@ -50,9 +48,9 @@ export default function AddNewsLetter() {
   };
   const onClickCheckbox = (e: any) => setStatus(e.target.checked);
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize")
-    setEntreprize(entreprize as string)
-  },[])
+    const entreprize = localStorage.getItem("entreprize");
+    setEntreprize(entreprize as string);
+  }, []);
 
   if (showSuccessBox)
     return (
@@ -74,7 +72,8 @@ export default function AddNewsLetter() {
               <FormHeader title="Nouvelle adresse mail" />
             </div>
             <small className="text-xs md:text-base  md:w-11/12 w-10/12 mx-auto text-gray-500 md:text-left text-center my-3">
-              Remplissez le formulaire ci-bas pour enregistrer une nouvelle adresse mail
+              Remplissez le formulaire ci-bas pour enregistrer une nouvelle
+              adresse mail
             </small>
           </div>
           <form className="w-11/12 mx-auto mt-2">

@@ -1,7 +1,6 @@
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import { ReactNode, use, useEffect, useState } from "react";
-import auth from "../../api/auth";
+import { useEffect, useState } from "react";
 import GoBack from "../../components/GoBack";
 import moment from "moment";
 import "moment/locale/fr";
@@ -11,22 +10,22 @@ import useVerify from "../../hooks/useVerify";
 import ReusableHeader from "../../components/ReusableHeader";
 import ReusableFooter from "../../components/ReusableFooter";
 
-export default function ProfileIndex() {
-  moment.locale("fr");
+moment.locale("fr");
 
+export default function ProfileIndex() {
   const [user, setUser] = useState<{ [key: string]: any }>({});
-  useVerify()
+  useVerify();
   useEffect(() => {
-      const result = JSON.parse(
-        window.localStorage.getItem("user_data") as string
+    const result = JSON.parse(
+      window.localStorage.getItem("user_data") as string
     )?.fields;
     if (result) {
       setUser(result);
-    }    
+    }
   }, []);
   return (
     <>
-      <ReusableHeader text="Profil de l'utilisateur"/>
+      <ReusableHeader text="Profil de l'utilisateur" />
       <div className="h-auto mb-3 relative overflow-hidden w-11/12 mx-auto">
         <div className="w-11/12 mb-4 flex items-center full">
           <GoBack />{" "}
@@ -105,7 +104,7 @@ export default function ProfileIndex() {
             >
               Profile
             </Link>
-        </div>
+          </div>
         </div>
       </div>
       <ReusableFooter />

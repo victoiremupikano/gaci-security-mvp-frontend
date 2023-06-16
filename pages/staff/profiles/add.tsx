@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import Button from "../../../components/Button";
 import FormHeader from "../../../components/FormHeader";
@@ -10,7 +9,6 @@ import {
   PhotoIcon,
 } from "@heroicons/react/20/solid";
 import useForm from "../../../hooks/useForm";
-import user from "../../../api/user";
 import UserSuccessBox from "../../../components/UserSuccessBox";
 import Image from "next/image";
 import useVerify from "../../../hooks/useVerify";
@@ -26,9 +24,8 @@ declare type ErrorType = {
 };
 
 export default function AddProfile() {
-  const router = useRouter()
+  const router = useRouter();
   const inputRef = useRef<any>();
-  const [id, setId] = useState<string|number>();
   const [{ address }, handleChange] = useForm({
     address: "",
   });
@@ -55,11 +52,6 @@ export default function AddProfile() {
     }
   };
   useVerify();
-  useEffect(() => {
-    if (router.query.user) {
-     setId(router.query.user as string)
-   }
-  }, [router.query.user]);
   const setSexTo = (value: string) => setSex(value);
   const pickImage = () => {
     if (inputRef.current) {

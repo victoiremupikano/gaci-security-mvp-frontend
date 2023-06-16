@@ -1,28 +1,18 @@
 import Image from "next/image";
 import Author from "../../../../components/Author";
-import {
-  AdjustmentsHorizontalIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  EyeIcon,
-  PencilIcon,
-} from "@heroicons/react/20/solid";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/20/solid";
 import moment from "moment";
 import "moment/locale/fr";
 import Link from "next/link";
-import Profile from "../../../../api/profile";
 import { useEffect, useState } from "react";
 import Post from "../../../../api/post";
 import ClickableSpan from "../../../../components/ClickableSpan";
-import GoBack from "../../../../components/GoBack";
-import ReusableHeader from "../../../../components/ReusableHeader";
 import fetch from "../../../../helpers/fetch";
 
 export default function section2() {
   const [posts, setPosts] = useState<Array<any>>();
   const [next, setNext] = useState("");
   const [previous, setPrevious] = useState("");
-  const [count, setCount] = useState();
   const [loading, setLoading] = useState(false);
 
   const getPosts = async (entreprizeId: string) => {
@@ -32,7 +22,6 @@ export default function section2() {
       setPosts(result.results);
       setNext(result?.next?.split("/share_pub")[1] as string);
       setPrevious(result?.previous?.split("/share_pub")[1] as string);
-      setCount(result.count);
     }
     setLoading(false);
   };
@@ -43,7 +32,6 @@ export default function section2() {
       setPosts(result.results);
       setNext(result?.next?.split("/share_pub")[1]);
       setPrevious(result?.previous?.split("/share_pub")[1]);
-      setCount(result.count);
     }
     setLoading(false);
   };
@@ -54,7 +42,6 @@ export default function section2() {
       setPosts(result.results);
       setNext(result?.next?.split("/share_pub")[1]);
       setPrevious(result?.previous?.split("/share_pub")[1]);
-      setCount(result.count);
     }
     setLoading(false);
   };
@@ -75,7 +62,7 @@ export default function section2() {
           Array.isArray(posts) && posts.length > 0 ? (
             posts.map((a, index) => {
               return (
-                <div key = {index} className="item">
+                <div key={index} className="item">
                   <div className="images">
                     <Link href={"/unconected/pub/" + a.pk}>
                       <Image
@@ -107,7 +94,7 @@ export default function section2() {
                       </Link>
                     </div>
                     <p className="text-gray-500 py-3">
-                        {a.synthesis || "No Synthesis"}
+                      {a.synthesis || "No Synthesis"}
                     </p>
                     <Author user={a?.user?.pk} />
                   </div>
@@ -122,20 +109,19 @@ export default function section2() {
             Loading...
           </div>
         )}
-        
       </div>
       <div className="md:w-4/12 w-11/12 mx-auto flex justify-around mt-4">
-          {previous && (
-            <ClickableSpan onClick={onClickPrev}>
-              <ArrowLeftIcon className="h-5 w-5 mr-1" /> Precedent
-            </ClickableSpan>
-          )}
-          {next && (
-            <ClickableSpan onClick={onClickNext}>
-              Suivant <ArrowRightIcon className="h-5 w-5 ml-1" />
-            </ClickableSpan>
-          )}
-        </div>
+        {previous && (
+          <ClickableSpan onClick={onClickPrev}>
+            <ArrowLeftIcon className="h-5 w-5 mr-1" /> Precedent
+          </ClickableSpan>
+        )}
+        {next && (
+          <ClickableSpan onClick={onClickNext}>
+            Suivant <ArrowRightIcon className="h-5 w-5 ml-1" />
+          </ClickableSpan>
+        )}
+      </div>
     </section>
   );
 }

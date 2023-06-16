@@ -3,5 +3,5 @@ export declare type ResponseGlobal = {
   next?: any;
   previous?: any;
   count?: any;
-  errors?:any
+  errors?: any;
 };

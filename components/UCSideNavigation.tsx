@@ -1,28 +1,12 @@
-import { 
-  ArchiveBoxArrowDownIcon,
-  ArrowLeftOnRectangleIcon,
-  Bars3BottomLeftIcon,
+import {
   ArchiveBoxIcon,
-  ChartBarIcon,
   HeartIcon,
-  Cog6ToothIcon,
-  CurrencyDollarIcon,
   DocumentIcon,
-  GlobeAltIcon,
-  GlobeEuropeAfricaIcon,
-  HomeModernIcon,
-  LinkIcon,
   HomeIcon,
-  ListBulletIcon,
-  UserCircleIcon,
-  UserGroupIcon,
-  UserIcon,
-  UserPlusIcon,
-  UsersIcon,
-  ShareIcon,
-  DocumentChartBarIcon
- } from "@heroicons/react/20/solid";
+  UserGroupIcon
+} from "@heroicons/react/20/solid";
 import UCSideNavigationItem from "./UCSideNavigationItem";
+
 export default function UCSideNavigation() {
   return (
     <div className="lg:w-[15%] md:w-[20%] md:block hidden border-r  h-auto">
@@ -52,5 +36,5 @@ export default function UCSideNavigation() {
         path="/unconected/pages/about"
       />
     </div>
-   );
+  );
 }

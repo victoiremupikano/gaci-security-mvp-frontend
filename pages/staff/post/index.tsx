@@ -2,7 +2,6 @@ import {
   AdjustmentsHorizontalIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
-  EyeIcon,
   PencilIcon,
 } from "@heroicons/react/20/solid";
 import moment from "moment";

@@ -1,15 +1,9 @@
-import Image from "next/image";
-import moment from "moment";
-import Link from "next/link";
 import { FunctionComponent } from "react";
-import PostImages from "../api/postImages";
 import React, { MouseEventHandler, useEffect, useState } from "react";
 import ButtonNewsLetter from "./ButtonNewsLetter";
 import TextboxNewsLetter from "./TextboxNewsLetter";
 import useForm from "../hooks/useForm";
 import Nl from "../api/newsLetter";
-import Toast from "./Toast";
-import UserSuccessBox from "./UserSuccessBox";
 
 declare type ErrorType = {
   email: any;
@@ -20,7 +14,7 @@ const NewsLetter: FunctionComponent = () => {
     email: "",
   });
   const [error, setError] = useState<ErrorType>();
-  const [status, setStatus] = useState(true);
+  const [status] = useState(true);
   const [entreprize, setEntreprize] = useState("");
 
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
@@ -41,15 +35,15 @@ const NewsLetter: FunctionComponent = () => {
         setError({
           email: result.data.errors.non_field_errors,
         });
-      }
-      else if (result.data.errors.detail) {
+      } else if (result.data.errors.detail) {
         setError({
           email: result.data.errors.detail,
         });
       }
     } else if (result.pk) {
       setError({
-        email: "Votre abonnement à la newsletter éffectuer avec avec succès, vous recevrez maintenant nos email quotidient.",
+        email:
+          "Votre abonnement à la newsletter éffectuer avec avec succès, vous recevrez maintenant nos email quotidient.",
       });
     }
   };
@@ -71,12 +65,12 @@ const NewsLetter: FunctionComponent = () => {
           placeholder="Entrer votre adresse mail"
         />
         <ButtonNewsLetter
-              event={onClickRegister}
-              size="fit"
-              content="Abonnement"
-              design="primary"
-              type="button"
-            />
+          event={onClickRegister}
+          size="fit"
+          content="Abonnement"
+          design="primary"
+          type="button"
+        />
       </div>
     </section>
   );

@@ -3,12 +3,13 @@ import moment from "moment";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import PostImages from "../api/postImages";
-import React, { MouseEventHandler, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   index?: any;
   post: any;
 };
+
 const PostPubUniqueImagesModel: FunctionComponent<Props> = ({
   index,
   post,

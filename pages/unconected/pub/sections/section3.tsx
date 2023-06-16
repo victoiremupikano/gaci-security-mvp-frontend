@@ -1,22 +1,6 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
-import Author from "../../../../components/Author";
-import {
-  AdjustmentsHorizontalIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  EyeIcon,
-  PencilIcon,
-} from "@heroicons/react/20/solid";
-import moment from "moment";
 import "moment/locale/fr";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import Post from "../../../../api/post";
-import ClickableSpan from "../../../../components/ClickableSpan";
-import GoBack from "../../../../components/GoBack";
-import ReusableHeader from "../../../../components/ReusableHeader";
-import fetch from "../../../../helpers/fetch";
 import PostSection3Model from "../../../../components/PostSection3Model";
 
 export default function section3() {
@@ -45,7 +29,9 @@ export default function section3() {
             {/* posts */}
             {!loadingRepost ? (
               Array.isArray(postsRepost) && postsRepost.length > 0 ? (
-                postsRepost.map((a, index) => <PostSection3Model key={index} post={a} />)
+                postsRepost.map((a, index) => (
+                  <PostSection3Model key={index} post={a} />
+                ))
               ) : (
                 "No data"
               )

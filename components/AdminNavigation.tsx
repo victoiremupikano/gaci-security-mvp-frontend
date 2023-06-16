@@ -1,33 +1,30 @@
-import { ArrowLeftOnRectangleIcon, Bars3BottomLeftIcon, Bars3Icon, PowerIcon, UserIcon, XMarkIcon } from "@heroicons/react/20/solid";
-import { useEffect, useState } from "react";
-import Link from "next/link"
+import {
+  Bars3BottomLeftIcon,
+  Bars3Icon,
+  PowerIcon,
+  UserIcon,
+  XMarkIcon,
+} from "@heroicons/react/20/solid";
+import { useState } from "react";
+import Link from "next/link";
 import AdminMobileDropDownMenu from "./AdminMobileDropDownMenu";
 import useVerify from "../hooks/useVerify";
 import Auth from "../api/auth";
 import { useRouter } from "next/router";
-import makePDF from "../helpers/makePDF";
 import BackupMobileMenu from "./BackupMobileMenu";
-
 
 export default function AdminNavigation() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showBackupMenu, setShowBackupMenu] = useState(false);
   const menuClicked = () => setShowMobileMenu(false);
   const menuBackupClicked = () => setShowBackupMenu(false);
-  const t = useVerify()
-  const router = useRouter()
+  const t = useVerify();
+  const router = useRouter();
   const logout = async () => {
-    await Auth.logout()
-    localStorage.clear()
-    router.push("/auth/login")
-  }
-  const generatePDF = () => {
-    const id = localStorage.getItem('current_report')
-    const name = localStorage.getItem("filename")
-    if (id && name) {
-      makePDF(id, name)
-    }
-  }
+    await Auth.logout();
+    localStorage.clear();
+    router.push("/auth/login");
+  };
   return (
     <header className="w-full mx-auto relative flex bg-white h-12 md:border-b">
       <div className="w-[95%] md:w-[99%] mx-auto  h-full flex items-center justify-between">
@@ -36,7 +33,7 @@ export default function AdminNavigation() {
           {router.pathname.includes("backup") && (
             <>
               <span
-                onClick={() => setShowBackupMenu(t => !t)}
+                onClick={() => setShowBackupMenu((t) => !t)}
                 className=" hover:bg-gray-100 cursor-pointer duration-500 mr-1.5 lg:hidden transition-all h-8 w-8 p-0.5 rounded border grid place-items-center"
               >
                 <Bars3Icon className="w-6 h-6" />

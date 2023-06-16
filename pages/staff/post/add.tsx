@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import Button from "../../../components/Button";
 import FormHeader from "../../../components/FormHeader";
@@ -7,11 +6,10 @@ import Textbox from "../../../components/Textbox";
 import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
 import Checkbox from "../../../components/Checkbox";
 import useForm from "../../../hooks/useForm";
-import Post from "../../../api/post"
+import Post from "../../../api/post";
 import UserSuccessBox from "../../../components/UserSuccessBox";
 import fileToBase64 from "../../../helpers/fileToBase64";
 import Image from "next/image";
-import { randomUUID } from "crypto";
 import Toast from "../../../components/Toast";
 
 declare type ErrorType = {
@@ -24,34 +22,36 @@ declare type ErrorType = {
 
 export default function AddPost() {
   const inputRef = useRef<any>();
-  const [{title, synthesis, text, conclusion},handleChange,
-  ] = useForm({
+  const [{ title, synthesis, text, conclusion }, handleChange] = useForm({
     title: "",
     synthesis: "",
     text: "",
     conclusion: "",
-    image64: ""
+    image64: "",
   });
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
-  const [status, setStatus] = useState(false)
-  const [repost, setRepost] = useState(false)
-  const [image64, setImage64] = useState("")
-  const [imageURL, setImageURL] = useState("")
-  const [entreprize, setEntreprize] = useState("")
+  const [status, setStatus] = useState(false);
+  const [repost, setRepost] = useState(false);
+  const [image64, setImage64] = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [entreprize, setEntreprize] = useState("");
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    const result = await Post.add({
-      entreprize_id:entreprize,
-      title: title,
-      synthesis,
-      text,
-      conclusion,
-      image64,
-      status,
-      repost
-    }, entreprize);
+    const result = await Post.add(
+      {
+        entreprize_id: entreprize,
+        title: title,
+        synthesis,
+        text,
+        conclusion,
+        image64,
+        status,
+        repost,
+      },
+      entreprize
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -83,9 +83,9 @@ export default function AddPost() {
     }
   };
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize")
-    setEntreprize(entreprize as string)
-  },[])
+    const entreprize = localStorage.getItem("entreprize");
+    setEntreprize(entreprize as string);
+  }, []);
 
   if (showSuccessBox)
     return (

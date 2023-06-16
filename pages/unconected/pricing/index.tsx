@@ -1,26 +1,14 @@
-import React, { MouseEventHandler, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReusableHeader from "../../../components/ReusableHeader";
-import GoBack from "../../../components/GoBack";
 import Author from "../../../components/Author";
-import { useRouter } from "next/router";
-import uppercaseFirst from "../../../helpers/uppercaseFirst";
-import moment from "moment";
-import Link from "next/link";
 import "moment/locale/fr";
 import Pricing from "../../../api/pricing";
-import {
-  XMarkIcon,
-  CheckCircleIcon,
-  XCircleIcon,
-} from "@heroicons/react/20/solid";
-import Toast from "../../../components/Toast";
 import Image from "next/image";
 import ReusableFooter from "../../../components/ReusableFooter";
 
 export default function ActivePricing() {
   const [pricing, setPricing] = useState<any>({});
   const [userId, setUserId] = useState<any>();
-
   const getPricing = async () => {
     const result = await Pricing.getActive();
     if (result.results) {
@@ -28,7 +16,6 @@ export default function ActivePricing() {
       setUserId(result.results[0].user.pk);
     }
   };
-  
   useEffect(() => {
     getPricing();
   }, [userId]);

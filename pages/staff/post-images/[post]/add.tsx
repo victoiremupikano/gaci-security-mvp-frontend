@@ -1,18 +1,15 @@
-import Link from "next/link";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import Button from "../../../../components/Button";
 import FormHeader from "../../../../components/FormHeader";
 import ReusableHeader from "../../../../components/ReusableHeader";
 import Textbox from "../../../../components/Textbox";
-import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
-import Checkbox from "../../../../components/Checkbox";
+import { CheckCircleIcon, PhotoIcon } from "@heroicons/react/20/solid";
 import useForm from "../../../../hooks/useForm";
-import PostImages from "../../../../api/postImages"
+import PostImages from "../../../../api/postImages";
 import { useRouter } from "next/router";
 import UserSuccessBox from "../../../../components/UserSuccessBox";
 import fileToBase64 from "../../../../helpers/fileToBase64";
 import Image from "next/image";
-import { randomUUID } from "crypto";
 import Toast from "../../../../components/Toast";
 
 declare type ErrorType = {
@@ -22,10 +19,9 @@ declare type ErrorType = {
 
 export default function AddPostImages() {
   const inputRef = useRef<any>();
-  const [{wording},handleChange,
-  ] = useForm({
+  const [{ wording }, handleChange] = useForm({
     wording: "",
-    images64: ""
+    images64: "",
   });
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
@@ -33,16 +29,19 @@ export default function AddPostImages() {
   const [url, setUrl] = useState("");
   const [images64, setImages64] = useState("");
   const [imagesURL, setImagesURL] = useState("");
-  const [entreprize, setEntreprize] = useState("")
+  const [entreprize, setEntreprize] = useState("");
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    const result = await PostImages.add({
-      entreprize_id: entreprize,
-      post_id: post,
-      wording,
-      images64
-    }, entreprize);
+    const result = await PostImages.add(
+      {
+        entreprize_id: entreprize,
+        post_id: post,
+        wording,
+        images64,
+      },
+      entreprize
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -68,13 +67,13 @@ export default function AddPostImages() {
       inputRef.current.click();
     }
   };
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize")
-    setEntreprize(entreprize as string)
-    setPostId(router.query.post as string)
-    setUrl("/staff/post-images/" + router.query.post as string)
-  },[])
+    const entreprize = localStorage.getItem("entreprize");
+    setEntreprize(entreprize as string);
+    setPostId(router.query.post as string);
+    setUrl(("/staff/post-images/" + router.query.post) as string);
+  }, []);
 
   if (showSuccessBox)
     return (

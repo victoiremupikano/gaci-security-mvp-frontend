@@ -4,9 +4,9 @@
  * @return {string}
  */
 export default function uppercaseFirst(input: any): string {
-    if (input) { 
-        let dataInput = input.toString()
-        return dataInput.charAt(0).toUpperCase()+dataInput.slice(1)
-    }
-    return " "
+  if (input) {
+    let dataInput = input.toString();
+    return dataInput.charAt(0).toUpperCase() + dataInput.slice(1);
+  }
+  return " ";
 }

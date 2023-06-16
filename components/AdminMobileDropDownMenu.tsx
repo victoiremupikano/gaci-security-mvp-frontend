@@ -1,40 +1,29 @@
 import {
-  ArchiveBoxArrowDownIcon,
   ArrowLeftOnRectangleIcon,
-  Bars3BottomLeftIcon,
   ChartBarIcon,
-  Cog6ToothIcon,
   CurrencyDollarIcon,
   DocumentIcon,
-  GlobeAltIcon,
-  GlobeEuropeAfricaIcon,
   HomeModernIcon,
-  LinkIcon,
-  ListBulletIcon,
-  UserCircleIcon,
   UserGroupIcon,
-  UserIcon,
-  UserPlusIcon,
-  UsersIcon,
   ShareIcon,
-  DocumentChartBarIcon
+  DocumentChartBarIcon,
 } from "@heroicons/react/20/solid";
 import MobileMenuItem from "./MobileMenuItem";
-import Auth from "../api/auth"
+import Auth from "../api/auth";
 import { useRouter } from "next/router";
 
 declare type Props = {
-  onClick : () => void
-}
+  onClick: () => void;
+};
 
 export default function AdminMobileDropDownMenu({ onClick }: Props) {
-  const router = useRouter()
+  const router = useRouter();
   const logout = async () => {
     Auth.logout().then(() => {
-      localStorage.clear()
-      router.push("/auth/login")
-    })
-  }
+      localStorage.clear();
+      router.push("/auth/login");
+    });
+  };
   return (
     <div
       data-aos="slide-left"

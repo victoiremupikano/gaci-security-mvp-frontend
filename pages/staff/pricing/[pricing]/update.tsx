@@ -4,17 +4,16 @@ import FormHeader from "../../../../components/FormHeader";
 import ReusableHeader from "../../../../components/ReusableHeader";
 import Textbox from "../../../../components/Textbox";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
-import useForm from "../../../../hooks/useForm";
 import UserSuccessBox from "../../../../components/UserSuccessBox";
-import Pricing from "../../../../api/pricing"
+import Pricing from "../../../../api/pricing";
 import { useRouter } from "next/router";
 import Checkbox from "../../../../components/Checkbox";
 
 declare type ErrorType = {
-  adh_family: any,
-  trh_family: any,
-  adh_org: any,
-  trh_org: any,
+  adh_family: any;
+  trh_family: any;
+  adh_org: any;
+  trh_org: any;
 };
 
 export default function UpdatePricing() {
@@ -26,7 +25,7 @@ export default function UpdatePricing() {
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
   const [pricing, setPricing] = useState<any>({});
-  
+
   const getPricing = async (r: string) => {
     const result = await Pricing.get(r);
     if (result.pk) {
@@ -35,7 +34,7 @@ export default function UpdatePricing() {
       setTrh_family(result.trh_family);
       setAdh_org(result.adh_org);
       setTrh_org(result.trh_org);
-      setStatus(result.status); 
+      setStatus(result.status);
     }
   };
   const router = useRouter();
@@ -45,15 +44,18 @@ export default function UpdatePricing() {
     }
   }, [router.query.Pricing]);
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    const result = await Pricing.update({
-      adh_family,
-      trh_family,
-      adh_org,
-      trh_org,
-      status
-    }, pricing.pk);
+    const result = await Pricing.update(
+      {
+        adh_family,
+        trh_family,
+        adh_org,
+        trh_org,
+        status,
+      },
+      pricing.pk
+    );
     if (result.type === "error") {
-      const errors = result.data.errors
+      const errors = result.data.errors;
       setError({
         adh_family: errors.adh_family && errors.adh_family[0],
         trh_family: errors.trh_family && errors.trh_family[0],
@@ -143,4 +145,3 @@ export default function UpdatePricing() {
     </>
   );
 }
-  

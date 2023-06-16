@@ -1,17 +1,12 @@
-import Link from "next/link";
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import Button from "../../../../../components/Button";
 import FormHeader from "../../../../../components/FormHeader";
 import ReusableHeader from "../../../../../components/ReusableHeader";
 import Textbox from "../../../../../components/Textbox";
-import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
-import Checkbox from "../../../../../components/Checkbox";
-import useForm from "../../../../../hooks/useForm";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import PostVid from "../../../../../api/postVideos";
 import UserSuccessBox from "../../../../../components/UserSuccessBox";
-import fileToBase64 from "../../../../../helpers/fileToBase64";
 import { useRouter } from "next/router";
-import downloadDoc from "../../../../../helpers/downloadImage";
 import Toast from "../../../../../components/Toast";
 
 declare type ErrorType = {
@@ -20,7 +15,6 @@ declare type ErrorType = {
 };
 
 export default function UpdatePostDocs() {
-  const inputRef = useRef<any>();
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
   const [wording, setWording] = useState("");
@@ -33,13 +27,16 @@ export default function UpdatePostDocs() {
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    setToast('hide')
-    const result = await PostVid.update({
-      entreprize_id:entreprize,
-      post_id: post,
-      wording,
-      url
-    }, id);
+    setToast("hide");
+    const result = await PostVid.update(
+      {
+        entreprize_id: entreprize,
+        post_id: post,
+        wording,
+        url,
+      },
+      id
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -50,29 +47,28 @@ export default function UpdatePostDocs() {
         setToast("show");
         setMsg(result.data.errors.non_field_errors);
       }
-      
     } else if (result.pk) {
       setShowSuccessBox(true);
     }
   };
-  const getPostVid = async (id:string, entreprize_id: string) => {
-    const result = await PostVid.get(id, entreprize_id)
-      if (result.pk) {
-        setPostVid(result)
-        setId(result.pk)
-        setWording(result.wording)
-        setUrl(result.url);
-        }
+  const getPostVid = async (id: string, entreprize_id: string) => {
+    const result = await PostVid.get(id, entreprize_id);
+    if (result.pk) {
+      setPostVid(result);
+      setId(result.pk);
+      setWording(result.wording);
+      setUrl(result.url);
     }
-  const router = useRouter()
-  const { vid } = router.query
+  };
+  const router = useRouter();
+  const { vid } = router.query;
 
   useEffect(() => {
     const entreprize = localStorage.getItem("entreprize");
     setEntreprize(entreprize as string);
-    setPostId(router.query.post as string)
-    getPostVid(vid as string, entreprize as string)
-    _setUrl("/staff/post-vid/" + router.query.post as string)
+    setPostId(router.query.post as string);
+    getPostVid(vid as string, entreprize as string);
+    _setUrl(("/staff/post-vid/" + router.query.post) as string);
   }, [vid]);
 
   if (showSuccessBox)

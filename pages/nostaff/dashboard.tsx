@@ -3,11 +3,11 @@ import ReusableHeader from "../../components/ReusableHeader";
 import ReusableFooter from "../../components/ReusableFooter";
 
 export default function NoStaffDashboard() {
-    return (
-        <>
-            <ReusableHeader text="Dashboard"/>
-            <Dashboard/>
-            <ReusableFooter />
-      </>
-    );
+  return (
+    <>
+      <ReusableHeader text="Dashboard" />
+      <Dashboard />
+      <ReusableFooter />
+    </>
+  );
 }

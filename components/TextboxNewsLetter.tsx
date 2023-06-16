@@ -8,6 +8,7 @@ declare type Props = {
   placeholder: string;
   event: ChangeEventHandler<HTMLInputElement>;
 };
+
 export default function TextboxNewsLetter({
   name,
   value,
@@ -19,15 +20,15 @@ export default function TextboxNewsLetter({
   return (
     <div className="py-4">
       <div>
-      <input
-        onChange={event}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        className="text shadow border rounded w-9/12 py-3 px-3
+        <input
+          onChange={event}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          className="text shadow border rounded w-9/12 py-3 px-3
         text-gray-700 focus:outline-none focus:shadow-outline"
-        value={value}
-      />
+          value={value}
+        />
       </div>
       {error ? <span className=" text-red-500 text-xs">{error}</span> : null}
     </div>

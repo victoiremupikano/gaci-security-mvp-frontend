@@ -6,10 +6,10 @@ declare type BackupAPIResponse = Record<string, any> & {
   status?: number;
   statusText?: string;
   token?: any;
-  pk?: any
-  results?: any[]
-  next?:''
-  previous?:''
+  pk?: any;
+  results?: any[];
+  next?: "";
+  previous?: "";
 };
 
 const Enrolment = {

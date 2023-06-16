@@ -1,27 +1,22 @@
 import {
   ArrowLeftOnRectangleIcon,
-  Bars3BottomLeftIcon,
-  GlobeEuropeAfricaIcon,
-  HomeIcon,
-  ListBulletIcon,
-  UserIcon,
+  HomeIcon
 } from "@heroicons/react/20/solid";
-import useVerify from "../hooks/useVerify";
 import MobileMenuItem from "./MobileMenuItem";
-import Auth from "../api/auth"
+import Auth from "../api/auth";
 import { useRouter } from "next/router";
 
 declare type Props = {
-  onClick : () => void
-}
+  onClick: () => void;
+};
 
-export default function NoStaffMobileDropDownMenu({onClick}: Props) {
-  const router = useRouter()
+export default function NoStaffMobileDropDownMenu({ onClick }: Props) {
+  const router = useRouter();
   const logout = async () => {
     Auth.logout().then(() => {
-      localStorage.clear()
-      router.push("/auth/login")
-    })
+      localStorage.clear();
+      router.push("/auth/login");
+    });
   };
   return (
     <div

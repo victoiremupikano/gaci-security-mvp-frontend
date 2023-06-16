@@ -5,8 +5,6 @@ import FormHeader from "../../../../../components/FormHeader";
 import ReusableHeader from "../../../../../components/ReusableHeader";
 import Textbox from "../../../../../components/Textbox";
 import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
-import Checkbox from "../../../../../components/Checkbox";
-import useForm from "../../../../../hooks/useForm";
 import PostDocs from "../../../../../api/postDocs";
 import UserSuccessBox from "../../../../../components/UserSuccessBox";
 import fileToBase64 from "../../../../../helpers/fileToBase64";
@@ -34,13 +32,16 @@ export default function UpdatePostDocs() {
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    setToast('hide')
-    const result = await PostDocs.update({
-      entreprize_id:entreprize,
-      post_id: post,
-      wording,
-      docs64
-    }, id);
+    setToast("hide");
+    const result = await PostDocs.update(
+      {
+        entreprize_id: entreprize,
+        post_id: post,
+        wording,
+        docs64,
+      },
+      id
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -51,7 +52,6 @@ export default function UpdatePostDocs() {
         setToast("show");
         setMsg(result.data.errors.non_field_errors);
       }
-      
     } else if (result.pk) {
       setShowSuccessBox(true);
     }
@@ -67,27 +67,27 @@ export default function UpdatePostDocs() {
       inputRef.current.click();
     }
   };
-  const getPostDocs = async (id:string, entreprize_id: string) => {
-    const result = await PostDocs.get(id, entreprize_id)
-      if (result.pk) {
-        setPostDocs(result)
-        setId(result.pk)
-        setWording(result.wording)
-        setDocsURL(result.docs);
-          const r = await downloadDoc(result.docs)
-          const b64 = await fileToBase64(r);
-          setDocs64(b64 as string)
-        }
+  const getPostDocs = async (id: string, entreprize_id: string) => {
+    const result = await PostDocs.get(id, entreprize_id);
+    if (result.pk) {
+      setPostDocs(result);
+      setId(result.pk);
+      setWording(result.wording);
+      setDocsURL(result.docs);
+      const r = await downloadDoc(result.docs);
+      const b64 = await fileToBase64(r);
+      setDocs64(b64 as string);
     }
-  const router = useRouter()
-  const { docs } = router.query
+  };
+  const router = useRouter();
+  const { docs } = router.query;
 
   useEffect(() => {
     const entreprize = localStorage.getItem("entreprize");
     setEntreprize(entreprize as string);
-    setPostId(router.query.post as string)
-    getPostDocs(docs as string, entreprize as string)
-    setUrl("/staff/post-docs/" + router.query.post as string)
+    setPostId(router.query.post as string);
+    getPostDocs(docs as string, entreprize as string);
+    setUrl(("/staff/post-docs/" + router.query.post) as string);
   }, [docs]);
 
   if (showSuccessBox)
@@ -140,12 +140,7 @@ export default function UpdatePostDocs() {
                       Ajouter le document d'ajout au post
                     </div>
                   )}
-                  <input
-                    onChange={loadDoc}
-                    type="file"
-                    hidden
-                    ref={inputRef}
-                  />
+                  <input onChange={loadDoc} type="file" hidden ref={inputRef} />
                   <span
                     onClick={pickDoc}
                     className="absolute bottom-2 right-4 h-7 w-7 bg-blue-600 text-white rounded-full cursor-pointer grid place-items-center"

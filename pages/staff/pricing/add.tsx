@@ -11,36 +11,35 @@ import Pricing from "../../../api/pricing";
 import Checkbox from "../../../components/Checkbox";
 
 declare type ErrorType = {
-  adh_family: any,
-  trh_family: any,
-  adh_org: any,
-  trh_org: any
+  adh_family: any;
+  trh_family: any;
+  adh_org: any;
+  trh_org: any;
 };
 
 export default function AddPricing() {
-  const [status, setStatus] = useState(false)
-  const [{ adh_family, trh_family, adh_org, trh_org }, handleChange] =
-    useForm({
-      adh_family: "",
-      trh_family: "",
-      adh_org: "",
-      trh_org: ""
-    });
+  const [status, setStatus] = useState(false);
+  const [{ adh_family, trh_family, adh_org, trh_org }, handleChange] = useForm({
+    adh_family: "",
+    trh_family: "",
+    adh_org: "",
+    trh_org: "",
+  });
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    setToast('hide')
+    setToast("hide");
     const result = await Pricing.add({
       adh_family,
       trh_family,
       adh_org,
       trh_org,
-      status
+      status,
     });
     if (result.type === "error") {
-      const errors = result.data.errors
+      const errors = result.data.errors;
       setError({
         adh_family: errors.adh_family && errors.adh_family[0],
         trh_family: errors.trh_family && errors.trh_family[0],
@@ -76,7 +75,8 @@ export default function AddPricing() {
               <FormHeader title="Nouvelle tarification" />
             </div>
             <small className="text-xs w-10/12 mx-auto text-gray-500 md:text-center my-3">
-              Remplissez le champ ci-bas pour enregistrer un nouvelle tarification.
+              Remplissez le champ ci-bas pour enregistrer un nouvelle
+              tarification.
             </small>
           </div>
           <form className="w-11/12 mx-auto mt-2">
@@ -135,4 +135,3 @@ export default function AddPricing() {
     </>
   );
 }
-  

@@ -1,4 +1,8 @@
-import { AdjustmentsHorizontalIcon, ArrowLeftIcon, ArrowRightIcon, EyeIcon, PencilIcon } from "@heroicons/react/20/solid";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  PencilIcon,
+} from "@heroicons/react/20/solid";
 import moment from "moment";
 import "moment/locale/fr";
 import Link from "next/link";
@@ -12,46 +16,46 @@ import useVerify from "../../../hooks/useVerify";
 
 export default function Index() {
   const [newsLetter, setNewsLetter] = useState<Array<any>>();
-  const [next, setNext] = useState('');
-  const [previous, setPrevious] = useState('');
-  const [count, setCount] = useState()
-  const [loading, setLoading] = useState(false)
+  const [next, setNext] = useState("");
+  const [previous, setPrevious] = useState("");
+  const [count, setCount] = useState();
+  const [loading, setLoading] = useState(false);
   useVerify();
   const getNewsLetter = async (entreprizeId: string) => {
-    setLoading(true)
-      const result = await NewsLetter.getAll(entreprizeId);
-      if (result.results) {
-        setNewsLetter(result.results);
-        setNext(result?.next?.split("/share_param")[1] as string);
-        setPrevious(result?.previous?.split("/share_param")[1] as string);
-        setCount(result.count);
+    setLoading(true);
+    const result = await NewsLetter.getAll(entreprizeId);
+    if (result.results) {
+      setNewsLetter(result.results);
+      setNext(result?.next?.split("/share_param")[1] as string);
+      setPrevious(result?.previous?.split("/share_param")[1] as string);
+      setCount(result.count);
     }
-    setLoading(false)
-    }
+    setLoading(false);
+  };
   const onClickNext = async () => {
-     setLoading(true)
-     const result = await fetch(next, 'share_param');
-     if (result.results) {
-       setNewsLetter(result.results);
-       setNext(result?.next?.split("/share_param")[1]);
-       setPrevious(result?.previous?.split("/share_param")[1]);
-       setCount(result.count);
+    setLoading(true);
+    const result = await fetch(next, "share_param");
+    if (result.results) {
+      setNewsLetter(result.results);
+      setNext(result?.next?.split("/share_param")[1]);
+      setPrevious(result?.previous?.split("/share_param")[1]);
+      setCount(result.count);
     }
-    setLoading(false)
-   };
+    setLoading(false);
+  };
   const onClickPrev = async () => {
-     setLoading(true)
-     const result = await fetch(previous, "share_param");
-     if (result.results) {
-       setNewsLetter(result.results);
-       setNext(result?.next?.split("/share_param")[1]);
-       setPrevious(result?.previous?.split("/share_param")[1]);
-       setCount(result.count);
+    setLoading(true);
+    const result = await fetch(previous, "share_param");
+    if (result.results) {
+      setNewsLetter(result.results);
+      setNext(result?.next?.split("/share_param")[1]);
+      setPrevious(result?.previous?.split("/share_param")[1]);
+      setCount(result.count);
     }
-    setLoading(false)
-   };
+    setLoading(false);
+  };
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize")
+    const entreprize = localStorage.getItem("entreprize");
     getNewsLetter(entreprize as string);
   }, []);
   return (
@@ -61,16 +65,20 @@ export default function Index() {
         <div className="w-full mb-3 mt-4 flex justify-between">
           <div className="flex items-center">
             <GoBack />{" "}
-            <span className="font-semibold text-xl">Toutes les adresses mail</span>
+            <span className="font-semibold text-xl">
+              Toutes les adresses mail
+            </span>
           </div>
           <div className="flex justify-around">
-            <span className="flex p-1 rounded font-semibold mr-1 text-gray-800 bg-gray-100">Total : {count}</span>
-          <Link
-            className="bg-blue-600 text-white rounded p-1"
-            href={"/staff/news-letter/add"}
-          >
-            Ajouter
-          </Link>
+            <span className="flex p-1 rounded font-semibold mr-1 text-gray-800 bg-gray-100">
+              Total : {count}
+            </span>
+            <Link
+              className="bg-blue-600 text-white rounded p-1"
+              href={"/staff/news-letter/add"}
+            >
+              Ajouter
+            </Link>
           </div>
         </div>
         <div className="flex justify-between border-b text-sm p-1 font-semibold">

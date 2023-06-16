@@ -1,5 +1,10 @@
-import Link from "next/link";
-import { MouseEventHandler, useCallback, useEffect, useRef, useState } from "react";
+import {
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Button from "../../../../components/Button";
 import FormHeader from "../../../../components/FormHeader";
 import ReusableHeader from "../../../../components/ReusableHeader";
@@ -25,15 +30,15 @@ declare type ErrorType = {
 };
 
 export default function UpdateProfile() {
-  const router = useRouter()
+  const router = useRouter();
   const inputRef = useRef<any>();
-  const [address, setAddress] = useState('')
+  const [address, setAddress] = useState("");
   const [sex, setSex] = useState("");
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
   const [picture64, setPicture64] = useState<any>("");
   const [imageURL, setImageURL] = useState<string>("/placeholder.jpg");
-  const [profile, setProfile] = useState<any>()
+  const [profile, setProfile] = useState<any>();
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
     const result = await Profile.update(
       {
@@ -67,23 +72,23 @@ export default function UpdateProfile() {
     const image = await fileToBase64(e.target.files[0]);
     setPicture64(image);
   };
-    const getProfile = useCallback(async (id: string) => {
-      const result = await Profile.get(id);
-      if (result) {
-        setProfile(result);
-        setAddress(result.adress)
-        setSex(result.kind)
-        setImageURL(result.picture)
-        const img = await downloadImage(result.picture)
-        const _img = await fileToBase64(img)
-        setPicture64(_img)
-      }
-    }, []);
-    useEffect(() => {
-      if (router.isReady) {
-        getProfile(router.query.profile as string);
-      }
-    }, [router, getProfile]);
+  const getProfile = useCallback(async (id: string) => {
+    const result = await Profile.get(id);
+    if (result) {
+      setProfile(result);
+      setAddress(result.adress);
+      setSex(result.kind);
+      setImageURL(result.picture);
+      const img = await downloadImage(result.picture);
+      const _img = await fileToBase64(img);
+      setPicture64(_img);
+    }
+  }, []);
+  useEffect(() => {
+    if (router.isReady) {
+      getProfile(router.query.profile as string);
+    }
+  }, [router, getProfile]);
   if (showSuccessBox)
     return (
       <UserSuccessBox

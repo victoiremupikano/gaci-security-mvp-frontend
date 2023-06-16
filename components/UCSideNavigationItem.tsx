@@ -1,6 +1,5 @@
 import Link from "next/link"
-import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 declare type Props = {
     icon: JSX.Element
@@ -8,7 +7,7 @@ declare type Props = {
     path : string
 }
 export default function UCSideNavigationItem({ icon, text, path }: Props) {
-    const [isActive, setIsActive] = useState<boolean>()
+    const [isActive] = useState<boolean>()
     const setPathToCurrentOne = () => {
         
     }

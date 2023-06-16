@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { MouseEventHandler, useState } from "react";
 import Button from "../../../components/Button";
 import FormHeader from "../../../components/FormHeader";
@@ -11,56 +10,60 @@ import user from "../../../api/user";
 import UserSuccessBox from "../../../components/UserSuccessBox";
 
 declare type ErrorType = {
-  names: any
-  email: any
-  phone_number: any
-  password2: any
-  password: any
+  names: any;
+  email: any;
+  phone_number: any;
+  password2: any;
+  password: any;
 };
 
 export default function AddUser() {
-    const [
-      { password, names, email, phone_number, password2 },
-      handleChange,
-    ] = useForm({
+  const [{ password, names, email, phone_number, password2 }, handleChange] =
+    useForm({
       names: "",
       email: "",
       phone_number: "",
-      password2:'',
+      password2: "",
       password: "",
     });
-  const [staff, setStaff] = useState(false)
-  const [error, setError] = useState<ErrorType>()
-  const [showSuccessBox, setShowSuccessBox] = useState(false)
-  const onClickCheckbox = (e:any) => setStaff(e.target.checked)
+  const [staff, setStaff] = useState(false);
+  const [error, setError] = useState<ErrorType>();
+  const [showSuccessBox, setShowSuccessBox] = useState(false);
+  const onClickCheckbox = (e: any) => setStaff(e.target.checked);
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-  const result = await user.addStaffUser({
-    staff,
-    password,
-    names,
-    email,
-    phone_number,
-    password2,
-  });
-  if (result.type === "error") {
-    const errors = result.data.errors
-    setError({
-      names:errors.names && errors.names[0],
-      email: errors.email && errors.email[0],
-      phone_number: errors.phone_number && errors.phone_number[0],
-      password: errors.password && errors.password[0],
-      password2: errors.password2 && errors.password2[0]
-    })
-  } else if (result.token) {
-    const user = JSON.parse(result.data.user_auth)[0];
-    localStorage.setItem("up_u", JSON.stringify(user))
-    setShowSuccessBox(true)
-  }
-};
+    const result = await user.addStaffUser({
+      staff,
+      password,
+      names,
+      email,
+      phone_number,
+      password2,
+    });
+    if (result.type === "error") {
+      const errors = result.data.errors;
+      setError({
+        names: errors.names && errors.names[0],
+        email: errors.email && errors.email[0],
+        phone_number: errors.phone_number && errors.phone_number[0],
+        password: errors.password && errors.password[0],
+        password2: errors.password2 && errors.password2[0],
+      });
+    } else if (result.token) {
+      const user = JSON.parse(result.data.user_auth)[0];
+      localStorage.setItem("up_u", JSON.stringify(user));
+      setShowSuccessBox(true);
+    }
+  };
 
-    
-if (showSuccessBox)
-  return <UserSuccessBox text="continer" title="Inscription effectuée" path="/staff/users" message="Votre compte a été créé avec succès, vous pouvez maintenant vous connecter sur le système."/>
+  if (showSuccessBox)
+    return (
+      <UserSuccessBox
+        text="continer"
+        title="Inscription effectuée"
+        path="/staff/users"
+        message="Votre compte a été créé avec succès, vous pouvez maintenant vous connecter sur le système."
+      />
+    );
   return (
     <>
       <ReusableHeader text="Nouvel utilisateur" />
@@ -68,7 +71,7 @@ if (showSuccessBox)
         <div className="border h-auto pb-2 flex flex-col justify-around rounded w-full">
           <div className="flex flex-col items-center">
             <div className="w-11/12 mx-auto">
-             <FormHeader title="Nouvel utilisateur" />
+              <FormHeader title="Nouvel utilisateur" />
             </div>
             <small className="text-xs md:text-base  md:w-11/12 w-10/12 mx-auto text-gray-500 md:text-left text-center my-3">
               Remplissez le formulaire ci-bas pour enregistrer un nouvel

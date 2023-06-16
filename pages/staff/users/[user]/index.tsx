@@ -3,9 +3,7 @@ import { useRouter } from "next/router";
 import User from "../../../../api/user";
 import {
   CheckCircleIcon,
-  LinkIcon,
-  NoSymbolIcon,
-  XCircleIcon,
+  XCircleIcon
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import GoBack from "../../../../components/GoBack";
@@ -14,10 +12,10 @@ import "moment/locale/fr";
 import uppercaseFirst from "../../../../helpers/uppercaseFirst";
 import useVerify from "../../../../hooks/useVerify";
 import Toast from "../../../../components/Toast";
-import Link from "next/link";
 import DetailCardHolder from "../../../../components/DetailCardHolder";
 import ReusableHeader from "../../../../components/ReusableHeader";
 import ChangeStatusButton from "../../../../components/ChangeStatusButton";
+
 moment.locale("fr");
 
 export default function UniqueUser() {
@@ -113,7 +111,7 @@ export default function UniqueUser() {
             target="Dernière modification"
             value={moment(user.date_add).fromNow()}
           />
-          <div className="flex justify-between mt-5">           
+          <div className="flex justify-between mt-5">
             <ChangeStatusButton
               onChangeStatus={changeUserStatus}
               status={user?.is_active}

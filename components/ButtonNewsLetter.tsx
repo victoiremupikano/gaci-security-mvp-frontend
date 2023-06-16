@@ -7,6 +7,7 @@ declare type Props = {
   design: "primary" | "secondary";
   event: MouseEventHandler<HTMLButtonElement>;
 };
+
 export default function ButtonNewsLetter({
   content,
   type,

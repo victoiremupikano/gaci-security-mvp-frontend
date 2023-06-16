@@ -8,7 +8,7 @@ declare type UserAPIResponse = {
   statusText?: string;
   token?: any;
   user?: any;
-} & ResponseGlobal
+} & ResponseGlobal;
 
 const Profile = {
   async create(data: Record<string, any>): Promise<UserAPIResponse> {
@@ -37,4 +37,4 @@ const Profile = {
   },
 };
 
-export default Profile
+export default Profile;

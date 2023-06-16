@@ -1,9 +1,6 @@
-import moment from "moment";
 import Image from "next/image";
-import Link from "next/link";
 import { FunctionComponent } from "react";
 import Author from "./Author";
-import Section3 from "../pages/unconected/pub/sections/section3";
 import PostPubUniqueImagesModel from "./PostPubUniqueImagesModel";
 import PostPubUniqueDocsModel from "./PostPubUniqueDocsModel";
 import PostPubUniqueVidModel from "./PostPubUniqueVidModel";
@@ -12,6 +9,7 @@ type Props = {
   index?: number;
   post: any;
 };
+
 const PostPubUniqueModel: FunctionComponent<Props> = ({ index, post }) => {
   return (
     <section className="container mx-auto md:px-2 md:w-1/2 p-5">
@@ -42,7 +40,7 @@ const PostPubUniqueModel: FunctionComponent<Props> = ({ index, post }) => {
 
         {/* les images supplementaires du post */}
         <PostPubUniqueImagesModel post={post?.pk} />
-        {/* les documents supplementaires du post */}
+        {/* les pdf ou docs supplementaires du post */}
         <PostPubUniqueDocsModel post={post?.pk} />
         {/* les videos supplementaires du post */}
         <PostPubUniqueVidModel post={post?.pk} />

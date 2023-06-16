@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import Button from "../../../../components/Button";
 import FormHeader from "../../../../components/FormHeader";
@@ -6,7 +5,6 @@ import ReusableHeader from "../../../../components/ReusableHeader";
 import Textbox from "../../../../components/Textbox";
 import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
 import Checkbox from "../../../../components/Checkbox";
-import useForm from "../../../../hooks/useForm";
 import Post from "../../../../api/post";
 import UserSuccessBox from "../../../../components/UserSuccessBox";
 import fileToBase64 from "../../../../helpers/fileToBase64";
@@ -34,24 +32,27 @@ export default function UpdatePost() {
   const [image64, setImage64] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [status, setStatus] = useState<any>(false);
-  const [repost, setRepost] = useState(false)
+  const [repost, setRepost] = useState(false);
   const [_post, setPost] = useState<any>({});
   const [entreprize, setEntreprize] = useState("");
   const [id, setId] = useState("");
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    setToast('hide')
-    const result = await Post.update({
-      entreprize_id:entreprize,
-      title,
-      synthesis,
-      text,
-      conclusion,
-      image64,
-      status,
-      repost
-    }, id);
+    setToast("hide");
+    const result = await Post.update(
+      {
+        entreprize_id: entreprize,
+        title,
+        synthesis,
+        text,
+        conclusion,
+        image64,
+        status,
+        repost,
+      },
+      id
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -65,7 +66,6 @@ export default function UpdatePost() {
         setToast("show");
         setMsg(result.data.errors.non_field_errors);
       }
-      
     } else if (result.pk) {
       setShowSuccessBox(true);
     }
@@ -83,30 +83,30 @@ export default function UpdatePost() {
       inputRef.current.click();
     }
   };
-  const getPost = async (id:string, entreprize_id: string) => {
-    const result = await Post.getStaff(id, entreprize_id)
-      if (result.pk) {
-        setPost(result)
-        setId(result.pk)
-        setTitle(result.title)
-        setSynthesis(result.synthesis)
-        setText(result.text)
-        setConclusion(result.conclusion)
-        setImageURL(result.image);
-        setStatus(result.status)
-        setRepost(result.repost)
-          const r = await downloadImage(result.image)
-          const b64 = await fileToBase64(r);
-          setImage64(b64 as string)
-        }
+  const getPost = async (id: string, entreprize_id: string) => {
+    const result = await Post.getStaff(id, entreprize_id);
+    if (result.pk) {
+      setPost(result);
+      setId(result.pk);
+      setTitle(result.title);
+      setSynthesis(result.synthesis);
+      setText(result.text);
+      setConclusion(result.conclusion);
+      setImageURL(result.image);
+      setStatus(result.status);
+      setRepost(result.repost);
+      const r = await downloadImage(result.image);
+      const b64 = await fileToBase64(r);
+      setImage64(b64 as string);
     }
-  const router = useRouter()
-  const { post } = router.query
+  };
+  const router = useRouter();
+  const { post } = router.query;
 
   useEffect(() => {
     const entreprize = localStorage.getItem("entreprize");
     setEntreprize(entreprize as string);
-    getPost(post as string, entreprize as string)
+    getPost(post as string, entreprize as string);
   }, [post]);
 
   if (showSuccessBox)

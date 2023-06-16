@@ -5,6 +5,6 @@ const nextConfig = {
   images: {
     domains: ["localhost", "musacom-media.s3.amazonaws.com"],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

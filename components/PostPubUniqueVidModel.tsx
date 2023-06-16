@@ -1,18 +1,15 @@
-import Image from "next/image";
 import Link from "next/link";
 import moment from "moment";
 import { FunctionComponent } from "react";
 import PostVid from "../api/postVideos";
-import React, { MouseEventHandler, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   index?: any;
   post: any;
 };
-const PostPubUniqueVidModel: FunctionComponent<Props> = ({
-  index,
-  post,
-}) => {
+
+const PostPubUniqueVidModel: FunctionComponent<Props> = ({ index, post }) => {
   const [postsVid, setPostVid] = useState<Array<any>>();
   const [loading, setLoading] = useState(false);
   const getPostVid = async (postId: string, entreprizeId: string) => {
@@ -42,24 +39,24 @@ const PostPubUniqueVidModel: FunctionComponent<Props> = ({
               <div key={index} className="flex gap-5">
                 <div className="info flex justify-center flex-col">
                   <div className="cat">
-                  <p className="font-bold text-gray-800 hover:text-gray-600">
-                        {"Vidéo supplémentaire"}
-                      </p>
-                      <p className="text-gray-800 hover:text-gray-600">
-                        - {moment(a?.date_add).format("ll") || "Unknown"}
-                      </p>
+                    <p className="font-bold text-gray-800 hover:text-gray-600">
+                      {"Vidéo supplémentaire"}
+                    </p>
+                    <p className="text-gray-800 hover:text-gray-600">
+                      - {moment(a?.date_add).format("ll") || "Unknown"}
+                    </p>
                   </div>
                   <div className="title">
                     <Link href={a?.url}>
-                    <p className="text-orange-600 hover:text-orange-800">
+                      <p className="text-orange-600 hover:text-orange-800">
                         {a?.url.substr(0, 35) + "..." || "No Vid Link"}
                       </p>
                     </Link>
                   </div>
                   <div className="title">
-                  <p className="text-xl font-bold text-gray-800 hover:text-gray-600">
-                        {a?.wording || "No Wording"}
-                      </p>
+                    <p className="text-xl font-bold text-gray-800 hover:text-gray-600">
+                      {a?.wording || "No Wording"}
+                    </p>
                   </div>
                 </div>
               </div>

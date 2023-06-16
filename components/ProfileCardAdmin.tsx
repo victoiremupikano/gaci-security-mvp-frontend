@@ -1,17 +1,19 @@
-import { CheckCircleIcon, EnvelopeIcon, GlobeAltIcon, MapIcon, MapPinIcon, UserIcon } from "@heroicons/react/20/solid";
+import {
+  EnvelopeIcon,
+  MapPinIcon,
+  UserIcon,
+} from "@heroicons/react/20/solid";
 import moment from "moment";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import "moment/locale/fr"
+import "moment/locale/fr";
 
 declare type Props = {
- user: Record<string, any>
-  toAdmin?:boolean
+  user: Record<string, any>;
+  toAdmin?: boolean;
 };
-export default function ProfileCardAdmin({
-  user,
-  toAdmin
-}: Props) {
+
+export default function ProfileCardAdmin({ user, toAdmin }: Props) {
   const router = useRouter();
   return (
     <div
@@ -26,7 +28,7 @@ export default function ProfileCardAdmin({
         <Image
           className="w-full h-full object-cover"
           sizes="100vw"
-          src={user.picture || '/placeholder.jpg'}
+          src={user.picture || "/placeholder.jpg"}
           alt={user.agent.names}
           height="0"
           width="0"
@@ -34,16 +36,25 @@ export default function ProfileCardAdmin({
       </div>
       <div className=" w-[calc(100%-80px)] text-gray-700 p-1  flex-col justify-between flex h-[90%]">
         <div className="flex flex-col">
-          <span className="flex items-center"><UserIcon className="mr-1 h-5 w-5 "/>{user.agent.names}</span>
-          <span className="flex items-center"><EnvelopeIcon className="mr-1 h-5 w-5 "/>{user.agent.email}</span>
-          <span className="flex items-center"><MapPinIcon className="mr-1 h-5 w-5 "/>{user.adress}</span>
+          <span className="flex items-center">
+            <UserIcon className="mr-1 h-5 w-5 " />
+            {user.agent.names}
+          </span>
+          <span className="flex items-center">
+            <EnvelopeIcon className="mr-1 h-5 w-5 " />
+            {user.agent.email}
+          </span>
+          <span className="flex items-center">
+            <MapPinIcon className="mr-1 h-5 w-5 " />
+            {user.adress}
+          </span>
         </div>
         <div className="flex justify-between">
           <span className="text-center flex justify-center items-center  font-semibold text-sm text-gray-700">
             {moment(user.date_update).fromNow(true)}
           </span>
           <span className="bg-gray-700 rounded-full w-6 h-6 text-center flex justify-center items-center  font-semibold text-sm text-white">
-            {user.kind === 'masculin'? "M" : (user.kind == 'feminin' ? "F" :"")}
+            {user.kind === "masculin" ? "M" : user.kind == "feminin" ? "F" : ""}
           </span>
         </div>
       </div>

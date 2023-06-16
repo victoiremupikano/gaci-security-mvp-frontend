@@ -1,20 +1,11 @@
 import {
-  ArchiveBoxArrowDownIcon,
-  Bars3BottomLeftIcon,
   ChartBarIcon,
-  Cog6ToothIcon,
   CurrencyDollarIcon,
   DocumentIcon,
-  GlobeEuropeAfricaIcon,
   HomeIcon,
-  HomeModernIcon,
-  LinkIcon,
-  ListBulletIcon,
-  UserCircleIcon,
   UserGroupIcon,
-  UserIcon,
   ShareIcon,
-  DocumentChartBarIcon
+  DocumentChartBarIcon,
 } from "@heroicons/react/20/solid";
 import AdminSideNavigationItem from "./AdminSideNavigationItem";
 

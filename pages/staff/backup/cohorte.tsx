@@ -1,10 +1,12 @@
-import BackupCohorte from "../../../components/BackupCohorte"
-import{FunctionComponent} from "react"
+import BackupCohorte from "../../../components/BackupCohorte";
+import { FunctionComponent } from "react";
 
 const Cohorte: FunctionComponent = () => {
-    return <div className="w-full">
-        <BackupCohorte />
+  return (
+    <div className="w-full">
+      <BackupCohorte />
     </div>
-}
+  );
+};
 
-export default Cohorte
+export default Cohorte;

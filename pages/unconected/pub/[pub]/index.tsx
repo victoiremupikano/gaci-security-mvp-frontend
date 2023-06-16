@@ -1,12 +1,7 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { FunctionComponent, useCallback, useEffect, useState } from "react";
 import Post from "../../../../api/post";
-import FormHeader from "../../../../components/FormHeader";
-import ReusableHeader from "../../../../components/ReusableHeader";
 import "moment/locale/fr";
-import { PencilIcon, PrinterIcon, XMarkIcon } from "@heroicons/react/20/solid";
-import Toast from "../../../../components/Toast";
 import PostPubUniqueModel from "../../../../components/PostPubUniqueModel ";
 import Section3 from "../sections/section3";
 import ReusableFooter from "../../../../components/ReusableFooter";
@@ -26,14 +21,13 @@ const UniquePostDetails: FunctionComponent = () => {
       getPost(router.query.pub as string, entreprize as string);
     }
   }, [router, getPost]);
-
   return (
     <>
-        <PostPubUniqueModel post={post}></PostPubUniqueModel>
-        <Section3></Section3>
-        <ReusableFooter />
+      <PostPubUniqueModel post={post}></PostPubUniqueModel>
+      <Section3></Section3>
+      <ReusableFooter />
     </>
   );
 };
 
-export default UniquePostDetails
+export default UniquePostDetails;

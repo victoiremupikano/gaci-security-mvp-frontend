@@ -1,18 +1,13 @@
-import Link from "next/link";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import Button from "../../../components/Button";
 import FormHeader from "../../../components/FormHeader";
 import ReusableHeader from "../../../components/ReusableHeader";
 import Textbox from "../../../components/Textbox";
-import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
-import Checkbox from "../../../components/Checkbox";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import useForm from "../../../hooks/useForm";
-import Sms from "../../../api/sms"
+import Sms from "../../../api/sms";
 import UserSuccessBox from "../../../components/UserSuccessBox";
-import fileToBase64 from "../../../helpers/fileToBase64";
-import Image from "next/image";
-import { randomUUID } from "crypto";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
 import Toast from "../../../components/Toast";
 
 declare type ErrorType = {
@@ -21,25 +16,27 @@ declare type ErrorType = {
 };
 
 export default function AddSms() {
-  const [{message, ip},handleChange,
-  ] = useForm({
+  const [{ message, ip }, handleChange] = useForm({
     message: "",
     source: "",
     ip: "",
   });
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
-  const [entreprize, setEntreprize] = useState("")
+  const [entreprize, setEntreprize] = useState("");
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
-  const router = useRouter()
+  const router = useRouter();
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    const result = await Sms.add({
-      entreprize_id:entreprize,
-      message: message,
-      source : "gsm",
-      ip: ip,
-    }, entreprize);
+    const result = await Sms.add(
+      {
+        entreprize_id: entreprize,
+        message: message,
+        source: "gsm",
+        ip: ip,
+      },
+      entreprize
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -55,17 +52,16 @@ export default function AddSms() {
     }
   };
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize")
-    setEntreprize(entreprize as string)
-  },[])
+    const entreprize = localStorage.getItem("entreprize");
+    setEntreprize(entreprize as string);
+  }, []);
   const onClickGsmVerify = async () => {
-    if (ip == ""){
-      router.push("/staff/sms/add_gsm")
+    if (ip == "") {
+      router.push("/staff/sms/add_gsm");
+    } else {
+      router.push((("/staff/sms/" + ip) as string) + "/gsm_verify");
     }
-    else{
-      router.push("/staff/sms/" + ip as string + "/gsm_verify")
-    }
-  }   
+  };
   if (showSuccessBox)
     return (
       <UserSuccessBox
@@ -86,7 +82,8 @@ export default function AddSms() {
               <FormHeader title="Nouveau message" />
             </div>
             <small className="text-xs md:text-base  md:w-11/12 w-10/12 mx-auto text-gray-500 md:text-left text-center my-3">
-              Remplissez le formulaire ci-bas pour enregistrer et envoyer un nouveau message via le GSM Android
+              Remplissez le formulaire ci-bas pour enregistrer et envoyer un
+              nouveau message via le GSM Android
             </small>
           </div>
           <form className="w-11/12 mx-auto mt-2">
@@ -124,7 +121,8 @@ export default function AddSms() {
               size="fit"
               content={
                 <div className="flex justify-around">
-                  CLiquer pour tester l'IP <CheckCircleIcon className="h-6 w-6 ml-3" />
+                  CLiquer pour tester l'IP{" "}
+                  <CheckCircleIcon className="h-6 w-6 ml-3" />
                 </div>
               }
               design="primary"

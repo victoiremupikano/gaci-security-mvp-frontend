@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReusableHeader from "../../../../components/ReusableHeader";
 import GoBack from "../../../../components/GoBack";
 import { useRouter } from "next/router";
@@ -7,35 +7,39 @@ import moment from "moment";
 import Link from "next/link";
 import "moment/locale/fr";
 import Pricing from "../../../../api/pricing";
-import { XMarkIcon, CheckCircleIcon, XCircleIcon } from "@heroicons/react/20/solid";
+import {
+  XMarkIcon,
+  CheckCircleIcon,
+  XCircleIcon,
+} from "@heroicons/react/20/solid";
 import Toast from "../../../../components/Toast";
 
 export default function UniquePricing() {
-  const [fnObject, setFnObject] = useState<any>({});
+  const [pricing, setPricing] = useState<any>({});
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
-  const getFnx = async (fn: string) => {
+  const getPricing = async (fn: string) => {
     const result = await Pricing.get(fn);
     if (result.pk) {
-      setFnObject(result);
+      setPricing(result);
     }
   };
   const router = useRouter();
   useEffect(() => {
     if (router.query.pricing) {
-      getFnx(router.query.pricing as string);
+      getPricing(router.query.pricing as string);
     }
   }, [router.query.pricing]);
-   const onclickDelete = async () => {
-     setToast("hide");
-     const result = await Pricing.delete(fnObject.pk);
-     if (result.type === "error") {
-       setToast("show");
-       setMsg(result.data.detail);
-      } else {
-        router.push("/staff/pricing");
-     }
-   };
+  const onclickDelete = async () => {
+    setToast("hide");
+    const result = await Pricing.delete(pricing.pk);
+    if (result.type === "error") {
+      setToast("show");
+      setMsg(result.data.detail);
+    } else {
+      router.push("/staff/pricing");
+    }
+  };
 
   return (
     <>
@@ -53,7 +57,7 @@ export default function UniquePricing() {
             </div>
             <Link
               className="bg-blue-600 text-white rounded p-1"
-              href={"/staff/pricing/" + fnObject.pk + "/update"}
+              href={"/staff/pricing/" + pricing.pk + "/update"}
             >
               Modifier
             </Link>
@@ -62,58 +66,58 @@ export default function UniquePricing() {
             <div className="flex justify-between mb-3">
               <span>Adhésion familiale</span>
               <span className="font-semibold">
-                {uppercaseFirst(fnObject.adh_family) || "Pas de donnée"}
+                {uppercaseFirst(pricing.adh_family) || "Pas de donnée"}
               </span>
             </div>
             <div className="flex justify-between mb-3">
               <span>Tranche</span>
               <span className="font-semibold">
-                {uppercaseFirst(fnObject.trh_family) || "Pas de donnée"}
+                {uppercaseFirst(pricing.trh_family) || "Pas de donnée"}
               </span>
             </div>
             <div className="flex justify-between mb-3">
               <span>Adhésion d'une organisation</span>
               <span className="font-semibold">
-                {uppercaseFirst(fnObject.adh_org) || "Pas de donnée"}
+                {uppercaseFirst(pricing.adh_org) || "Pas de donnée"}
               </span>
             </div>
             <div className="flex justify-between mb-3">
               <span>Tranche</span>
               <span className="font-semibold">
-                {uppercaseFirst(fnObject.trh_org) || "Pas de donnée"}
+                {uppercaseFirst(pricing.trh_org) || "Pas de donnée"}
               </span>
             </div>
             <div className="flex justify-between mb-2">
-            <span>Actif(ve)</span>
-            <span
-              className={` ${
-                fnObject.status ? "bg-blue-600" : "bg-red-600"
-              } flex items-center w-fit rounded-full py-0.5 font-semibold px-1 text-sm text-white`}
-            >
-              {fnObject.status ? "Oui" : "Non"}
-              {fnObject.status ? (
-                <CheckCircleIcon className="h-4 w-4 ml-1" />
-              ) : (
-                <XCircleIcon className="h-4 w-4 ml-1" />
-              )}
-            </span>
-          </div>
+              <span>Actif(ve)</span>
+              <span
+                className={` ${
+                  pricing.status ? "bg-blue-600" : "bg-red-600"
+                } flex items-center w-fit rounded-full py-0.5 font-semibold px-1 text-sm text-white`}
+              >
+                {pricing.status ? "Oui" : "Non"}
+                {pricing.status ? (
+                  <CheckCircleIcon className="h-4 w-4 ml-1" />
+                ) : (
+                  <XCircleIcon className="h-4 w-4 ml-1" />
+                )}
+              </span>
+            </div>
             <div className="flex justify-between mb-3">
               <span>Utilisateur</span>
               <span className="font-semibold">
-                {fnObject?.user?.names || "Non donné"}
+                {pricing?.user?.names || "Non donné"}
               </span>
             </div>
             <div className="flex justify-between mb-3">
               <span>Date de création</span>
               <span className="font-semibold">
-                {moment(fnObject.date_add).format("ll")}
+                {moment(pricing.date_add).format("ll")}
               </span>
             </div>
             <div className="flex justify-between mb-3">
               <span>Dernière modification</span>
               <span className="font-semibold">
-                {moment(fnObject.date_update).fromNow()}
+                {moment(pricing.date_update).fromNow()}
               </span>
             </div>
             <div className="flex  mb-3">

@@ -1,10 +1,12 @@
-import BackupExercise from "../../../components/BackupExercise"
-import{FunctionComponent} from "react"
+import BackupExercise from "../../../components/BackupExercise";
+import { FunctionComponent } from "react";
 
 const Exercise: FunctionComponent = () => {
-    return <div className="w-full">
-        <BackupExercise />
+  return (
+    <div className="w-full">
+      <BackupExercise />
     </div>
-}
+  );
+};
 
-export default Exercise
+export default Exercise;

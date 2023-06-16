@@ -1,10 +1,12 @@
-import BackupEnrolment from "../../../components/BackupEnrolment"
-import{FunctionComponent} from "react"
+import BackupEnrolment from "../../../components/BackupEnrolment";
+import { FunctionComponent } from "react";
 
 const Enrolment: FunctionComponent = () => {
-    return <div className="w-full">
-        <BackupEnrolment />
+  return (
+    <div className="w-full">
+      <BackupEnrolment />
     </div>
-}
+  );
+};
 
-export default Enrolment
+export default Enrolment;

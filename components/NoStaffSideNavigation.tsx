@@ -1,5 +1,6 @@
 import { HomeIcon } from "@heroicons/react/20/solid";
 import NoStaffSideNavigationItem from "./NoStaffSideNavigationItem";
+
 export default function NoStaffSideNavigation() {
   return (
     <div className="lg:w-[15%] md:w-[20%] md:block hidden border-r  h-auto">
@@ -9,5 +10,5 @@ export default function NoStaffSideNavigation() {
         path="/nostaff/dashboard"
       />
     </div>
-   );
+  );
 }

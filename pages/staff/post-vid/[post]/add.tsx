@@ -1,18 +1,13 @@
-import Link from "next/link";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import Button from "../../../../components/Button";
 import FormHeader from "../../../../components/FormHeader";
 import ReusableHeader from "../../../../components/ReusableHeader";
 import Textbox from "../../../../components/Textbox";
-import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
-import Checkbox from "../../../../components/Checkbox";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import useForm from "../../../../hooks/useForm";
-import PostVid from "../../../../api/postVideos"
+import PostVid from "../../../../api/postVideos";
 import { useRouter } from "next/router";
 import UserSuccessBox from "../../../../components/UserSuccessBox";
-import fileToBase64 from "../../../../helpers/fileToBase64";
-import Image from "next/image";
-import { randomUUID } from "crypto";
 import Toast from "../../../../components/Toast";
 
 declare type ErrorType = {
@@ -21,26 +16,27 @@ declare type ErrorType = {
 };
 
 export default function AddPostVid() {
-  const inputRef = useRef<any>();
-  const [{wording, url},handleChange,
-  ] = useForm({
+  const [{ wording, url }, handleChange] = useForm({
     wording: "",
-    url: ""
+    url: "",
   });
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
   const [post, setPostId] = useState("");
   const [_url, setUrl] = useState("");
-  const [entreprize, setEntreprize] = useState("")
+  const [entreprize, setEntreprize] = useState("");
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    const result = await PostVid.add({
-      entreprize_id: entreprize,
-      post_id: post,
-      wording,
-      url
-    }, entreprize);
+    const result = await PostVid.add(
+      {
+        entreprize_id: entreprize,
+        post_id: post,
+        wording,
+        url,
+      },
+      entreprize
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -55,13 +51,13 @@ export default function AddPostVid() {
       setShowSuccessBox(true);
     }
   };
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize")
-    setEntreprize(entreprize as string)
-    setPostId(router.query.post as string)
-    setUrl("/staff/post-vid/" + router.query.post as string)
-  },[])
+    const entreprize = localStorage.getItem("entreprize");
+    setEntreprize(entreprize as string);
+    setPostId(router.query.post as string);
+    setUrl(("/staff/post-vid/" + router.query.post) as string);
+  }, []);
 
   if (showSuccessBox)
     return (

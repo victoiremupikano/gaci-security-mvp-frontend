@@ -1,17 +1,12 @@
-import Link from "next/link";
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import Button from "../../../components/Button";
 import FormHeader from "../../../components/FormHeader";
 import ReusableHeader from "../../../components/ReusableHeader";
 import Textbox from "../../../components/Textbox";
-import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
-import Checkbox from "../../../components/Checkbox";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import useForm from "../../../hooks/useForm";
-import Sms from "../../../api/sms"
+import Sms from "../../../api/sms";
 import UserSuccessBox from "../../../components/UserSuccessBox";
-import fileToBase64 from "../../../helpers/fileToBase64";
-import Image from "next/image";
-import { randomUUID } from "crypto";
 import Toast from "../../../components/Toast";
 
 declare type ErrorType = {
@@ -19,24 +14,26 @@ declare type ErrorType = {
 };
 
 export default function AddSms() {
-  const [{message, ip},handleChange,
-  ] = useForm({
+  const [{ message, ip }, handleChange] = useForm({
     message: "",
     source: "",
     ip: "",
   });
   const [error, setError] = useState<ErrorType>();
   const [showSuccessBox, setShowSuccessBox] = useState(false);
-  const [entreprize, setEntreprize] = useState("")
+  const [entreprize, setEntreprize] = useState("");
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    const result = await Sms.add({
-      entreprize_id:entreprize,
-      message: message,
-      source : "api",
-      ip: null,
-    }, entreprize);
+    const result = await Sms.add(
+      {
+        entreprize_id: entreprize,
+        message: message,
+        source: "api",
+        ip: null,
+      },
+      entreprize
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -51,9 +48,9 @@ export default function AddSms() {
     }
   };
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize")
-    setEntreprize(entreprize as string)
-  },[])
+    const entreprize = localStorage.getItem("entreprize");
+    setEntreprize(entreprize as string);
+  }, []);
 
   if (showSuccessBox)
     return (
@@ -75,7 +72,8 @@ export default function AddSms() {
               <FormHeader title="Nouveau message" />
             </div>
             <small className="text-xs md:text-base  md:w-11/12 w-10/12 mx-auto text-gray-500 md:text-left text-center my-3">
-              Remplissez le formulaire ci-bas pour enregistrer et envoyer un nouveau message via l'API
+              Remplissez le formulaire ci-bas pour enregistrer et envoyer un
+              nouveau message via l'API
             </small>
           </div>
           <form className="w-11/12 mx-auto mt-2">

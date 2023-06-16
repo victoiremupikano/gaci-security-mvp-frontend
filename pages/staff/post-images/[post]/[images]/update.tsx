@@ -1,12 +1,9 @@
-import Link from "next/link";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import Button from "../../../../../components/Button";
 import FormHeader from "../../../../../components/FormHeader";
 import ReusableHeader from "../../../../../components/ReusableHeader";
 import Textbox from "../../../../../components/Textbox";
-import { CheckCircleIcon, PhotoIcon, RssIcon } from "@heroicons/react/20/solid";
-import Checkbox from "../../../../../components/Checkbox";
-import useForm from "../../../../../hooks/useForm";
+import { CheckCircleIcon, PhotoIcon } from "@heroicons/react/20/solid";
 import PostImages from "../../../../../api/postImages";
 import UserSuccessBox from "../../../../../components/UserSuccessBox";
 import fileToBase64 from "../../../../../helpers/fileToBase64";
@@ -35,13 +32,16 @@ export default function UpdatePostImages() {
   const [toast, setToast] = useState<"hide" | "show">("hide");
   const [msg, setMsg] = useState("");
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
-    setToast('hide')
-    const result = await PostImages.update({
-      entreprize_id:entreprize,
-      post_id: post,
-      wording,
-      images64
-    }, id);
+    setToast("hide");
+    const result = await PostImages.update(
+      {
+        entreprize_id: entreprize,
+        post_id: post,
+        wording,
+        images64,
+      },
+      id
+    );
     if (result.type === "error") {
       const errors = result.data.errors;
       setError({
@@ -52,7 +52,6 @@ export default function UpdatePostImages() {
         setToast("show");
         setMsg(result.data.errors.non_field_errors);
       }
-      
     } else if (result.pk) {
       setShowSuccessBox(true);
     }
@@ -68,27 +67,27 @@ export default function UpdatePostImages() {
       inputRef.current.click();
     }
   };
-  const getPostImages = async (id:string, entreprize_id: string) => {
-    const result = await PostImages.get(id, entreprize_id)
-      if (result.pk) {
-        setPostImages(result)
-        setId(result.pk)
-        setWording(result.wording)
-        setImagesURL(result.images);
-          const r = await downloadImage(result.images)
-          const b64 = await fileToBase64(r);
-          setImages64(b64 as string)
-        }
+  const getPostImages = async (id: string, entreprize_id: string) => {
+    const result = await PostImages.get(id, entreprize_id);
+    if (result.pk) {
+      setPostImages(result);
+      setId(result.pk);
+      setWording(result.wording);
+      setImagesURL(result.images);
+      const r = await downloadImage(result.images);
+      const b64 = await fileToBase64(r);
+      setImages64(b64 as string);
     }
-  const router = useRouter()
-  const { images } = router.query
+  };
+  const router = useRouter();
+  const { images } = router.query;
 
   useEffect(() => {
     const entreprize = localStorage.getItem("entreprize");
     setEntreprize(entreprize as string);
-    setPostId(router.query.post as string)
-    getPostImages(images as string, entreprize as string)
-    setUrl("/staff/post-images/" + router.query.post as string)
+    setPostId(router.query.post as string);
+    getPostImages(images as string, entreprize as string);
+    setUrl(("/staff/post-images/" + router.query.post) as string);
   }, [images]);
 
   if (showSuccessBox)

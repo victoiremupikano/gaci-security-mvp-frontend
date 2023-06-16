@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import "aos/dist/aos.css";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import Navigation from "../components/Navigation";
 import AOS from "aos";
 import { useEffect } from "react";
 import { instance } from "../api";
@@ -14,12 +13,8 @@ import NoStaffSideNavigation from "../components/NoStaffSideNavigation";
 import UCNavigation from "../components/UCNavigation";
 import UCSideNavigation from "../components/UCSideNavigation";
 
-
 export default function App({ Component, pageProps }: AppProps) {
-  const mainRoutes = ["/auth/login", "/auth/reset-pwd"];
   const router = useRouter();
-
-  const path = router.pathname;
   useEffect(() => {
     instance.interceptors.request.use((config) => {
       if (config.headers)
@@ -29,32 +24,34 @@ export default function App({ Component, pageProps }: AppProps) {
     AOS.init();
   }, [router.pathname]);
 
-  if (router.pathname.includes('/staff') && !router.pathname.includes("/staff/backup")) {
+  if (
+    router.pathname.includes("/staff") &&
+    !router.pathname.includes("/staff/backup")
+  ) {
     return (
       <main className="h-full overflow-hidden w-full">
         <AdminNavigation />
         <section className=" w-full overflow-hidden h-full flex">
-          <AdminSideNavigation/>
+          <AdminSideNavigation />
           <div className="md:w-[85%] h-[calc(100%-56px)] p-2 overflow-auto w-full">
-          <Component {...pageProps} />
+            <Component {...pageProps} />
           </div>
         </section>
       </main>
     );
-  } else if (router.pathname.includes('/nostaff')) {
+  } else if (router.pathname.includes("/nostaff")) {
     return (
       <main className="h-full overflow-hidden w-full">
         <NoStaffNavigation />
         <section className=" w-full border-t overflow-hidden h-full flex">
-          <NoStaffSideNavigation/>
+          <NoStaffSideNavigation />
           <div className="lg:w-[85%] md:w-[80%]  h-[calc(100%-56px)] overflow-auto w-full">
-          <Component {...pageProps} />
+            <Component {...pageProps} />
           </div>
         </section>
       </main>
     );
-  }
-  else if (router.pathname.includes('/staff/backup')) {
+  } else if (router.pathname.includes("/staff/backup")) {
     return (
       <main className="h-full overflow-hidden w-full">
         <AdminNavigation />
@@ -67,15 +64,14 @@ export default function App({ Component, pageProps }: AppProps) {
         </section>
       </main>
     );
-  }
-  else {
+  } else {
     return (
       <main className="h-full overflow-hidden w-full">
         <UCNavigation />
         <section className=" w-full border-t overflow-hidden h-full flex">
-          <UCSideNavigation/>
+          <UCSideNavigation />
           <div className="lg:w-[85%] md:w-[80%]  h-[calc(100%-56px)] overflow-auto w-full">
-          <Component {...pageProps} />
+            <Component {...pageProps} />
           </div>
         </section>
       </main>
