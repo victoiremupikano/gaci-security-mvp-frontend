@@ -1,6 +1,10 @@
 import {
+  ArchiveBoxIcon,
   ArrowLeftOnRectangleIcon,
-  HomeIcon
+  DocumentIcon,
+  HeartIcon,
+  HomeIcon,
+  UserGroupIcon
 } from "@heroicons/react/20/solid";
 import MobileMenuItem from "./MobileMenuItem";
 import Auth from "../api/auth";
@@ -29,6 +33,30 @@ export default function NoStaffMobileDropDownMenu({ onClick }: Props) {
         name="Dashboard"
         path="/nostaff/dashboard"
         Icon={<HomeIcon className="w-6 h-6" />}
+      />
+      <MobileMenuItem
+        onClick={onClick}
+        name="Actualités"
+        path="/nostaff/unconected/pub/"
+        Icon={<DocumentIcon className="h-7 w-7 " />}
+      />
+      <MobileMenuItem
+        onClick={onClick}
+        name="Adhésion"
+        path="/nostaff/unconected/pricing/"
+        Icon={<UserGroupIcon className="h-7 w-7 " />}
+      />
+      <MobileMenuItem
+        onClick={onClick}
+        name="Suivis"
+        path="/nostaff/unconected/pages/tracked"
+        Icon={<HeartIcon className="h-7 w-7 " />}
+      />
+      <MobileMenuItem
+        onClick={onClick}
+        name="Apropos"
+        path="/nostaff/unconected/pages/about"
+        Icon={<ArchiveBoxIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={logout}
