@@ -7,6 +7,8 @@ import {
   UserGroupIcon,
   ShareIcon,
   DocumentChartBarIcon,
+  HeartIcon,
+  ArchiveBoxIcon,
 } from "@heroicons/react/20/solid";
 import MobileMenuItem from "./MobileMenuItem";
 import Auth from "../api/auth";
@@ -35,6 +37,30 @@ export default function AdminMobileDropDownMenu({ onClick }: Props) {
         name="Dashboard"
         path="/staff/dashboard"
         Icon={<HomeModernIcon className="h-7 w-7 " />}
+      />
+      <MobileMenuItem
+        onClick={onClick}
+        name="Actualités"
+        path="/staff/unconected/pub/"
+        Icon={<DocumentIcon className="h-7 w-7 " />}
+      />
+      <MobileMenuItem
+        onClick={onClick}
+        name="Adhésion"
+        path="/staff/unconected/pricing/"
+        Icon={<UserGroupIcon className="h-7 w-7 " />}
+      />
+      <MobileMenuItem
+        onClick={onClick}
+        name="Suivis"
+        path="/staff/unconected/pages/tracked"
+        Icon={<HeartIcon className="h-7 w-7 " />}
+      />
+      <MobileMenuItem
+        onClick={onClick}
+        name="Apropos"
+        path="/staff/unconected/pages/about"
+        Icon={<ArchiveBoxIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={onClick}
