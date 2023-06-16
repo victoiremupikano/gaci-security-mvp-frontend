@@ -64,7 +64,7 @@ export default function section2() {
               return (
                 <div key={index} className="item">
                   <div className="images">
-                    <Link href={"/staff/staff/unconected/pub/" + a.pk}>
+                    <Link href={"/staff/unconected/pub/" + a.pk}>
                       <Image
                         src={a.image || "/placeholder.jpg"}
                         alt="img"
