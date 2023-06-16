@@ -156,7 +156,7 @@ export default function AddPost() {
               name="repost"
               event={onClickCheckboxRepost}
               value={repost}
-              title="Républier l'article à chaque fois."
+              title="Républier l&apos;article à chaque fois."
             />
             <div className="w-full flex justify-between md:space-x-1 md:flex-row flex-col">
               <div className="md:w-1/2 w-full">

@@ -25,7 +25,7 @@ export default function ProfileIndex() {
   }, []);
   return (
     <>
-      <ReusableHeader text="Profil de l'utilisateur" />
+      <ReusableHeader text="Profil de l&apos;utilisateur" />
       <div className="h-auto mb-3 relative overflow-hidden w-11/12 mx-auto">
         <div className="w-11/12 mb-4 flex items-center full">
           <GoBack />{" "}

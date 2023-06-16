@@ -79,9 +79,9 @@ export default function AddPostDocs() {
     return (
       <UserSuccessBox
         text="continer"
-        title="Document d'ajout au post enregistrée"
+        title="Document d&apos;ajout au post enregistrée"
         path={url}
-        message="Le document d'ajout au post a été créé avec succès, vous pouvez maintenant vous connecter sur le consulter."
+        message="Le document d&apos;ajout au post a été créé avec succès, vous pouvez maintenant vous connecter sur le consulter."
       />
     );
   return (
@@ -123,7 +123,7 @@ export default function AddPostDocs() {
                     </Link>
                   ) : (
                     <div className="grid place-items-center h-full text-gray-600 text-sm">
-                      Ajouter le document d'ajout au post
+                      Ajouter le document d&apos;ajout au post
                     </div>
                   )}
                   <input onChange={loadDoc} type="file" hidden ref={inputRef} />

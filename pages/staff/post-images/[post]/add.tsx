@@ -79,9 +79,9 @@ export default function AddPostImages() {
     return (
       <UserSuccessBox
         text="continer"
-        title="Image d'ajout au post enregistrée"
+        title="Image d&apos;ajout au post enregistrée"
         path={url}
-        message="L'image d'ajout au post a été créé avec succès, vous pouvez maintenant vous connecter sur le consulter."
+        message="L&apos;image d&apos;ajout au post a été créé avec succès, vous pouvez maintenant vous connecter sur le consulter."
       />
     );
   return (
@@ -124,7 +124,7 @@ export default function AddPostImages() {
                     />
                   ) : (
                     <div className="grid place-items-center h-full text-gray-600 text-sm">
-                      Ajouter l&apos;image d'ajout au post
+                      Ajouter l&apos;image d&apos;ajout au post
                     </div>
                   )}
                   <input

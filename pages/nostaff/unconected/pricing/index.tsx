@@ -22,7 +22,7 @@ export default function ActivePricing() {
 
   return (
     <>
-      <ReusableHeader text="L'adhésion à la mutuelle" />
+      <ReusableHeader text="L&apos;adhésion à la mutuelle" />
       <section className="container mx-auto md:px-2 py-16 md:w-1/2 p-5">
         <div className="flex justify-center">
           <Author user={userId} />

@@ -58,7 +58,7 @@ export default function AddNewsLetter() {
         text="continer"
         title="Mail enregistrée"
         path="/staff/news-letter"
-        message="L'email a été créé avec succès, vous pouvez maintenant vous connecter sur le consulter."
+        message="L&apos;email a été créé avec succès, vous pouvez maintenant vous connecter sur le consulter."
       />
     );
   return (

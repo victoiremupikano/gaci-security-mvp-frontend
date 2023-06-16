@@ -96,7 +96,7 @@ export default function UpdatePostImages() {
         text="continer"
         title="Modification effectuée"
         path={url}
-        message="L'image d'ajout au post a été modifier avec succès, vous pouvez maintenant le consulter."
+        message="L'image d&apos;ajout au post a été modifier avec succès, vous pouvez maintenant le consulter."
       />
     );
   return (

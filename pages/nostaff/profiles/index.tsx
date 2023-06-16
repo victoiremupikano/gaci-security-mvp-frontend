@@ -48,7 +48,7 @@ export default function IndexProfile() {
   };
   return (
     <>
-      <ReusableHeader text=" Profil de l'utilisateur" />
+      <ReusableHeader text=" Profil de l&apos;utilisateur" />
       <div className="mt-10 h-full mb-3 overflow-hidden relative  w-11/12 md:w-6/12 mx-auto">
         <Toast message={msg} set={toast} />
         <div className="w-full mb-4 justify-between flex items-center mx-auto">

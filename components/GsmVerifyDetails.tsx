@@ -26,7 +26,7 @@ const gsmVerifyDetails: FunctionComponent<Props> = ({ index, gsmVerify }) => {
             <span>{gsmVerify?.mark}</span>
           </div>
           <div className="flex mb-2 justify-between">
-            <span className="font-semibold">Etat batterie de l'appareil</span>
+            <span className="font-semibold">Etat batterie de l&apos;appareil</span>
             <span>{gsmVerify?.energy_power}</span>
           </div>
         </div>

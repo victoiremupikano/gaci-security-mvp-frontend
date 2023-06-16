@@ -77,7 +77,7 @@ export default function UpdateNewsLetter() {
     );
   return (
     <>
-      <ReusableHeader text="Modification d'une adresse mail" />
+      <ReusableHeader text="Modification d&apos;une adresse mail" />
       <div className="h-auto md:w-7/12 md:mx-auto relative  w-full flex items-center justify-center">
         <Toast message={msg} set={toast} />
         <div className="border h-auto pb-2 flex flex-col justify-around rounded w-full">

@@ -86,7 +86,7 @@ const PostDetails: FunctionComponent<Props> = ({ index, post }) => {
               height="0"
               className="w-full h-full object-cover"
               sizes="100vw"
-              alt="User's image placeholder"
+              alt="User&apos;s image placeholder"
             />
           </div>
         ) : (

@@ -120,7 +120,7 @@ export default function UpdatePost() {
     );
   return (
     <>
-      <ReusableHeader text="Modification d'un post" />
+      <ReusableHeader text="Modification d&apos;un post" />
       <div className="h-auto md:w-7/12 md:mx-auto relative  w-full flex items-center justify-center">
         <Toast message={msg} set={toast} />
         <div className="border h-auto pb-2 flex flex-col justify-around rounded w-full">
@@ -178,7 +178,7 @@ export default function UpdatePost() {
               name="repost"
               event={onClickCheckboxRepost}
               value={repost}
-              title="Républier l'article à chaque fois."
+              title="Républier l&apos;article à chaque fois."
             />
             <div className="w-full flex justify-between md:space-x-1 md:flex-row flex-col">
               <div className="md:w-1/2 w-full">

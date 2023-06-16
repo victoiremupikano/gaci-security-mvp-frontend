@@ -38,11 +38,11 @@ const UniquePostDocsDetails: FunctionComponent = () => {
   };
   return (
     <>
-      <ReusableHeader text="Information sur le document d'un post" />
+      <ReusableHeader text="Information sur le document d&apos;un post" />
       <div className="md:w-11/12 w-full relative mx-auto flex flex-col  md:h-[600px]">
         <Toast message={msg} set={toast} />
         <div className="md:w-full w-11/12 mx-auto items-center  flex justify-between">
-          <FormHeader title="Information sur le document d'un post" />
+          <FormHeader title="Information sur le document d&apos;un post" />
           <Link
             href={
               (("/staff/post-docs/" + router.query.post) as string) +
