@@ -1,7 +1,7 @@
 import "moment/locale/fr";
 import { useEffect, useState } from "react";
 import Post from "../../../../../api/post";
-import PostSection3ModelStaff from "../../../../../components/PostSection3ModelStaff";
+import PostSection3ModelNoStaff from "../../../../../components/PostSection3ModelNoStaff";
 
 export default function section3() {
   const [postsRepost, setPostsRepost] = useState<Array<any>>();
@@ -41,7 +41,7 @@ export default function section3() {
             {!loadingRepost ? (
               Array.isArray(postsRepost) && postsRepost.length > 0 ? (
                 postsRepost.map((a, index) => (
-                  <PostSection3ModelStaff key={index} post={a} />
+                  <PostSection3ModelNoStaff key={index} post={a} />
                 ))
               ) : (
                 "No data"
@@ -60,7 +60,7 @@ export default function section3() {
             {!loadingFavorite ? (
               Array.isArray(postsFavorite) && postsFavorite.length > 0 ? (
                 postsFavorite.map((a, index) => (
-                  <PostSection3ModelStaff key={index} post={a} />
+                  <PostSection3ModelNoStaff key={index} post={a} />
                 ))
               ) : (
                 "No data"
