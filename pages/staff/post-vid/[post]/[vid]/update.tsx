@@ -62,14 +62,14 @@ export default function UpdatePostDocs() {
   };
   const router = useRouter();
   const { vid } = router.query;
+  const entreprize_ = localStorage.getItem("entreprize");
 
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize");
-    setEntreprize(entreprize as string);
+    setEntreprize(entreprize_ as string);
     setPostId(router.query.post as string);
-    getPostVid(vid as string, entreprize as string);
+    getPostVid(vid as string, entreprize_ as string);
     _setUrl(("/staff/post-vid/" + router.query.post) as string);
-  }, [vid]);
+  }, [router, vid, entreprize_]);
 
   if (showSuccessBox)
     return (

@@ -81,14 +81,14 @@ export default function UpdatePostImages() {
   };
   const router = useRouter();
   const { images } = router.query;
+  const entreprize_ = localStorage.getItem("entreprize");
 
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize");
-    setEntreprize(entreprize as string);
+    setEntreprize(entreprize_ as string);
     setPostId(router.query.post as string);
-    getPostImages(images as string, entreprize as string);
+    getPostImages(images as string, entreprize_ as string);
     setUrl(("/staff/post-images/" + router.query.post) as string);
-  }, [images]);
+  }, [router, images, entreprize_]);
 
   if (showSuccessBox)
     return (
@@ -96,18 +96,18 @@ export default function UpdatePostImages() {
         text="continer"
         title="Modification effectuée"
         path={url}
-        message="L'image d&apos;ajout au post a été modifier avec succès, vous pouvez maintenant le consulter."
+        message="L&apos;image d&apos;ajout au post a été modifier avec succès, vous pouvez maintenant le consulter."
       />
     );
   return (
     <>
-      <ReusableHeader text="Modification d'une image ajouté" />
+      <ReusableHeader text="Modification d&apos;une image ajouté" />
       <div className="h-auto md:w-7/12 md:mx-auto relative  w-full flex items-center justify-center">
         <Toast message={msg} set={toast} />
         <div className="border h-auto pb-2 flex flex-col justify-around rounded w-full">
           <div className="flex flex-col items-center">
             <div className="w-11/12">
-              <FormHeader title="Modification d'une image ajouté" />
+              <FormHeader title="Modification d&apos;une image ajouté" />
             </div>
             <small className="text-xs md:text-base  md:w-11/12 w-10/12 mx-auto text-gray-500 md:text-left text-center my-3">
               Remplissez le formulaire ci-bas pour modifier une image ajouté
@@ -135,11 +135,11 @@ export default function UpdatePostImages() {
                       height="0"
                       className="w-full h-full object-cover"
                       sizes="100vw"
-                      alt="User's image placeholder"
+                      alt="User&apos;s image placeholder"
                     />
                   ) : (
                     <div className="grid place-items-center h-full text-gray-600 text-sm">
-                      Ajouter l&apos;image d'ajout au post
+                      Ajouter l&apos;image d&apos;ajout au post
                     </div>
                   )}
                   <input

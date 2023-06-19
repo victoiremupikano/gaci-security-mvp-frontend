@@ -61,7 +61,7 @@ export default function Index() {
   useEffect(() => {
     const entreprize = localStorage.getItem("entreprize");
     getPostFavorite(post as string, entreprize as string);
-  }, []);
+  }, [post]);
   return (
     <>
       <ReusableHeader text="Tous les favoris inscrit" />

@@ -121,7 +121,7 @@ export default function AddSms() {
               size="fit"
               content={
                 <div className="flex justify-around">
-                  CLiquer pour tester l'IP{" "}
+                  CLiquer pour tester l&apos;IP{" "}
                   <CheckCircleIcon className="h-6 w-6 ml-3" />
                 </div>
               }

@@ -73,7 +73,7 @@ export default function AddSms() {
             </div>
             <small className="text-xs md:text-base  md:w-11/12 w-10/12 mx-auto text-gray-500 md:text-left text-center my-3">
               Remplissez le formulaire ci-bas pour enregistrer et envoyer un
-              nouveau message via l'API
+              nouveau message via l&apos;API
             </small>
           </div>
           <form className="w-11/12 mx-auto mt-2">

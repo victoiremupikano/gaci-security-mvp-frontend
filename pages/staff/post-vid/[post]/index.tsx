@@ -58,11 +58,11 @@ export default function Index() {
   };
   const router = useRouter();
   const { post } = router.query;
+  const entreprize = localStorage.getItem("entreprize");
 
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize");
     getPostVid(post as string, entreprize as string);
-  }, []);
+  }, [router, post, entreprize]);
   return (
     <>
       <ReusableHeader text="Toutes les vidéos" />

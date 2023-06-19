@@ -76,7 +76,7 @@ export default function UniquePricing() {
               </span>
             </div>
             <div className="flex justify-between mb-3">
-              <span>Adhésion d'une organisation</span>
+              <span>Adhésion d&apos;une organisation</span>
               <span className="font-semibold">
                 {uppercaseFirst(pricing.adh_org) || "Pas de donnée"}
               </span>

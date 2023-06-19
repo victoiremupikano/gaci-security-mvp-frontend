@@ -81,14 +81,14 @@ export default function UpdatePostDocs() {
   };
   const router = useRouter();
   const { docs } = router.query;
+  const entreprize_ = localStorage.getItem("entreprize");
 
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize");
-    setEntreprize(entreprize as string);
+    setEntreprize(entreprize_ as string);
     setPostId(router.query.post as string);
-    getPostDocs(docs as string, entreprize as string);
+    getPostDocs(docs as string, entreprize_ as string);
     setUrl(("/staff/post-docs/" + router.query.post) as string);
-  }, [docs]);
+  }, [router, docs, entreprize_]);
 
   if (showSuccessBox)
     return (
@@ -96,7 +96,7 @@ export default function UpdatePostDocs() {
         text="continer"
         title="Modification effectuée"
         path={url}
-        message="Le document d'ajout au post a été modifier avec succès, vous pouvez maintenant le consulter."
+        message="Le document d&apos;ajout au post a été modifier avec succès, vous pouvez maintenant le consulter."
       />
     );
   return (
@@ -137,7 +137,7 @@ export default function UpdatePostDocs() {
                     </Link>
                   ) : (
                     <div className="grid place-items-center h-full text-gray-600 text-sm">
-                      Ajouter le document d'ajout au post
+                      Ajouter le document d&apos;ajout au post
                     </div>
                   )}
                   <input onChange={loadDoc} type="file" hidden ref={inputRef} />

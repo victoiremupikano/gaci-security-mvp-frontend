@@ -57,11 +57,11 @@ export default function Index() {
   };
   const router = useRouter();
   const { post } = router.query;
+  const entreprize = localStorage.getItem("entreprize");
 
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize");
     getPostComent(post as string, entreprize as string);
-  }, []);
+  }, [post, entreprize]);
   return (
     <>
       <ReusableHeader text="Tous les commentaires inscrit" />

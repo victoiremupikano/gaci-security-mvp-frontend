@@ -42,7 +42,7 @@ export default function UpdatePricing() {
     if (router.query.pricing) {
       getPricing(router.query.pricing as string);
     }
-  }, [router.query.Pricing]);
+  }, [router]);
   const onClickRegister: MouseEventHandler<HTMLButtonElement> = async (e) => {
     const result = await Pricing.update(
       {
@@ -73,7 +73,7 @@ export default function UpdatePricing() {
         text="Voir la tarification"
         title="Tarification modifier avec succès"
         path="/staff/pricing"
-        message={`La tarification d'adhésion ${adh_family} et ${adh_org} ont été modifié avec succès. Elle est maintenant affichable aux utilisateurs.`}
+        message={`La tarification d&apos;adhésion ${adh_family} et ${adh_org} ont été modifié avec succès. Elle est maintenant affichable aux utilisateurs.`}
       />
     );
   return (

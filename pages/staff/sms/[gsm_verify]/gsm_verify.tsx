@@ -43,11 +43,11 @@ const UniqueGsmVerifyDetails: FunctionComponent = () => {
 
   return (
     <>
-      <ReusableHeader text="Information sur l'appareil" />
+      <ReusableHeader text="Information sur l&apos;appareil" />
       <div className="md:w-11/12 w-full relative mx-auto flex flex-col  md:h-[600px]">
         <Toast message={msg} set={toast} />
         <div className="md:w-full w-11/12 mx-auto items-center  flex justify-between">
-          <FormHeader title="Information sur l'appareil" />
+          <FormHeader title="Information sur l&apos;appareil" />
         </div>
         <div className="w-full text-sm md:text-base flex md:justify-between mx-auto h-auto">
           <GsmVerifyDetails gsmVerify={gsmVerify} />

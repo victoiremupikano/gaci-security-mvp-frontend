@@ -61,7 +61,7 @@ export default function AddPricing() {
         text="Voir la tarification"
         title="Tarification créé avec succès"
         path="/staff/pricing"
-        message={`La tarification d'adhésion ${adh_family} et ${adh_org} ont été créée avec succès. Elle est maintenant affichable aux utilisateurs.`}
+        message={`La tarification d&apos;adhésion ${adh_family} et ${adh_org} ont été créée avec succès. Elle est maintenant affichable aux utilisateurs.`}
       />
     );
   return (

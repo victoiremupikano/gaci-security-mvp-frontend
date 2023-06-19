@@ -52,12 +52,13 @@ export default function AddPostVid() {
     }
   };
   const router = useRouter();
+  const entreprize_ = localStorage.getItem("entreprize");
+
   useEffect(() => {
-    const entreprize = localStorage.getItem("entreprize");
-    setEntreprize(entreprize as string);
+    setEntreprize(entreprize_ as string);
     setPostId(router.query.post as string);
     setUrl(("/staff/post-vid/" + router.query.post) as string);
-  }, []);
+  }, [router, entreprize_]);
 
   if (showSuccessBox)
     return (

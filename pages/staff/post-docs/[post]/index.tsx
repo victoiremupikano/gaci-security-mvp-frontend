@@ -62,7 +62,7 @@ export default function Index() {
   useEffect(() => {
     const entreprize = localStorage.getItem("entreprize");
     getPostDocs(post as string, entreprize as string);
-  }, []);
+  }, [post]);
   return (
     <>
       <ReusableHeader text="Toutes les documents" />
