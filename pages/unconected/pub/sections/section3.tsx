@@ -1,9 +1,9 @@
-import "moment/locale/fr";
 import { useEffect, useState } from "react";
+import "moment/locale/fr";
 import Post from "../../../../api/post";
 import PostSection3Model from "../../../../components/PostSection3ModelUC";
 
-export default function section3() {
+export default function Section3() {
   const [postsRepost, setPostsRepost] = useState<Array<any>>();
   const [loadingRepost, setLoadingRepost] = useState(false);
 

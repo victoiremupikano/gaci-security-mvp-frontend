@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function section1() {
+export default function Section1() {
   const bg = {
     background: "url('/banner.png') no-repeat",
     backgroundPosition: "right",

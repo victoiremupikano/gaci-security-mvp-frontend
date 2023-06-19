@@ -9,7 +9,7 @@ import Post from "../../../../../api/post";
 import ClickableSpan from "../../../../../components/ClickableSpan";
 import fetch from "../../../../../helpers/fetch";
 
-export default function section2() {
+export default function Section2() {
   const [posts, setPosts] = useState<Array<any>>();
   const [next, setNext] = useState("");
   const [previous, setPrevious] = useState("");

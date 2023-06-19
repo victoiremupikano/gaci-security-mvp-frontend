@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Post from "../../../../../api/post";
 import PostSection3ModelStaff from "../../../../../components/PostSection3ModelStaff";
 
-export default function section3() {
+export default function Section3() {
   const [postsRepost, setPostsRepost] = useState<Array<any>>();
   const [loadingRepost, setLoadingRepost] = useState(false);
   const [postsFavorite, setPostsFavorite] = useState<Array<any>>();

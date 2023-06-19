@@ -29,7 +29,7 @@ export default function ActivePricing() {
         </div>
         <div className="post py-10">
           <h1 className="font-bold text-4xl text-center pb-5">
-            L'adhésion à la mutuelle est simple !
+            L&lsquo;adhésion à la mutuelle est simple !
           </h1>
 
           <p className="text-gray-500 text-xl text-center">
