@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export default function Home() {
   const router = useRouter();
   useEffect(() => {
-    router.push("/unconected/pub/");
+    router.push("/auth/login");
   }, [router]);
-  return <div>MUSACOM</div>;
+  return <div>Gaci</div>;
 }

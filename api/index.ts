@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 
 const baseURL =
   process.env.NODE_ENV === "production"
-    ? "https://sma.herokuapp.com/api/"
+    ? "https://gacisapi.herokuapp.com/api/"
     : "http://localhost:8000/api/";
 
 const headers =

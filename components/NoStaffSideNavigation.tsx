@@ -11,23 +11,18 @@ export default function NoStaffSideNavigation() {
       />
       <NoStaffSideNavigationItem
         icon={<DocumentIcon className="w-6 h-6" />}
-        text="Actualités"
-        path="/nostaff/unconected/pub/"
+        text="Envie de recherche"
+        path="/nostaff/pub/wtr/"
       />
       <NoStaffSideNavigationItem
         icon={<UserGroupIcon className="w-6 h-6" />}
-        text="Adhésion"
-        path="/nostaff/unconected/pricing/"
+        text="Couvre-feu"
+        path="/nostaff/pub/cai/"
       />
       <NoStaffSideNavigationItem
         icon={<HeartIcon className="w-6 h-6" />}
-        text="Suivis"
-        path="/nostaff/unconected/pages/tracked"
-      />
-      <NoStaffSideNavigationItem
-        icon={<ArchiveBoxIcon className="w-6 h-6" />}
-        text="Apropos"
-        path="/nostaff/unconected/pages/about"
+        text="Alerte d'insécurité"
+        path="/nostaff/pa/add"
       />
     </div>
   );

@@ -1,7 +1,6 @@
 import { ImFacebook, ImTwitter, ImWhatsapp, ImYoutube } from "react-icons/im";
 
 import Link from "next/link";
-import Newslatter from "./NewsLetter";
 
 export default function ReusableFooter() {
   const bg = {
@@ -11,7 +10,6 @@ export default function ReusableFooter() {
   };
   return (
     <footer className="bg-gray-50" style={bg}>
-      <Newslatter />
       <div className="container mx-auto flex justify-center py-12">
         <div className="py-5">
           <div className="flex gap-6 justify-center">
@@ -30,7 +28,7 @@ export default function ReusableFooter() {
           </div>
 
           <p className="py-5 text-gray-400">
-            Copyright ©2023 All rights reserved | MUSACOM
+            Copyright ©2023 All rights reserved | Gaci
           </p>
           <p className="text-gray-400 text-center">Terms & Condition</p>
         </div>

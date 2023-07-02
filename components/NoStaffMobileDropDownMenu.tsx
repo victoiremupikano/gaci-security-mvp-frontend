@@ -36,27 +36,21 @@ export default function NoStaffMobileDropDownMenu({ onClick }: Props) {
       />
       <MobileMenuItem
         onClick={onClick}
-        name="Actualités"
-        path="/nostaff/unconected/pub/"
+        name="Envie de recherche"
+        path="/nostaff/pub/wtr/"
         Icon={<DocumentIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={onClick}
-        name="Adhésion"
-        path="/nostaff/unconected/pricing/"
+        name="Couvre-feu"
+        path="/nostaff/pub/cai/"
         Icon={<UserGroupIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={onClick}
-        name="Suivis"
-        path="/nostaff/unconected/pages/tracked"
+        name="Alerte d'insécurité"
+        path="/nostaff/pa/add"
         Icon={<HeartIcon className="h-7 w-7 " />}
-      />
-      <MobileMenuItem
-        onClick={onClick}
-        name="Apropos"
-        path="/nostaff/unconected/pages/about"
-        Icon={<ArchiveBoxIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={logout}

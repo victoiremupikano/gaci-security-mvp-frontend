@@ -47,37 +47,17 @@ export default function Login() {
         localStorage.setItem("user_data",
          JSON.stringify({...user_auth})
         );
-        // les user_assignment_data
-        const user_assignment = JSON.parse(data.user_assignment)
-        user_assignment.length === 0
-          ? null
-          : localStorage.setItem("user_assignment",
-            JSON.stringify({...user_assignment[0]})
-            );
-
         // on place les ids
         if (JSON.parse(data.user_auth)[0]) {
           // on enregistre le staff
           const staff = JSON.parse(data.user_auth)[0].fields?.staff;
           localStorage.setItem("staff", staff);
           
-          // apres enregistrement du stff on enregistre l'entreprise de l'user
-          if(JSON.parse(data.user_assignment).length !== 0){
-            if (JSON.parse(data.user_assignment)[0]) {
-              const entreprize = JSON.parse(data.user_assignment)[0].fields?.entreprize;
-              localStorage.setItem("entreprize", entreprize);
-              
-              // on route les utilisateurs
-              const s = JSON.parse(localStorage.getItem("staff") as string);
-              s == true
-                ? router.push("/staff/dashboard")
-                : router.push("/nostaff/dashboard");
-            }
-          }
-          else{
-            setToast('show')
-            setMsg("Error, this user is not assignment");
-          }
+          // on route les utilisateurs
+          const s = JSON.parse(localStorage.getItem("staff") as string);
+          s == true
+            ? router.push("/staff/dashboard")
+            : router.push("/nostaff/dashboard");
         } 
       }
     }

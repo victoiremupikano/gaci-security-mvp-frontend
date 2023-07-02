@@ -40,63 +40,27 @@ export default function AdminMobileDropDownMenu({ onClick }: Props) {
       />
       <MobileMenuItem
         onClick={onClick}
-        name="Actualités"
-        path="/staff/unconected/pub/"
+        name="Envie de recherche"
+        path="/staff/wtr/"
         Icon={<DocumentIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={onClick}
-        name="Adhésion"
-        path="/staff/unconected/pricing/"
+        name="Couvre-feu"
+        path="/staff/cai/"
         Icon={<UserGroupIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={onClick}
-        name="Suivis"
-        path="/staff/unconected/pages/tracked"
+        name="Alerte population"
+        path="/staff/pa/"
         Icon={<HeartIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={onClick}
-        name="Apropos"
-        path="/staff/unconected/pages/about"
-        Icon={<ArchiveBoxIcon className="h-7 w-7 " />}
-      />
-      <MobileMenuItem
-        onClick={onClick}
-        name="Utilisateurs"
-        path="/staff/users"
+        name="Identification"
+        path="/staff/ident"
         Icon={<UserGroupIcon className="h-7 w-7 " />}
-      />
-      <MobileMenuItem
-        onClick={onClick}
-        name="Tarification"
-        path="/staff/pricing"
-        Icon={<CurrencyDollarIcon className="h-7 w-7 " />}
-      />
-      <MobileMenuItem
-        onClick={onClick}
-        name="Publication"
-        path="/staff/post"
-        Icon={<DocumentIcon className="h-7 w-7 " />}
-      />
-      <MobileMenuItem
-        onClick={onClick}
-        name="Backup"
-        path="/staff/backup"
-        Icon={<ChartBarIcon className="h-7 w-7 " />}
-      />
-      <MobileMenuItem
-        onClick={onClick}
-        name="News-letter"
-        path="/staff/news-letter"
-        Icon={<ShareIcon className="h-7 w-7 " />}
-      />
-      <MobileMenuItem
-        onClick={onClick}
-        name="SMS"
-        path="/staff/sms"
-        Icon={<DocumentChartBarIcon className="h-7 w-7 " />}
       />
       <MobileMenuItem
         onClick={logout}

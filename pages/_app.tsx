@@ -67,9 +67,9 @@ export default function App({ Component, pageProps }: AppProps) {
   } else {
     return (
       <main className="h-full overflow-hidden w-full">
-        <UCNavigation />
+        {/* <UCNavigation /> */}
         <section className=" w-full border-t overflow-hidden h-full flex">
-          <UCSideNavigation />
+          {/* <UCSideNavigation /> */}
           <div className="lg:w-[85%] md:w-[80%]  h-[calc(100%-56px)] overflow-auto w-full">
             <Component {...pageProps} />
           </div>
