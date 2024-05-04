@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["localhost", "musacom-media.s3.amazonaws.com"],
+    domains: ["localhost", "gaci-media.s3.amazonaws.com"],
   },
 };
 

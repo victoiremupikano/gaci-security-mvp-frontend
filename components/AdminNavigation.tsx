@@ -28,7 +28,7 @@ export default function AdminNavigation() {
   return (
     <header className="w-full mx-auto relative flex bg-white h-12 md:border-b">
       <div className="w-[95%] md:w-[99%] mx-auto  h-full flex items-center justify-between">
-        <span className="text-blue-600 font-bold w-[50%] text-xl">MUSACOM</span>{" "}
+        <span className="text-blue-600 font-bold w-[50%] text-xl">GACI</span>{" "}
         <div className="flex text-gray-600 w-fit justify-around">
           {router.pathname.includes("backup") && (
             <>

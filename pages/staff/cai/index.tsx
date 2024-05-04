@@ -71,6 +71,12 @@ export default function Index() {
             <span className="flex p-1 rounded font-semibold mr-1 text-gray-800 bg-gray-100">
               Total : {count}
             </span>
+            <Link
+              className="bg-blue-600 text-white rounded p-1"
+              href={"/staff/cai/add"}
+            >
+              Ajouter
+            </Link>
           </div>
         </div>
         <div className="flex justify-between border-b text-sm p-1 font-semibold">

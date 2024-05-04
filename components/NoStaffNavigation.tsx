@@ -24,7 +24,7 @@ export default function NoStaffNavigation() {
   return (
     <header className="w-full relative flex bg-white h-14">
       <div className="w-[99%] h-full flex items-center justify-between mx-auto ">
-        <span className="text-blue-600 w-fit font-bold text-xl">MUSACOM</span>{" "}
+        <span className="text-blue-600 w-fit font-bold text-xl">GACI</span>{" "}
         <div className="flex text-gray-600 w-fit justify-around">
           <Link
             href={"/nostaff/profile"}

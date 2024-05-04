@@ -7,7 +7,7 @@ declare type Props = {
 export default function ReusableHeader({ text }: Props) {
   return (
     <Head>
-      <title>{text} | MUSACOM</title>
+      <title>{text} | GACI</title>
     </Head>
   );
 }
